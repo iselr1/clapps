@@ -1,0 +1,37 @@
+<ion-view view-title="{{'HOME' | translate}}">
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
+  </ion-nav-buttons>
+  <ion-content scroll="false">
+    <div class="row">
+      <div class="col col-50">
+        <button class="button button-block button-large button-light" ng-click="goTermine()" translate="TERMINE">
+          <!--<img src="img/write.png" height="150" alt=" "/>-->
+        </button>
+      </div>
+      <div class="col col-50">
+        <button class="button button-block button-large button-light" ng-click="goKoerper()" translate="KOERPER"/></button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-50">
+      <button class="button button-block button-large button-light" ng-click="goInfos()" translate="INFOS">
+        <!--<img src="img/write.png" height="150" alt=" "/>-->
+      </button>
+    </div>
+    <div class="col col-50">
+      <button class="button button-block button-large button-light" ng-click="goKontakte()" translate="KONTAKTE"/></button>
+  </div>
+</div>
+<div class="row">
+  <div class="col col-50">
+    <button class="button button-block button-large button-light" ng-click="goUeber()" translate="UEBER">
+      <!--<img src="img/write.png" height="150" alt=" "/>-->
+    </button>
+  </div>
+  <div class="col col-50">
+    <button class="button button-block button-large button-light" ng-click="goExport()" translate="EXPORT"/></button>
+</div>
+</div>
+</ion-content>
+</ion-view>
