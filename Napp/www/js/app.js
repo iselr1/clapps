@@ -4,70 +4,84 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'ionic-datepicker', 'ionic-timepicker', 'formlyIonic', 'nvd3', 'i4mi', 'starter.controllers', 'starter.controllersRea', 'starter.controllersSarah', 'starter.services', 'jsonFormatter', 'pascalprecht.translate'])
+  .constant('APPNAME', 'HelloI4MI')
+  .constant('APPSECRET', '8385bee7542099b10315dcb7b803b61a')
+  .run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'js/locale-',
+    suffix: '.json'
   });
-})
+  $translateProvider.use('de');
+  $translateProvider.useSanitizeValueStrategy('sanitize');
 
-.config(function($stateProvider, $urlRouterProvider) {
+
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
+  .state('infos', {
+    url: '/infos',
+    templateUrl: 'templates/infos.html',
+    controller: 'InfosCtrl'
+  })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
+  .state('export', {
+    url: '/export',
+    templateUrl: 'templates/export.html',
+    controller: 'ExportCtrl'
+  })
+
+  .state('koerper', {
+    url: '/koerper',
+    templateUrl: 'templates/koerper.html',
+    controller: 'KoerperCtrl'
+  })
+
+  .state('termine', {
+    url: '/termine',
+    templateUrl: 'templates/termine.html',
+    controller: 'TermineCtrl'
+  })
+
+  .state('ueber', {
+    url: '/ueber',
+    templateUrl: 'templates/ueber.html',
+    controller: 'UeberCtrl'
+  })
+
+  .state('kontakte', {
+    url: '/kontakte',
+    templateUrl: 'templates/kontakte.html',
+    controller: 'KontakteCtrl'
   });
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/login');
 });
