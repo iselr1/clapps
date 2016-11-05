@@ -4,32 +4,39 @@
   </ion-nav-buttons>
   <ion-content scroll="false">
     <div class="row">
-      <div class="col col-50">
-        <button class="button button-block button-large button-light" ng-click="goTermine()" translate="TERMINE">
-          <!--<img src="img/write.png" height="150" alt=" "/>-->
+      <div class="col col-50 icons" ng-click="goTermine()">
+        <center><img src="../img/icons/calendar.png" /></center>
+        <button class="button button-block button-large button-light" id="test"  translate="TERMINE">
+
         </button>
+
       </div>
-      <div class="col col-50">
-        <button class="button button-block button-large button-light" ng-click="goKoerper()" translate="KOERPER"/></button>
+      <div class="col col-50 icons">
+        <center><img src="../img/icons/heart.png" /></center>
+        <button class="button button-block button-large button-light"  translate="KOERPER"/></button>
     </div>
   </div>
   <div class="row">
-    <div class="col col-50">
+    <div class="col col-50 icons">
+      <center><img src="../img/icons/info.png" /></center>
       <button class="button button-block button-large button-light" ng-click="goInfos()" translate="INFOS">
         <!--<img src="img/write.png" height="150" alt=" "/>-->
       </button>
     </div>
-    <div class="col col-50">
+    <div class="col col-50 icons">
+      <center><img src="../img/icons/contact.png" /></center>
       <button class="button button-block button-large button-light" ng-click="goKontakte()" translate="KONTAKTE"/></button>
   </div>
 </div>
 <div class="row">
-  <div class="col col-50">
+  <div class="col col-50 icons">
+    <center><img src="../img/icons/settings.png" /></center>
     <button class="button button-block button-large button-light" ng-click="goUeber()" translate="UEBER">
       <!--<img src="img/write.png" height="150" alt=" "/>-->
     </button>
   </div>
-  <div class="col col-50">
+  <div class="col col-50 icons">
+    <center><img src="../img/icons/export.png" /></center>
     <button class="button button-block button-large button-light" ng-click="goExport()" translate="EXPORT"/></button>
 </div>
 </div>
