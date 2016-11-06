@@ -1,11 +1,23 @@
 <ion-view view-title="{{'KOERPER' | translate}}">
   <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
+    <label class="item item-input">
+      <span class="input-label" translate="Ihr Gewicht in kg:"></span>
+      <input type="tel" ng-model="inputs.city">
+      <input class="button button-small" type="submit" ng-click="saveWeight(inputs)" value="Save" />
+    </label>
+    <div class="ct-chartLineWeight ct-perfect-fourth"></div>
+    <label class="item item-input">
+      <span class="input-label" translate="Ihr Pulse:"></span>
+      <input type="tel">
+      <input class="button button-small" type="submit" ng-click="savePulse(inputs)" value="Save" />
+    </label>
+
+    <div class="ct-chartLinePulse ct-perfect-fourth"></div>
   </ion-content>
 </ion-view>

@@ -1,5 +1,5 @@
 angular.module('starter.controllersMauro', [])
 
-.controller('KoerperCtrl', function($scope, $ionicModal, $timeout) {
-
+.controller('KontakteCtrl', function($scope, $location) {
+5
 })
