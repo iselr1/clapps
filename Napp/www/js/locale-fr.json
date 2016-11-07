@@ -2,5 +2,18 @@
   "LANG_DE": "DE",
   "LANG_EN": "EN",
   "LANG_FR": "FR",
-  "HOME":"Home"
+  "HOME":"Home",
+  "BODY": "Corps",
+  "CONTACTS": "Contacts",
+  "INFOS": "Infos",
+  "LOGIN":"Login",
+  "ABOUT":"Sur",
+  "APPOINTMENTS":"Rendez-vous",
+  "EXPORT":"Export",
+  "LOGOUT":"Logout",
+  "SPORT":"Sport",
+  "FOLLOW_UP":"Suivi médical",
+  "NUTRITION":"Alimentation",
+  "YOUR_WEIGHT_KG": "Votre poids en kg:",
+  "YOUR_PULSE":"Votre pouls:"
 }
