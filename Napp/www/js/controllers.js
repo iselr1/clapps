@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
   // Call every Second
   var timer = $timeout(function refresh() {
     if (I4MIMidataService.loggedIn()) {
-      $state.go('home');
+      $state.go('welcome');
     } else {
       timer = $timeout(refresh, 1000);
     }
@@ -67,6 +67,9 @@ angular.module('starter.controllers', [])
     };
 
   })
+  .controller('InfosCtrl', function($scope, $location) {
+
+  })
   .controller('TermineCtrl', function($scope, $location) {
 
   })
@@ -75,4 +78,5 @@ angular.module('starter.controllers', [])
   })
   .controller('ExportCtrl', function($scope, $location) {
 
-  });
+  })
+  ;

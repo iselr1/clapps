@@ -33,8 +33,24 @@ angular.module('starter', ['ionic', 'ionic-datepicker', 'ionic-timepicker', 'for
 
 
   $stateProvider
+  .state('welcome', {
+    url: '/welcome',
+    templateUrl: 'templates/welcome.html',
+    controller: 'WelcomeCtrl'
+  })
 
-    .state('home', {
+  .state('tnm', {
+    url: '/tnm',
+    templateUrl: 'templates/tnm.html',
+    controller: 'TNMCtrl'
+  })
+  .state('op', {
+    url: '/op',
+    templateUrl: 'templates/operation.html',
+    controller: 'OPCtrl'
+  })
+
+  .state('home', {
     url: '/home',
     templateUrl: 'templates/home.html',
     controller: 'HomeCtrl'

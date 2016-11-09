@@ -15,5 +15,9 @@
   "FOLLOW_UP":"Nachsorge",
   "NUTRITION":"Ernährung",
   "YOUR_WEIGHT_KG": "Ihr Gewicht in kg:",
-  "YOUR_PULSE":"Ihr Puls:"
+  "YOUR_PULSE":"Ihr Puls:",
+  "WELCOME":"Wilkommen",
+  "OPERATION":"Operationen",
+  "TNM":"TNM Klassifizierung",
+  "NEXT":"Weiter"
 }
