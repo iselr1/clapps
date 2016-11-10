@@ -1,6 +1,10 @@
 angular.module('starter.controllersTim', [])
 
 
-.controller('UeberCtrl', function($scope, $location) {
+.controller('TermineCtrl', function($scope, $location) {
+
+})
+
+.controller('ExportCtrl', function($scope, $location) {
 
 })

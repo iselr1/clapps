@@ -43,40 +43,27 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $location) {
-    $scope.goTermine = function() {
-      $location.path('termine');
-    };
+  $scope.goTermine = function() {
+    $location.path('termine');
+  };
 
-    $scope.goKoerper = function() {
-      $location.path('koerper');
-    };
+  $scope.goKoerper = function() {
+    $location.path('koerper');
+  };
 
-    $scope.goInfos = function() {
-      $location.path('infos');
-    };
+  $scope.goInfos = function() {
+    $location.path('infos');
+  };
 
-    $scope.goKontakte = function() {
-      $location.path('kontakte');
-    };
+  $scope.goKontakte = function() {
+    $location.path('kontakte');
+  };
 
-    $scope.goUeber = function() {
-      $location.path('ueber');
-    };
-    $scope.goExport = function() {
-      $location.path('export');
-    };
+  $scope.goUeber = function() {
+    $location.path('ueber');
+  };
+  $scope.goExport = function() {
+    $location.path('export');
+  };
 
-  })
-  .controller('InfosCtrl', function($scope, $location) {
-
-  })
-  .controller('TermineCtrl', function($scope, $location) {
-
-  })
-  .controller('KontakteCtrl', function($scope, $location) {
-
-  })
-  .controller('ExportCtrl', function($scope, $location) {
-
-  })
-  ;
+})

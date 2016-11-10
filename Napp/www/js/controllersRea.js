@@ -25,3 +25,7 @@ angular.module('starter.controllersRea', [])
   var chartLinePulse = new ChartJS($configLinePulse);
   chartLinePulse.line();
 })
+
+.controller('UeberCtrl', function($scope, $location) {
+
+})
