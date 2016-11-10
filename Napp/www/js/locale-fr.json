@@ -15,5 +15,8 @@
   "FOLLOW_UP":"Suivi médical",
   "NUTRITION":"Alimentation",
   "YOUR_WEIGHT_KG": "Votre poids en kg:",
-  "YOUR_PULSE":"Votre pouls:"
+  "YOUR_PULSE":"Votre pouls:",
+  "TODAY":"présent ",
+  "TERMINATED":"fini",
+  "FUTURE":"futre"
 }
