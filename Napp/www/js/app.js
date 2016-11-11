@@ -87,10 +87,25 @@ angular.module('starter', ['ionic', 'ionic-datepicker', 'ionic-timepicker', 'for
   })
 
   .state('ueber', {
-    url: '/ueber',
-    templateUrl: 'templates/ueber.html',
-    controller: 'UeberCtrl'
-  })
+      url: '/ueber',
+      templateUrl: 'templates/ueber.html',
+      controller: 'UeberCtrl'
+    })
+    .state('impressum', {
+      url: '/impressum',
+      templateUrl: 'templates/impressum.html',
+      controller: 'ImpressumCtrl'
+    })
+    .state('einstellungen', {
+      url: '/einstellungen',
+      templateUrl: 'templates/einstellungen.html',
+      controller: 'EinstellungenCtrl'
+    })
+    .state('datenschutz', {
+      url: '/datenschutz',
+      templateUrl: 'templates/datenschutz.html',
+      controller: 'DatenschutzCtrl'
+    })
 
   .state('kontakte', {
     url: '/kontakte',

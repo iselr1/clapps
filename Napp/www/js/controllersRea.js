@@ -27,5 +27,23 @@ angular.module('starter.controllersRea', [])
 })
 
 .controller('UeberCtrl', function($scope, $location) {
-
+  $scope.goSettings = function() {
+    $location.path('einstellungen');
+  };
+  $scope.goDataprotection = function() {
+    $location.path('datenschutz');
+  };
+  $scope.goImpressum = function() {
+    $location.path('impressum');
+  };
 })
+
+.controller('EinstellungenCtrl', function($scope, $location) {
+
+  })
+  .controller('DatenschutzCtrl', function($scope, $location) {
+
+  })
+  .controller('ImpressumCtrl', function($scope, $location) {
+
+  })

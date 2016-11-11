@@ -1,12 +1,29 @@
 //Author: Rea
 <ion-view view-title="{{'ABOUT' | translate}}">
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
-  </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
-  <ion-content>
-  </ion-content>
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
+  </ion-nav-buttons>
+  <ion-content scroll="false">
+    <div class="row">
+      <div class="col icons" ng-click="goSettings()">
+        <center><img src="img/icons/settings.png" width="80"/></center>
+        <p align="center" translate="SETTINGS"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col icons" ng-click="goDataprotection()">
+        <center><img src="img/icons/heart.png" width="80"/></center>
+        <p align="center" translate="DATAPROTECTION"/></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col icons" ng-click="goImpressum()">
+      <center><img src="img/icons/info.png" width="80"/></center>
+      <p align="center" translate="IMPRESSUM"></p>
+    </div>
+  </div>
+</ion-content>
 </ion-view>
