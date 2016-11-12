@@ -16,67 +16,86 @@
       <div class="list">
           <label class="item item-input item-select">
               <div class="input-label">
-                Funktion
+                {{'FUNCTION' | translate}}
               </div>
-              <select>
-                <option>Hausarzt</option>
-                <option>Onkologie Sprechstunde</option>
-                <option>Gastroentrologe</option>
+              <select ng-model="addContact.func">
+                <option>{{'FAMILIYDOC' | translate}}</option>
+                <option>{{'ONCOLOGY' | translate}}</option>
+                <option>{{'GASTROENTEROLOGIST' | translate}}</option>
               </select>
             </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Name</span>
-            <input type="text" placeholder="John Meiner">
+            <span class="input-label">{{'NAME' | translate}}</span>
+            <input type="text" ng-model="addContact.nm" placeholder="John Meiner">
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Strasse & Nr</span>
-            <input type="text" placeholder="Strasse 79">
+            <span class="input-label">{{'STREET' | translate}}</span>
+            <input type="text" ng-model="addContact.street" placeholder="Strasse 79">
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Plz & Ort</span>
-            <input type="text" placeholder="2502 Biel">
+            <span class="input-label">{{'LOCATION' | translate}}</span>
+            <input type="text" ng-model="addContact.loc" placeholder="2502 Biel">
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">Telefon</span>
-            <input type="text" placeholder="+41792718371">
+            <span class="input-label">{{'PHONE' | translate}}</span>
+            <input type="text" ng-model="addContact.phone" placeholder="+41792718371">
           </label>
           <label class="item item-input item-stacked-label">
-            <span class="input-label">E-Mail</span>
-            <input type="text" placeholder="john.meier@szb.ch">
+            <span class="input-label">{{'MAIL' | translate}}</span>
+            <input type="text" ng-model="addContact.mail" placeholder="john.meier@szb.ch">
           </label>
           </div>
 
   </div>
-
-          <button  class="button button-balanced hidden" id="plus" ng-click="closeForm()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
-            <i class="icon ion-plus-round"></i>
-          </button>
-          <button  class="button button-balanced hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
-              <i class="icon ion-minus-round"></i>
-            </button>
-            <button class="button button-balanced"  id="contacts" ng-click="openForm()" style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
-                Add Doctor
-              </button>
+        <!--+++-->
+        <button  class="button button-balanced hidden" id="plus" ng-click="closeForm();addContact()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
+          <i class="icon ion-plus-round"></i>
+        </button>
+        <!------->
+        <button  class="button button-balanced hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
+            <i class="icon ion-minus-round"></i>
+        </button>
+          <!---ADD Doctor---->
+        <button class="button button-balanced"  id="contacts" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
+            Add Doctor
+        </button>
 </div>
 
   <!---------LIST ITEM END------------->
   <!---------LIST ITEM START------------->
-  <div class="card">
-    <div class="item item-text-wrap">
-      <div class="item item-button-right">
-        <p>Hausarzt: Dr. Klaus Knöpfli<br />
-          Strasse: Höhenweg 17<br />
-          Ort: 2502 Biel<br />
-          Telefon: 079 816 52 45<br />
-          E-Mail: klaus.knoepfli@khw.ch
-        </p>
-        <button class="button button-positive">
-          <i class="icon ion-ios-telephone"></i>
-        </button>
-      </div>
+  <div ng-repeat="contact in myContacts">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class="item item-button-right">
+          <p>{{contact.func}} : {{contact.name}}<br />
+          {{'STREET' | translate}}: {{contact.street}}<br />
+          {{'LOCATION' | translate}}: {{contact.location}}<br />
+          {{'PHONE' | translate}}: {{contact.phone}}<br />
+          {{'MAIL' | translate}}: {{contact.mail}}
+          </p>
+          <a href="tel:{{contact.phone}}"><button class="button button-positive">
+            <i class="icon ion-ios-telephone"></i>
+          </button></a>
+        </div>
+    </div>
   </div>
 </div>
 
+<div class="card">
+  <div class="item item-text-wrap">
+    <div class="item item-button-right">
+      <p>Hausarzt: Dr. Klaus Knöpfli<br />
+        Strasse: Höhenweg 17<br />
+        Ort: 2502 Biel<br />
+        Telefon: 079 816 52 45<br />
+        E-Mail: klaus.knoepfli@khw.ch
+      </p>
+      <button class="button button-positive">
+        <i class="icon ion-ios-telephone"></i>
+      </button>
+    </div>
+</div>
+</div>
   <!---------LIST ITEM END------------->
   <!---------LIST ITEM START------------->
   <div class="card">
