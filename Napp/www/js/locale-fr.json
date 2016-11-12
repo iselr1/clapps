@@ -27,5 +27,8 @@
   "NEXT": "Weiter",
   "SETTINGS": "Réglages",
   "IMPRESSUM": "Impressum",
-  "DATAPROTECTION": "Déclaration de confidentialité"
+  "DATAPROTECTION": "Déclaration de confidentialité",
+  "EXPORTINFO" : "Exportinforation",
+  "EXPORTFORMAT" : "Exportformat",
+  "VITALSIGN" : "Vitalparameter"
 }

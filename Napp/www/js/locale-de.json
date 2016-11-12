@@ -27,5 +27,13 @@
   "NEXT": "Weiter",
   "SETTINGS": "Einstellungen",
   "IMPRESSUM": "Impressum",
-  "DATAPROTECTION": "Datenschutzerklärung"
+  "DATAPROTECTION": "Datenschutzerklärung",
+  "EXPORTINFO" : "Exportinforation",
+  "EXPORTFORMAT" : "Exportformat",
+  "VITALSIGN" : "Vitalparameter",
+  "PDF" : "PDF",
+  "PRINT" :"Drucken",
+  "Mail" : "E-Mail"
+
+
 }

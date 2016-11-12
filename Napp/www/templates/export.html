@@ -8,5 +8,36 @@
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
+
+    <a  class="item item-icon-left">
+      <h2 translate="EXPORTINFO"></h2>
+    </a>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+        <select>
+          <option selected> <h2 translate="APPOINTMENTS"></h2> "Appointment"</option>
+          <option> <h2 translate="CONTACTS"></h2>"Appointment"</option>
+          <option> <h2 translate="Vital"></h2>"Appointment"</option>
+        </select>
+        </div>
+      </label>
+    </div>
+
+    <a  class="item item-icon-left">
+      <h2 translate="Exportformat"></h2>
+    </a>
+
+    <label class="item item-input item-select">
+      <div class="input-label">
+      <select>
+          <option selected> <h2 translate="PDF"></h2>"Appointment" </option>
+          <option> <h2 translate="PRINT"></h2>"Appointment"</option>
+          <option> <h2 translate="MAIL"></h2>"Appointment"</option>
+        </select>
+        </div>
+      </label>
+      </div>
+
   </ion-content>
 </ion-view>
