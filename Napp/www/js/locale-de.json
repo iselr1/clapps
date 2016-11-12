@@ -33,7 +33,17 @@
   "VITALSIGN" : "Vitalparameter",
   "PDF" : "PDF",
   "PRINT" :"Drucken",
-  "Mail" : "E-Mail"
+  "NAME": "Name",
+  "STREET": "Strasse",
+  "LOCATION": "Plz und Ort",
+  "PHONE": "Telefon",
+  "MAIL": "E-Mail",
+  "FAMILIYDOC": "Hausarzt",
+  "ONCOLOGY": "Onkologie Sprechstunde",
+  "GASTROENTEROLOGIST": "Gastroenterologe",
+  "FUNCTION": "Funktion"
+
+}
 
 
 }
