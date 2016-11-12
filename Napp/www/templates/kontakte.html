@@ -12,7 +12,7 @@
 <div class="list">
   <!---------LIST ITEM START------------->
   <div class="card">
-    <div class="item item-text-wrap">
+    <div id="contactForm" class="item item-text-wrap hidden">
       <div class="list">
           <label class="item item-input item-select">
               <div class="input-label">
@@ -48,14 +48,14 @@
 
   </div>
 
-        <button class="button button-balanced"  ng-click="showPrompt()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
+          <button  class="button button-balanced hidden" id="plus" ng-click="closeForm()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
             <i class="icon ion-plus-round"></i>
           </button>
-          <button class="button button-balanced"  ng-click="showPrompt()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
+          <button  class="button button-balanced hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
               <i class="icon ion-minus-round"></i>
             </button>
-            <button class="button button-balanced"  ng-click="showPrompt()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
-                Add Contact
+            <button class="button button-balanced"  id="contacts" ng-click="openForm()" style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
+                Add Doctor
               </button>
 </div>
 

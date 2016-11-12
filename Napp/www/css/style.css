@@ -8,3 +8,7 @@ background-color:#d3fffa;
 .ct-chartLineWeight{
   background-color: #FFF;
 }
+
+.hidden{
+display:none;
+}
