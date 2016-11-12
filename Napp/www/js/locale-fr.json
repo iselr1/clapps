@@ -28,9 +28,9 @@
   "SETTINGS": "Réglages",
   "IMPRESSUM": "Impressum",
   "DATAPROTECTION": "Déclaration de confidentialité",
-  "EXPORTINFO" : "Exportinforation",
-  "EXPORTFORMAT" : "Exportformat",
-  "VITALSIGN" : "Vitalparameter",
+  "EXPORTINFO" :   "Export information",
+  "EXPORTFORMAT" : "Export format",
+  "VITALSIGN" : "signes vitaux",
   "NAME": "Nom",
   "STREET": "Rue",
   "LOCATION": "Lieu",
@@ -39,5 +39,6 @@
   "FAMILIYDOC": "Médecin de famille",
   "ONCOLOGY": "Oncology consultation",
   "GASTROENTEROLOGIST": "gastroentérologue",
-  "FUNCTION": "Rôle"
+  "FUNCTION": "Rôle",
+    "GO" : "en avant"
 }

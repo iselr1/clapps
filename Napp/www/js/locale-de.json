@@ -28,7 +28,7 @@
   "SETTINGS": "Einstellungen",
   "IMPRESSUM": "Impressum",
   "DATAPROTECTION": "Datenschutzerklärung",
-  "EXPORTINFO" : "Exportinforation",
+  "EXPORTINFO" : "Exportinformation",
   "EXPORTFORMAT" : "Exportformat",
   "VITALSIGN" : "Vitalparameter",
   "PDF" : "PDF",
@@ -41,5 +41,6 @@
   "FAMILIYDOC": "Hausarzt",
   "ONCOLOGY": "Onkologie Sprechstunde",
   "GASTROENTEROLOGIST": "Gastroenterologe",
-  "FUNCTION": "Funktion"
+  "FUNCTION": "Funktion",
+  "GO" : "Los"
 }
