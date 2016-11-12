@@ -10,127 +10,83 @@
   <ion-content>
 
 <div class="list">
-  <!---------LIST ITEM START------------->
-  <div class="card">
-    <div id="contactForm" class="item item-text-wrap hidden">
-      <div class="list">
-          <label class="item item-input item-select">
-              <div class="input-label">
-                {{'FUNCTION' | translate}}
-              </div>
-              <select ng-model="addContact.func">
-                <option>{{'FAMILIYDOC' | translate}}</option>
-                <option>{{'ONCOLOGY' | translate}}</option>
-                <option>{{'GASTROENTEROLOGIST' | translate}}</option>
-              </select>
-            </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">{{'NAME' | translate}}</span>
-            <input type="text" ng-model="addContact.nm" placeholder="John Meiner">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">{{'STREET' | translate}}</span>
-            <input type="text" ng-model="addContact.street" placeholder="Strasse 79">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">{{'LOCATION' | translate}}</span>
-            <input type="text" ng-model="addContact.loc" placeholder="2502 Biel">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">{{'PHONE' | translate}}</span>
-            <input type="text" ng-model="addContact.phone" placeholder="+41792718371">
-          </label>
-          <label class="item item-input item-stacked-label">
-            <span class="input-label">{{'MAIL' | translate}}</span>
-            <input type="text" ng-model="addContact.mail" placeholder="john.meier@szb.ch">
-          </label>
-          </div>
-
-  </div>
-        <!--+++-->
-        <button  class="button button-balanced hidden" id="plus" ng-click="closeForm();addContact()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
-          <i class="icon ion-plus-round"></i>
-        </button>
-        <!------->
-        <button  class="button button-balanced hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
-            <i class="icon ion-minus-round"></i>
-        </button>
-          <!---ADD Doctor---->
-        <button class="button button-balanced"  id="contacts" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
-            Add Doctor
-        </button>
-</div>
-
-  <!---------LIST ITEM END------------->
-  <!---------LIST ITEM START------------->
-  <div ng-repeat="contact in myContacts">
-    <div class="card">
-      <div class="item item-text-wrap">
-        <div class="item item-button-right">
+  <!---------LIST  START------------->
+  <div ng-repeat="contact in myContacts" class="contacts">
+    <div div class="item item-text-wrap" id="contact{{$index}}">
+      <div class="row">
+          <div class="col col-80">
           <p>{{contact.func}} : {{contact.name}}<br />
           {{'STREET' | translate}}: {{contact.street}}<br />
           {{'LOCATION' | translate}}: {{contact.location}}<br />
           {{'PHONE' | translate}}: {{contact.phone}}<br />
           {{'MAIL' | translate}}: {{contact.mail}}
           </p>
-          <a href="tel:{{contact.phone}}"><button class="button button-positive">
-            <i class="icon ion-ios-telephone"></i>
-          </button></a>
+        </div>
+          <div class="contactButtons">
+            <a div href="tel:{{contact.phone}}"><button class="button button-balanced">
+              <i class="icon ion-ios-telephone"></i>
+            </button></a><button class="button button-assertive" ng-click="removeContact($event)" data-ng-attr-id="{{$index}}">
+              <i class="ion-trash-b"></i>
+            </button>
+        </div>
+
         </div>
     </div>
   </div>
+
+    <!---------LIST END------------->
+
+    <!---------ADD CONTACT FORM------------->
+
+      <div id="contactForm" class="item item-text-wrap hidden">
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                  {{'FUNCTION' | translate}}
+                </div>
+                <select ng-model="addContact.func">
+                  <option>{{'FAMILIYDOC' | translate}}</option>
+                  <option>{{'ONCOLOGY' | translate}}</option>
+                  <option>{{'GASTROENTEROLOGIST' | translate}}</option>
+                </select>
+              </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">{{'NAME' | translate}}</span>
+              <input type="text" ng-model="addContact.nm" placeholder="John Meiner">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">{{'STREET' | translate}}</span>
+              <input type="text" ng-model="addContact.street" placeholder="Strasse 79">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">{{'LOCATION' | translate}}</span>
+              <input type="text" ng-model="addContact.loc" placeholder="2502 Biel">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">{{'PHONE' | translate}}</span>
+              <input type="text" ng-model="addContact.phone" placeholder="+41792718371">
+            </label>
+            <label class="item item-input item-stacked-label">
+              <span class="input-label">{{'MAIL' | translate}}</span>
+              <input type="text" ng-model="addContact.mail" placeholder="john.meier@szb.ch">
+            </label>
+          </div>
+
+    </div>
+          <!--+++-->
+          <button  class="button button-balanced hidden" id="plus" ng-click="closeForm();addContact()" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;">
+            <i class="icon ion-plus-round"></i>
+          </button>
+          <!------->
+          <button  class="button button-assertive hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
+              <i class="icon ion-minus-round"></i>
+          </button>
+            <!---ADD Doctor---->
+          <button class="button button-positive"  id="contacts" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
+              Add Doctor
+          </button>
 </div>
 
-<div class="card">
-  <div class="item item-text-wrap">
-    <div class="item item-button-right">
-      <p>Hausarzt: Dr. Klaus Knöpfli<br />
-        Strasse: Höhenweg 17<br />
-        Ort: 2502 Biel<br />
-        Telefon: 079 816 52 45<br />
-        E-Mail: klaus.knoepfli@khw.ch
-      </p>
-      <button class="button button-positive">
-        <i class="icon ion-ios-telephone"></i>
-      </button>
-    </div>
-</div>
-</div>
-  <!---------LIST ITEM END------------->
-  <!---------LIST ITEM START------------->
-  <div class="card">
-    <div class="item item-text-wrap">
-  <div class="item item-button-right">
-    <p>Onkologie Sprechstunde: Dr. Walter Wenger<br />
-      Strasse: Spitalgasse 14<br />
-      Ort: 2502 Biel<br />
-      Telefon: 079 816 52 25<br />
-      E-Mail: walter.wenger@khw.ch
-    </p>
-     <a href="tel:+41792717871"><button class="button button-positive">
-      <i class="icon ion-ios-telephone"></i>
-    </button></a>
-  </div>
-</div>
-</div>
-  <!---------LIST ITEM END------------->
-  <!---------LIST ITEM START------------->
-  <div class="card">
-    <div class="item item-text-wrap">
-  <div class="item item-button-right">
-    <p>Gastroentrologe: Dr. Peter Pfister<br />
-      Strasse: Mattenweg 15<br />
-      Ort: 2502 Biel<br />
-      Telefon: 078 416 52 25<br />
-      E-Mail: Peter.Pfister@klinikbiel.ch
-    </p>
-    <button class="button button-positive">
-      <i class="icon ion-ios-telephone"></i>
-    </button>
-  </div>
-</div>
-</div>
-  <!---------LIST ITEM END------------->
 </div>
 
   </ion-content>
