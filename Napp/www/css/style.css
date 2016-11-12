@@ -12,3 +12,11 @@ background-color:#d3fffa;
 .hidden{
 display:none;
 }
+.contactButtons button{
+  margin-top:5px;
+  width:30px;
+
+}
+.contactButtons i{
+  font-size:150%;
+}
