@@ -1,9 +1,35 @@
-//Author: Sarah
+<!--
+Dokumentenname      Operation Screen operation.html
+Erstellt am:        16.11.2016
+Erstellt durch:     meles1
+Verson Nr.:         1.0
+
+Funktion: Screen zum Operationsdatum und Kolonskopie
+-->
 <ion-view view-title="{{'OPERATION' | translate}}">
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-      <button class="button button-positiv" ng-click="goHome()" translate="NEXT"/>
+    <label class="item item-input>
+        <div class="input-label">
+            <h2 translate="KOLOSK"></h2>
+        </div>
+    </label>
+            <ion-list radio-group [(ngModel)]="kolosk">
+                <ion-item>
+                    <ion-label translate="YES"></ion-label>
+                    <ion-radio value="yes"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label translate="NO"></ion-label>
+                    <ion-radio value="no"></ion-radio>
+                </ion-item>
+            </ion-list>
+    <div class="row">
+        <div class="col">
+          <center><button class="button button-calm" ng-click="goHome()" translate="NEXT"/></center>
+        </div>
+    </div>
   </ion-content>
 </ion-view>

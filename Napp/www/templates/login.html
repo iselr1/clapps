@@ -14,7 +14,11 @@ Funktion: Formular zum einloggen mit dem MIDATA Account
     <button class="button" ng-click="switchLanguage('fr')" translate="LANG_FR"></button>
   </ion-nav-buttons>
   <ion-content class="padding">
-    <img src="img/sina.jpg" class="center" height="30px">
+    <div class="row">
+        <div class="col icons">
+          <center><img src="img/sina.png"/></center>
+        </div>
+    </div>
     <i4mi-midata-login user="user" controller-name="I4MIMidataLoginController"></i4mi-midata-login>
     </ion-content>
   </ion-view>

@@ -48,6 +48,11 @@
   "DE" : "Deutsch",
   "FR" : "Francais",
   "IT" : "Italiano",
-  "ENG" : "English"
-
+  "ENG" : "English",
+  "CANCER" : "Krebsart",
+  "KOKA" : "Kolonkarzinom",
+  "REKA" : "Rektumkarzinum",
+  "KOLOSK" : "Wurde die Koloskopie vor der OP vollständig gemacht?",
+  "YES" : "Ja",
+  "NO" : "Nein"
 }
