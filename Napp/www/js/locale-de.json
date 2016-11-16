@@ -24,7 +24,6 @@
   "TNM": "TNM Klassifizierung",
   "NEXT": "Weiter",
   "ADDPERSON": "Um eine neue Person hinzuzufügen, den grünen Knopf betätigen.",
-  "NEXT": "Weiter",
   "SETTINGS": "Einstellungen",
   "IMPRESSUM": "Impressum",
   "DATAPROTECTION": "Datenschutzerklärung",
@@ -54,5 +53,10 @@
   "REKA" : "Rektumkarzinum",
   "KOLOSK" : "Wurde die Koloskopie vor der OP vollständig gemacht?",
   "YES" : "Ja",
-  "NO" : "Nein"
+  "NO" : "Nein",
+  "REMINDER_SOUND": "Erinnerungston",
+  "SOUND_1": "Ton 1",
+  "SOUND_2": "Ton 2",
+  "SOUND_3": "Ton 3",
+  "SOUND_4": "Ton 4"
 }

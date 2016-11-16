@@ -5,7 +5,7 @@ Erstellt am:        09.11.2016
 Erstellt durch:     iselr1
 Verson Nr.:         1.0
 
-Funktion: Erfasssung von Einstellungen wie Erinnerungston, Sprache und weiteres 
+Funktion: Erfasssung von Einstellungen wie Erinnerungston, Sprache und weiteres
 -->
 <ion-view view-title="{{'SETTINGS' | translate}}">
   <ion-nav-buttons side="left">
@@ -16,5 +16,30 @@ Funktion: Erfasssung von Einstellungen wie Erinnerungston, Sprache und weiteres
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
+    /* Ändern des Erinnerungstons des Reminders*/
+    <label class="item item-input item-select">
+        <div class="input-label">
+            <h2 translate="REMINDER_SOUND"></h2>
+        </div>
+        <select>
+            <option selected>{{'SOUND_1' | translate}}</option>
+            <option> {{'SOUND_2' | translate}}</option>
+            <option> {{'SOUND_3' | translate}}</option>
+            <option> {{'SOUND_4' | translate}}</option>
+        </select>
+    </label>
+    
+    /* Ändern der App Sprache */
+    <label class="item item-input item-select">
+        <div class="input-label">
+            <h2 translate="LANGUAGE"></h2>
+        </div>
+        <select>
+            <option selected>{{'DE' | translate}}</option>
+            <option> {{'FR' | translate}}</option>
+            <option> {{'IT' | translate}}</option>
+            <option> {{'ENG' | translate}}</option>
+        </select>
+    </label>
   </ion-content>
 </ion-view>
