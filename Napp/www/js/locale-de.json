@@ -42,5 +42,12 @@
   "ONCOLOGY": "Onkologie Sprechstunde",
   "GASTROENTEROLOGIST": "Gastroenterologe",
   "FUNCTION": "Funktion",
-  "GO" : "Los"
+  "GO" : "Los",
+  "WELCOMETOSINA": "Willkommen bei SINA",
+  "LANGUAGE": "Bitte wählen Sie eine Sprache",
+  "DE" : "Deutsch",
+  "FR" : "Francais",
+  "IT" : "Italiano",
+  "ENG" : "English"
+
 }

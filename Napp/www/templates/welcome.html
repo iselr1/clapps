@@ -1,9 +1,39 @@
-//Author: Sarah
+<!--
+
+Dokumentenname      Welcome welcome.html
+Erstellt am:        16.11.2016
+Erstellt durch:     meles1
+Verson Nr.:         1.0
+
+Funktion: Willkommensbildschirm mit der Auswahl der Sprache
+-->
+
 <ion-view view-title="{{'WELCOME' | translate}}">
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
-  <ion-content>
-    <button class="button button-positiv" ng-click="goTNM()" translate="NEXT"/>
+  <ion-content scroll="false">
+    <div class="row">
+        <div class="col icons">
+          <center><h1 translate="WELCOMETOSINA"></h1></center>
+          <center><img src="img/sina.png"/></center>
+        </div>
+    </div>
+    <label class="item item-input item-select">
+        <div class="input-label">
+            <h2 translate="LANGUAGE"></h2>
+        </div>
+        <select>
+            <option selected>{{'DE' | translate}}</option>
+            <option> {{'FR' | translate}}</option>
+            <option> {{'IT' | translate}}</option>
+            <option> {{'ENG' | translate}}</option>
+        </select>
+    </label>
+    <div class="row">
+        <div class="col">
+          <center><button class="button button-calm" ng-click="goTNM()" translate="NEXT"/></center>
+        </div>
+    </div>
   </ion-content>
 </ion-view>

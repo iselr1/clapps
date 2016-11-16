@@ -1,22 +1,41 @@
+/*
+
+Dokumentenname      controllerSarah.js
+Erstellt am:        16.11.2016
+Erstellt durch:     meles1
+Verson Nr.:         1.0
+
+Funktion: Alle Controller für die Views "Welcome", "TNM-Staging", "Operation"
+*/
+
 angular.module('starter.controllersSarah', [])
 
-.controller('WelcomeCtrl', function($scope, $location) {
+/* -- Controller für Welcome View -- */
+.controller('WelcomeCtrl', function($scope, $location, $state) {
+
+  // Weiterleitung nach TNM Staging
   $scope.goTNM = function() {
-    $location.path('tnm');
+    $state.go('tnm');
   };
 
 })
 
-.controller('TNMCtrl', function($scope, $location) {
+/* -- Controller für TNM Staging View -- */
+.controller('TNMCtrl', function($scope, $location, $state) {
+
+  // Weiterleitung nach Operationen
   $scope.goOP = function() {
-    $location.path('op');
+    $state.go('op');
   };
 
 })
 
-.controller('OPCtrl', function($scope, $location) {
+/* -- Controller für Operationen View -- */
+.controller('OPCtrl', function($scope, $location, $state) {
+
+    // Weiterleitung nach Home Screen
     $scope.goHome = function() {
-    $location.path('home');
+    $state.go('home');
   };
 
 })
