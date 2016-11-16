@@ -1,6 +1,15 @@
+/*
+
+Dokumentenname      controllerRea.js
+Erstellt am:        09.11.2016
+Erstellt durch:     iselr1
+Verson Nr.:         1.0
+
+Funktion: Alle Controller für die Views "Körper", "Einstellungen", "Über", "Datenschutz", "Impressum"
+*/
 angular.module('starter.controllersRea', [])
 
-.controller('KoerperCtrl', function($scope, $location, I4MIMidataService) {
+.controller('KoerperCtrl', function($scope, $state, I4MIMidataService) {
 
   // Chart for the weight
   var $configLineWeight = {
@@ -26,24 +35,24 @@ angular.module('starter.controllersRea', [])
   chartLinePulse.line();
 })
 
-.controller('UeberCtrl', function($scope, $location) {
+.controller('UeberCtrl', function($scope, $state) {
   $scope.goSettings = function() {
-    $location.path('einstellungen');
+    $state.go('einstellungen');
   };
   $scope.goDataprotection = function() {
-    $location.path('datenschutz');
+    $state.go('datenschutz');
   };
   $scope.goImpressum = function() {
-    $location.path('impressum');
+    $state.go('impressum');
   };
 })
 
-.controller('EinstellungenCtrl', function($scope, $location) {
+.controller('EinstellungenCtrl', function($scope, $state) {
 
   })
-  .controller('DatenschutzCtrl', function($scope, $location) {
+  .controller('DatenschutzCtrl', function($scope, $state) {
 
   })
-  .controller('ImpressumCtrl', function($scope, $location) {
+  .controller('ImpressumCtrl', function($scope, $state) {
 
   })

@@ -1,15 +1,24 @@
+/*
+
+Dokumentenname      controller.js
+Erstellt am:        09.11.2016
+Erstellt durch:     iselr1
+Verson Nr.:         1.0
+
+Funktion: Alle Controller für die Views "Navigation", "Login", "Home"
+*/
 angular.module('starter.controllers', [])
 
 .controller('NavCtrl', function($scope, $location, $state, I4MIMidataService) {
 
   $scope.goHome = function() {
-    $location.path('home');
+    $state.go('home');
   };
 
   $scope.doLogout = function() {
     //Logout function
     I4MIMidataService.logout();
-    $location.path('login');
+    $state.go('login');
   }
 })
 
@@ -42,28 +51,28 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $location) {
+.controller('HomeCtrl', function($scope, $stateParams) {
   $scope.goTermine = function() {
-    $location.path('termine');
+    $state.go('termine');
   };
 
   $scope.goKoerper = function() {
-    $location.path('koerper');
+    $state.go('koerper');
   };
 
   $scope.goInfos = function() {
-    $location.path('infos');
+    $state.go('infos');
   };
 
   $scope.goKontakte = function() {
-    $location.path('kontakte');
+    $state.go('kontakte');
   };
 
   $scope.goUeber = function() {
-    $location.path('ueber');
+    $state.go('ueber');
   };
   $scope.goExport = function() {
-    $location.path('export');
+    $state.go('export');
   };
 
 })
