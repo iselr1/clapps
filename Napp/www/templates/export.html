@@ -1,4 +1,12 @@
-//Author: Tim
+/*
+
+Dokumentenname      controller.js
+Erstellt am:        12.11.2016
+Erstellt durch:     dornt1
+Verson Nr.:         1.0
+
+Funktion: stellt die View für den Export dar
+*/
 <ion-view view-title="{{'EXPORT' | translate}}">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="goHome()" translate="HOME">
@@ -9,7 +17,7 @@
   </ion-nav-buttons>
   <ion-content>
 
-
+<!--Dropown für die Auswahlh der Exportinformationen-->
       <label class="item item-input item-select">
         <div class="input-label">
             <h2 translate="EXPORTINFO"></h2>
@@ -22,7 +30,7 @@
         </div>
       </label>
     </div>
-
+<!--Dropown für die Auswahlh des Exportformats-->
     <label class="item item-input item-select">
       <div class="input-label">
           <h2 translate="Exportformat"></h2>
@@ -35,10 +43,13 @@
         </div>
       </label>
       </div>
+<!--Button zur bestätigung des Exports-->
 
-      <a href="#" class="item item-icon-left">
-          <h2 translate="GO"></h2>
-      </a>
+      <div class="row">
+          <div class="col">
+            <center><button class="button button-calm"  translate="GO"/></center>
+          </div>
+      </div>
 
   </ion-content>
 </ion-view>

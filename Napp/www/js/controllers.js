@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('HomeCtrl', function($scope, $stateParams) {
+.controller('HomeCtrl', function($scope, $stateParams, $state) {
   $scope.goTermine = function() {
     $state.go('termine');
   };
