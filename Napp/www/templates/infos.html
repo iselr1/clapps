@@ -13,14 +13,19 @@
 ------------CONTENT START-------------
 ------------------------------------->
 
-    <div class="list card">
-        <div ng-repeat="info in myInfos" class="item item-icon-left" id="info{{$index}}">
+    <div class="card">
+        <div ng-repeat="info in myInfos" class="item item-text-wrap" ng-click="showContent({{$index}})">
               <h2 translate="{{info.h2}}"></h2>
-              <div id="infoContent{[$index]}">
-                  <p>{{info.content}}</p>
+              <div>
+                  <p id="infoContent{{$index}}" class="hidden content">{{info.content}}
+                    <br /><br /><a href="{{info.link}}">Weitere Informationen sind hier zu finden.</a>
+                    </p>
+
               </div>
         </div>
+
     </div>
+
 
 <!------------------------------------
 ------------CONTENT END---------------

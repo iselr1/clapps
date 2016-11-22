@@ -107,18 +107,31 @@ angular.module('starter.controllersMauro', [])
         /*---------------Generating Dummy-Data START----------------*/
         $scope.myInfos.push({
         h2:"NUTRITION",
-        content:"Inhalt Ernährung"});
-
+        content:"Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
+        link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"});
         $scope.myInfos.push({
         h2:"SPORT",
-        content:"Inhalt Sport"});
+        content:"Wer sich regelmässig und ausreichend bewegt, verbessert sein Wohlbefinden, seine Gesundheit und kann das Risiko für Darm- und Brustkrebs senken. Wer sich ausreichend bewegt, regt den Kreislauf an, erhöht den Energieverbrauch, beugt Übergewicht vor und stärkt zudem die Abwehrkräfte und die Knochen.",
+        link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/viel-bewegung/"});
 
         $scope.myInfos.push({
         h2:"FOLLOW UP",
-        content:"Inhalt Follow UP"});
-
+        content:"Inhalt Follow UP",
+        link: "was"});
         $scope.myInfos.push({
         h2:"Krebsliga",
-        content:"Inhalt Follow UP"});
+        content:"Inhalt Follow UP",
+        link: "was"});
+        /*---------------Generating Dummy-Data END----------------*/
+
+
+        // Showing only One Element!
+        $scope.showContent = function($index){
+        angular.element(document.getElementsByClassName('shown')).addClass('hidden');
+        angular.element(document.querySelector('#infoContent'+$index)).removeClass('hidden');
+        angular.element(document.querySelector('#infoContent'+$index)).addClass('shown');
+        }
+
+
 
   })
