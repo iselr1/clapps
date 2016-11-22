@@ -8,19 +8,22 @@
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-  <div class="list card">
 
-  <a href="#" class="item item-icon-left">
-    <h2 translate="NUTRITION"></h2>
-  </a>
+<!------------------------------------
+------------CONTENT START-------------
+------------------------------------->
 
-  <a href="#" class="item item-icon-left">
-    <h2 translate="SPORT"></h2>
-  </a>
+    <div class="list card">
+        <div ng-repeat="info in myInfos" class="item item-icon-left" id="info{{$index}}">
+              <h2 translate="{{info.h2}}"></h2>
+              <div id="infoContent{[$index]}">
+                  <p>{{info.content}}</p>
+              </div>
+        </div>
+    </div>
 
-  <a href="#" class="item item-icon-left">
-        <h2 translate="FOLLOW UP"></h2>
-  </a>
-</div>
+<!------------------------------------
+------------CONTENT END---------------
+------------------------------------->
   </ion-content>
 </ion-view>

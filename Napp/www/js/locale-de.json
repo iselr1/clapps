@@ -58,5 +58,7 @@
   "SOUND_1": "Ton 1",
   "SOUND_2": "Ton 2",
   "SOUND_3": "Ton 3",
-  "SOUND_4": "Ton 4"
+  "SOUND_4": "Ton 4",
+  "CANCEL": "Abbrechen",
+  "ADDDOCTOR": "Arzt erfassen"
 }

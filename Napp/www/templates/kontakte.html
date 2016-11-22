@@ -12,7 +12,7 @@
 <div class="list">
   <!---------LIST  START------------->
   <div ng-repeat="contact in myContacts" class="contacts">
-    <div div class="item item-text-wrap" id="contact{{$index}}">
+    <div class="item item-text-wrap" id="contact{{$index}}">
       <div class="row">
           <div class="col col-80">
           <p>{{contact.func}} : {{contact.name}}<br />
@@ -79,11 +79,11 @@
           </button>
           <!------->
           <button  class="button button-assertive hidden" id="minus" ng-click="closeForm()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;">
-              <i class="icon ion-minus-round"></i>
+            {{'CANCEL' | translate}}
           </button>
             <!---ADD Doctor---->
           <button class="button button-positive"  id="contacts" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
-              Add Doctor
+            {{'ADDDOCTOR' | translate}}
           </button>
 </div>
 
