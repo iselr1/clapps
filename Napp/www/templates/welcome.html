@@ -20,7 +20,15 @@ Funktion: Willkommensbildschirm mit der Auswahl der Sprache
           <center><img src="img/sina.png"/></center>
         </div>
     </div>
+    <!-- Alter the language of the app -->
     <label class="item item-input item-select">
+        <div class="input-label">
+            <h2 translate="LANGUAGE"></h2>
+        </div>
+        <select ng-model="languageSelected" ng-options="language.id as language.name for language in languageList" ng-change="onchangeLanguage(languageList[languageSelected-1])">
+        </select>
+    </label>
+  <!--  <label class="item item-input item-select">
         <div class="input-label">
             <h2 translate="LANGUAGE"></h2>
         </div>
@@ -30,7 +38,7 @@ Funktion: Willkommensbildschirm mit der Auswahl der Sprache
             <option> {{'IT' | translate}}</option>
             <option> {{'ENG' | translate}}</option>
         </select>
-    </label>
+    </label>-->
     <div class="row">
         <div class="col">
           <center><button class="button button-calm" ng-click="goTNM()" translate="NEXT"/></center>
