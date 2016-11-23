@@ -11,10 +11,6 @@ angular.module('starter.controllers', [])
 
 .controller('NavCtrl', function($scope, $location, $state, I4MIMidataService) {
 
-  $scope.goHome = function() {
-    $state.go('home');
-  };
-
   $scope.doLogout = function() {
     //Logout function
     I4MIMidataService.logout();

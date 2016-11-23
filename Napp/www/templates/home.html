@@ -6,48 +6,50 @@ Erstellt durch:     iselr1, mauro
 Verson Nr.:         1.0
 
 Funktion: Navigationsseite zu den verschiedenen Views
+Verwendetes CSS nicht von Ionic:
+-row-33: element höhe 33%
+-linkText: Textgröse 130%
 -->
 <ion-view view-title="{{'HOME' | translate}}">
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content scroll="false">
-    <div class="row">
+    <div class="row row-33">
       <div class="col col-50 icons" ng-click="goTermine()">
-        <center><img src="img/icons/calendar.png" width="80"/></center>
-        <button class="button button-block button-large button-light" id="test"  translate="APPOINTMENTS">
-
-        </button>
-
+        <center><img src="img/icons/calendar.png" width="50%"/>
+          <div class="linkText" translate="APPOINTMENTS"></div>
+        </center>
       </div>
       <div class="col col-50 icons" ng-click="goKoerper()">
-        <center><img src="img/icons/heart.png" width="80"/></center>
-        <button class="button button-block button-large button-light"   translate="BODY"/></button>
+        <center><img src="img/icons/heart.png" width="50%"/>
+          <div class="linkText" translate="BODY"></div>
+        </center>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col col-50 icons" ng-click="goInfos()">
-      <center><img src="img/icons/info.png" width="80"/></center>
-      <button class="button button-block button-large button-light"  translate="INFOS">
-        <!--<img src="img/write.png" height="150" alt=" "/>-->
-      </button>
+    <div class="row row-33">
+      <div class="col col-50 icons" ng-click="goInfos()">
+        <center><img src="img/icons/info.png" width="50%"/>
+          <div class="linkText" translate="INFOS"></div>
+        </center>
+      </div>
+      <div class="col col-50 icons" ng-click="goKontakte()">
+        <center><img src="img/icons/contact.png" width="50%"/>
+          <div class="linkText" translate="CONTACTS"></div>
+        </center>
+      </div>
     </div>
-    <div class="col col-50 icons" ng-click="goKontakte()">
-      <center><img src="img/icons/contact.png" width="80"/></center>
-      <button class="button button-block button-large button-light"  translate="CONTACTS"/></button>
-  </div>
-</div>
-<div class="row">
-  <div class="col col-50 icons" ng-click="goUeber()">
-    <center><img src="img/icons/settings.png" width="80"/></center>
-    <button class="button button-block button-large button-light"  translate="ABOUT">
-      <!--<img src="img/write.png" height="150" alt=" "/>-->
-    </button>
-  </div>
-  <div class="col col-50 icons" ng-click="goExport()">
-    <center><img src="img/icons/export.png" width="80"/></center>
-    <button class="button button-block button-large button-light"  translate="EXPORT"/></button>
-</div>
-</div>
-</ion-content>
+    <div class="row row-33">
+      <div class="col col-50 icons" ng-click="goUeber()">
+        <center><img src="img/icons/settings.png" width="50%"/>
+          <div class="linkText" translate="ABOUT"></div>
+        </center>
+      </div>
+      <div class="col col-50 icons" ng-click="goExport()">
+        <center><img src="img/icons/export.png" width="50%"/>
+          <div class="linkText" translate="EXPORT"></div>
+        </center>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>

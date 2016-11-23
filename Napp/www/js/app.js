@@ -24,13 +24,28 @@ angular.module('starter', ['ionic', 'ionic-datepicker', 'ionic-timepicker', 'for
   })
 
 .config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+  // path to laod the language files
   $translateProvider.useStaticFilesLoader({
     prefix: 'js/locale-',
     suffix: '.json'
   });
-  $translateProvider.use('de');
+  $translateProvider
+  //register the supported languages, if the languages is other than the supported set it to the german file
+    .registerAvailableLanguageKeys(['fr', 'de'], {
+      'fr_*': 'fr',
+      'de_*': 'de',
+      '*': 'de'
+    })
+    //determine the system language
+    .determinePreferredLanguage()
+    //if the system language can't be determined set it to german
+    .fallbackLanguage('de');
   $translateProvider.useSanitizeValueStrategy('sanitize');
 
+  //to check if the device is able to sent emails
+  document.addEventListener('deviceready', function() {
+    // cordova.plugins.email is now available
+  }, false);
 
   $stateProvider
     .state('welcome', {

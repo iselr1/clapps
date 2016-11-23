@@ -1,4 +1,11 @@
-/* Empty. Add your own CSS if you like */
+body {
+  /*basic styling */
+  height: 100%;
+}
+/**Link Texte auf den Navigationsseiten*/
+.linkText{
+  font-size: 130% !important;
+}
 .scroll-content{
 background-color:#d3fffa;
 }
