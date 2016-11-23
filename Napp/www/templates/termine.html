@@ -16,41 +16,28 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-    <div class="list card">
-
-  <!-- Vergangene Termine-->
-    <a  class="item item-icon-left">
-      <h2 translate="TERMINATED"></h2>
-    </a>
-      <!-- Vergangene Termine in liste -->
-    <a href="#" class="item item-icon-left">
-          <h2 >
-            15.03.2016 Operation
-          </h2>
-    </a>
-    <a href="#" class="item item-icon-left">
-          <h2 >
-            17.06.2016 Erste Nachuntersuchung
-          </h2>
-    </a>
 
 
-
-    <!-- Zükunftige Termine -->
-    <a  class="item item-icon-left">
-      <h2 translate="FUTURE"></h2>
-    </a>
-      <!-- Zükunftige Termine in liste -->
-    <a href="#" class="item item-icon-left">
-          <h2 >
-            Nachsorgeuntersuchung 2
-          </h2>
-    </a>
-    <a href="#" class="item item-icon-left">
-          <h2 >
-            Nachsorgeuntersuchung 3
-          </h2>
-    </a>
+ <div class="list card" ng-repeat="history in myAppointments">
+  <div class="history item " ng-click="closeContent({{$index}})">
+    {{history.state}}
   </div>
+  <div class="content{{$index}}">
+  <div ng-repeat="year in history.years">
+    <div class="year ">
+      {{year.number}}
+    </div>
+    <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
+      <div class="appointment row">
+        <div class="month col col-10"> {{appointment.month}}</div>
+        <div class="col col-90">  {{appointment.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
   </ion-content>
 </ion-view>
