@@ -8,13 +8,21 @@ Verson Nr.:         1.0
 Funktion: Anzeigen des Impressums mit Angaben zu den Entwicklern und Initianten des Projekts
 -->
 <ion-view view-title="{{'IMPRESSUM' | translate}}">
-  <ion-nav-buttons side="left">
+  <!--<ion-nav-buttons side="left">
     <button class="button" ng-click="goHome()" translate="HOME">
     </button>
-  </ion-nav-buttons>
+  </ion-nav-buttons>-->
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
+    <div class="row">
+      <div class="col icons">
+        <center><img src="img/sina.png"/></center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" translate="IMPRESSUMTEXT"></div>
+    </div>
   </ion-content>
 </ion-view>

@@ -11,27 +11,34 @@ Funktion: Linkseite zu den Einstellungen, Datenschutzerklärung und dem Impressu
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
-  <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME"></button>
-  </ion-nav-buttons>
+  <!--<ion-nav-buttons side="left">
+    <button class="button" ng-click="goHome()" translate="HOME">
+    </button>
+  </ion-nav-buttons>-->
   <ion-content scroll="false">
-    <div class="row">
-      <div class="col icons" ng-click="goSettings()">
-        <center><img src="img/icons/settings.png" width="80"/></center>
-        <p align="center" translate="SETTINGS"></p>
+    <div class="row row-33">
+      <div class="col col-offset-15 col-70 icons" ng-click="goSettings()">
+        <center><img src="img/icons/settings.png" width="40%"/>
+          <div class="linkText" translate="SETTINGS"></div>
+        </center>
       </div>
+      <div class="col-15"></div>
     </div>
-    <div class="row">
-      <div class="col icons" ng-click="goDataprotection()">
-        <center><img src="img/icons/heart.png" width="80"/></center>
-        <p align="center" translate="DATAPROTECTION"/></p>
+    <div class="row row-33">
+      <div class="col col-offset-15 col-70 icons" ng-click="goDataprotection()">
+        <center><img src="img/icons/heart.png" width="40%"/>
+          <div class="linkText" translate="DATAPROTECTION"></div>
+        </center>
+      </div>
+      <div class="col-15"></div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col icons" ng-click="goImpressum()">
-      <center><img src="img/icons/info.png" width="80"/></center>
-      <p align="center" translate="IMPRESSUM"></p>
+    <div class="row row-33">
+      <div class="col col-offset-15 col-70 icons" ng-click="goImpressum()">
+        <center><img src="img/icons/info.png" width="40%"/>
+          <div class="linkText" translate="IMPRESSUM"></div>
+        </center>
+      </div>
+      <div class="col-15"></div>
     </div>
-  </div>
-</ion-content>
+  </ion-content>
 </ion-view>

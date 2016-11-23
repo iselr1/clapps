@@ -1,4 +1,11 @@
-/* Empty. Add your own CSS if you like */
+body {
+  /*basic styling */
+  height: 100%;
+}
+/**Link Texte auf den Navigationsseiten*/
+.linkText{
+  font-size: 130% !important;
+}
 .scroll-content{
 background-color:#d3fffa;
 }
@@ -19,4 +26,29 @@ display:none;
 }
 .contactButtons i{
   font-size:150%;
+}
+.history{
+  font-size:120%;
+  font-weight: bold;
+  text-align: center;
+  background-color:#2ECCFA;
+  color:#FFF;
+}
+.year{
+  font-size:130%;
+  text-align: center;
+  background-color:#CEECF5;
+  font-weight:bolder;
+  color:#0B3861;
+  padding:5px 0 5px 0;
+}
+.appointment{
+  color:#0B4C5F;
+  font-size:100%;
+}
+.month{
+  font-size:90%;
+  font-weight: bold;
+  vertical-align: middle;
+
 }
