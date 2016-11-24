@@ -11,7 +11,7 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-    <label class="item item-input>
+    <label class="item item-input">
         <div class="input-label">
             <h2 translate="KOLOSK"></h2>
         </div>
@@ -26,9 +26,13 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
                     <ion-radio value="no"></ion-radio>
                 </ion-item>
             </ion-list>
-    <div ng-app="starter.controllersSarah" ng-controller="OPCtrl">
+  <!--  <div ng-app="starter.controllersSarah" ng-controller="OPCtrl">
         <input ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
-    </div>
+    </div> -->
+    <label class="item item-input">
+      <span class="input-label" translate="DATE"></span>
+      <input type="date">
+    </label>
     <div class="row">
         <div class="col">
           <center><button class="button button-calm" ng-click="goHome()" translate="NEXT"/></center>

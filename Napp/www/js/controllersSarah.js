@@ -67,14 +67,14 @@ angular.module('starter.controllersSarah', [])
   };
 
 
-       var now = new Date(),
+  /*     var now = new Date(),
            max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
 
        $scope.settings = {
            theme: 'mobiscroll',
            display: 'bottom',
            max: max
-       };
+       };*/
 
 /*.module('demoApp', ['mobiscroll-datetime'])
 .controller('demoController', ['$scope', function ($scope) {}]);*/

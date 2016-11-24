@@ -51,6 +51,8 @@
   "CANCER": "Krebsart",
   "KOKA": "Kolonkarzinom",
   "REKA": "Rektumkarzinum",
+  "DATE": "Datum",
+  "TNMSTAG": "TNM Staging",
   "KOLOSK": "Wurde die Koloskopie vor der OP vollständig gemacht?",
   "YES": "Ja",
   "NO": "Nein",
