@@ -42,9 +42,9 @@ currentLanguage, to detect the current language;
   var $configLineWeight = {
     name: '.ct-chartLineWeight',
     labels: 'Week',
-    series: "[51, 51.2, 53, 52.5]",
+    series: [51, 51.2, 53, 52.5, 52, 52.2, 52.9],
     fullWidth: "true",
-    showArea: "false",
+    showArea: "true",
   };
 
   var chartLineWeight = new ChartJS($configLineWeight);
@@ -53,7 +53,7 @@ currentLanguage, to detect the current language;
   var $configLinePulse = {
     name: '.ct-chartLinePulse',
     labels: 'Week',
-    series: "[12, 9, 7, 8, 5, 9, 0]",
+    series: [66, 68, 65, 70, 67, 69, 68],
     fullWidth: "true",
     showArea: "false",
   };

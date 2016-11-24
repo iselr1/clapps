@@ -8,25 +8,38 @@ Verson Nr.:         2.0
 Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
 -->
 <ion-view view-title="{{'BODY' | translate}}">
-  <!--<ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
-  </ion-nav-buttons>-->
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
+  </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-    <label class="item item-input">
-      <span class="input-label" translate="YOUR_WEIGHT_KG"></span>
-      <input type="tel" ng-model="Weight.value"></input>
-      <button class="button button-small button-positive" ng-click="addWeight()" translate="{{'SAVE' | translate}}"></button>
-    </label>
+    <div class="row">
+      <div class="col col-80">
+        <label class="item item-input" style="border:none">
+          <span class="input-label" translate="YOUR_WEIGHT_KG"></span>
+          <input type="number" ng-model="Weight.value"></input>
+        </label>
+      </div>
+      <div class="col col-20">
+        <button class="button button-small button-positive" ng-click="addWeight()" translate="{{'SAVE' | translate}}"></button>
+      </div>
+    </div>
     <div class="ct-chartLineWeight ct-perfect-fourth"></div>
-    <label class="item item-input">
-      <span class="input-label" translate="YOUR_PULSE"></span>
-      <input type="tel" ng-model="Pulse.value"></input>
-      <button class="button button-small button-positive" ng-click="addPulse()" translate="{{'SAVE' | translate}}"></button>
-    </label>
-    <div class="ct-chartLinePulse ct-perfect-fourth"></div>
+    <div class="row">
+      <div class="col col-80">
+        <label class="item item-input" style="border:none">
+          <span class="input-label" translate="YOUR_PULSE"></span>
+          <input type="number" ng-model="Pulse.value"></input>
+        </label>
+      </div>
+      <div class="col col-20">
+        <button class="button button-small button-positive" ng-click="addPulse()" translate="{{'SAVE' | translate}}"></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ct-chartLinePulse ct-perfect-fourth"></div>
+    </div>
   </ion-content>
 </ion-view>

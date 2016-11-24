@@ -16,6 +16,9 @@ angular.module('starter.controllers', [])
     I4MIMidataService.logout();
     $state.go('login');
   }
+  $scope.goHome = function() {
+    $state.go('home');
+  }
 })
 
 .controller('LoginCtrl', function($scope, $translate, I4MIMidataService, $timeout, $state) {
