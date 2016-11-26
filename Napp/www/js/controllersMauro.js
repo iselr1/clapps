@@ -113,10 +113,7 @@ angular.module('starter.controllersMauro', [])
         h2:"REHA",
         content:"REHACONTENT",
         link: "https://www.krebsliga.ch/ueber-krebs/rehabilitation/"});
-        $scope.myInfos.push({
-        h2:"Krebsliga",
-        content:"Inhalt Follow UP",
-        link: "was"});
+
         /*---------------Generating Dummy-Data END----------------*/
 
 
