@@ -26,7 +26,7 @@ angular.module('starter.controllersMauro', [])
 
     $scope.myContacts = [];
     /*---------------Generating Dummy-Data START----------------*/
-
+    localStorage.setItem("contact", null);
     if(angular.isDefined(localStorage.getItem("contact").func)){
     $scope.myContacts.push( localStorage.getItem("contact"));
     }
