@@ -64,5 +64,12 @@
   "ADDDOCTOR": "Ajouter un médecin",
   "IMPRESSUMTEXT": "L'application était fait en terme d'un projét du modul Application clinique, du filière universitaire informatique médicale de la haute école spécialisée bernoise de:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> L'idée du projet était de Monsieur Prof. Dr. med. Carsten Viehl, il est médecin-chef du domaine chirurgie du centre hospitalier Bienne.<br><br> Est-ce que vous avez des questions/suggestion de l'application, écrivez à:<br>sina@bfh.ch",
   "DONE APPOINTMENTS": "FF_Abgeschlossene Termine",
-  "FUTURE APPOINTMENTS":"FF_Zuk&Uuml;nftige Termine"
+  "FUTURE APPOINTMENTS":"FF_Zuk&Uuml;nftige Termine",
+  "SPORTCONTENT":"Une activité physique régulière et suffisante améliore la santé et le bien-être. Elle a de nombreux effets bénéfiques : elle réduit le risque de cancer du sein et de l’intestin, renforce le système immunitaire, consolide les os, prévient le surpoids en augmentant la dépense calorique, et stimule la circulation sanguine.",
+  "NUTRITIONCONTENT":"Une alimentation équilibrée, riche en fruits et en légumes et pauvre en aliments d’origine animale, peut diminuer le risque de différents cancers. On estime qu’un mode de vie sain permet de réduire le risque de cancer de 30 à 40 %. Ne pas fumer, se nourrir de façon équilibrée, boire peu ou pas d’alcool, pratiquer une activité physique suffisante et se protéger soigneusement du soleil : autant d’éléments qui font partie d’une bonne hygiène de vie.",
+  "REHACONTENT":"De plus en plus de personnes survivent à leur cancer. Mais la maladie et ses traitements entraînent souvent des atteintes d’ordre physique, psychique ou social. Les programmes de réadaptation oncologique améliorent la qualité de vie des personnes touchées et facilitent le retour à la vie de tous les jours et la reprise de l’activité professionnelle.",
+  "REHA": "La réadaptation oncologique",
+  "SPORT": "Bouger beaucoup",
+  "FOLLOW_UP": "FFF___Nachsorge",
+  "NUTRITION": "Alimentation saine"
 }

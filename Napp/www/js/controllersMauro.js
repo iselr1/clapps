@@ -101,17 +101,18 @@ angular.module('starter.controllersMauro', [])
         /*---------------Generating Dummy-Data START----------------*/
         $scope.myInfos.push({
         h2:"NUTRITION",
-        content:"Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
+        content:"NUTRITIONCONTENT",
         link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"});
+
         $scope.myInfos.push({
         h2:"SPORT",
-        content:"Wer sich regelmässig und ausreichend bewegt, verbessert sein Wohlbefinden, seine Gesundhedit und kann das Risiko für Darm- und Brustkrebs senken. Wer sich ausreichend bewegt, regt den Kreislauf an, erhöht den Energieverbrauch, beugt Übergewicht vor und stärkt zudem die Abwehrkräfte und die Knochen.",
+        content:"SPORTCONTENT",
         link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/viel-bewegung/"});
 
         $scope.myInfos.push({
-        h2:"FOLLOW UP",
-        content:"Inhalt Follow UP",
-        link: "was"});
+        h2:"REHA",
+        content:"REHACONTENT",
+        link: "https://www.krebsliga.ch/ueber-krebs/rehabilitation/"});
         $scope.myInfos.push({
         h2:"Krebsliga",
         content:"Inhalt Follow UP",
