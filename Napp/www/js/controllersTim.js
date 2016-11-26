@@ -97,8 +97,10 @@ angular.module('starter.controllersTim', [])
   }
 
 
+
   $scope.myAppointments.push(T1T2N0);
 
+  T1T2N0.years[3].number = "LOOOL";
 
 
   $scope.closeContent = function($index){
