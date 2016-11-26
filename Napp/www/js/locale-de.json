@@ -63,5 +63,7 @@
   "SOUND_4": "Ton 4",
   "CANCEL": "Abbrechen",
   "ADDDOCTOR": "Arzt erfassen",
-  "IMPRESSUMTEXT": "Die App wurde im Rahmen des Moduls Clinical Apps, des Studiengangs Medizininformatik, an der Berner Fachhochschule entwickelt durch:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> Die Projektidee kam von Herrn  Prof. Dr. med. Carsten Viehl er ist Chefarzt des Bereichs Chirurgie am Spitalzentrum Biel.<br><br> Haben Sie Fragen/Anregungen zur App, schreiben Sie dies bitte an:<br>sina@bfh.ch"
+  "IMPRESSUMTEXT": "Die App wurde im Rahmen des Moduls Clinical Apps, des Studiengangs Medizininformatik, an der Berner Fachhochschule entwickelt durch:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> Die Projektidee kam von Herrn  Prof. Dr. med. Carsten Viehl er ist Chefarzt des Bereichs Chirurgie am Spitalzentrum Biel.<br><br> Haben Sie Fragen/Anregungen zur App, schreiben Sie dies bitte an:<br>sina@bfh.ch",
+  "DONE APPOINTMENTS": "Abgeschlossene Termine",
+  "FUTURE APPOINTMENTS":"Zuk&Uuml;nftige Termine"
 }

@@ -10,7 +10,7 @@ angular.module('starter.controllersTim', [])
       /*---------------Generating Dummy-Data START----------------*/
 
       $scope.myAppointments.push({
-      state:"Abgeschlossen",
+      state:"DONE APPOINTMENTS",
       years:[{
         number:"2014",
         appointments:[{
@@ -27,7 +27,7 @@ angular.module('starter.controllersTim', [])
     }]
   });
   $scope.myAppointments.push({
-  state:"Zukünftige",
+  state:"FUTURE APPOINTMENTS",
   years:[{
     number:"2016",
     appointments:[{

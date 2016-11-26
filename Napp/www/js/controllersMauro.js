@@ -26,6 +26,10 @@ angular.module('starter.controllersMauro', [])
 
     $scope.myContacts = [];
     /*---------------Generating Dummy-Data START----------------*/
+
+    if(angular.isDefined(localStorage.getItem("contact").func)){
+    $scope.myContacts.push( localStorage.getItem("contact"));
+    }
     $scope.myContacts.push({
     func:"Hausarzt",
     name:"Stefan Knöpfli",
@@ -34,36 +38,26 @@ angular.module('starter.controllersMauro', [])
     phone:"+4131312321223",
     mail:"stefan.knöpfli@szb.ch"});
 
-    $scope.myContacts.push({
-    func:"Hausarzt",
-    name:"Meier Max",
-    street:"Bielstrasse 25",
-    location:"2051 Biel",
-    phone:"+4131312321223",
-    mail:"stefan.knöpfli@szb.ch"});
 
-    $scope.myContacts.push({
-    func:"Hausarzt",
-    name:"Hans Peter",
-    street:"Bielstrasse 25",
-    location:"2051 Biel",
-    phone:"+4131312321223",
-    mail:"stefan.knöpfli@szb.ch"});
     /*---------------Generating Dummy-Data END----------------*/
 
     // Adding the Data from the Contact Formular addContact to the Dom
     //
     $scope.addContact = {};
     $scope.addContact = function(){
+      var contact =
+        {
+            "func": $scope.addContact.func,
+            "name": $scope.addContact.nm,
+            "street":$scope.addContact.street,
+            "location":$scope.addContact.loc,
+            "phone":$scope.addContact.phone,
+            "mail":$scope.addContact.mail
+        };
+        localStorage.setItem("contact", contact);
+        $scope.myContacts.push(contact);
+      }
 
-        $scope.myContacts.push({
-        func:$scope.addContact.func,
-        name:$scope.addContact.nm,
-        street:$scope.addContact.street,
-        location:$scope.addContact.loc,
-        phone:$scope.addContact.phone,
-        mail:$scope.addContact.mail});
-    }
     // Removing a Contact from the DOM
     // Getting the ID of the Contact from the Button
 
@@ -111,7 +105,7 @@ angular.module('starter.controllersMauro', [])
         link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"});
         $scope.myInfos.push({
         h2:"SPORT",
-        content:"Wer sich regelmässig und ausreichend bewegt, verbessert sein Wohlbefinden, seine Gesundheit und kann das Risiko für Darm- und Brustkrebs senken. Wer sich ausreichend bewegt, regt den Kreislauf an, erhöht den Energieverbrauch, beugt Übergewicht vor und stärkt zudem die Abwehrkräfte und die Knochen.",
+        content:"Wer sich regelmässig und ausreichend bewegt, verbessert sein Wohlbefinden, seine Gesundhedit und kann das Risiko für Darm- und Brustkrebs senken. Wer sich ausreichend bewegt, regt den Kreislauf an, erhöht den Energieverbrauch, beugt Übergewicht vor und stärkt zudem die Abwehrkräfte und die Knochen.",
         link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/viel-bewegung/"});
 
         $scope.myInfos.push({

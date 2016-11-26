@@ -62,6 +62,7 @@
   "SOUND_4": "Ton 4",
   "CANCEL": "Annuler",
   "ADDDOCTOR": "Ajouter un médecin",
-  "IMPRESSUMTEXT": "L'application était fait en terme d'un projét du modul Application clinique, du filière universitaire informatique médicale de la haute école spécialisée bernoise de:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> L'idée du projet était de Monsieur Prof. Dr. med. Carsten Viehl, il est médecin-chef du domaine chirurgie du centre hospitalier Bienne.<br><br> Est-ce que vous avez des questions/suggestion de l'application, écrivez à:<br>sina@bfh.ch"
-
+  "IMPRESSUMTEXT": "L'application était fait en terme d'un projét du modul Application clinique, du filière universitaire informatique médicale de la haute école spécialisée bernoise de:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> L'idée du projet était de Monsieur Prof. Dr. med. Carsten Viehl, il est médecin-chef du domaine chirurgie du centre hospitalier Bienne.<br><br> Est-ce que vous avez des questions/suggestion de l'application, écrivez à:<br>sina@bfh.ch",
+  "DONE APPOINTMENTS": "FF_Abgeschlossene Termine",
+  "FUTURE APPOINTMENTS":"FF_Zuk&Uuml;nftige Termine"
 }

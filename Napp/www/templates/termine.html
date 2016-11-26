@@ -20,7 +20,7 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
 
  <div class="list card" ng-repeat="history in myAppointments">
   <div class="history item " ng-click="closeContent({{$index}})">
-    {{history.state}}
+    {{history.state | translate}}
   </div>
   <div class="content{{$index}}">
   <div ng-repeat="year in history.years">
