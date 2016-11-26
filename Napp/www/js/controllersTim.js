@@ -12,7 +12,7 @@ angular.module('starter.controllersTim', [])
 
       if(schema = "stadium1"){
 
-      var appointment = {Date: opDate.setMonth(opDate.getMonth() + 12);  , Description:"Koloskopie Termin 1. Und Labormessung CEA Werts Im Spitalzentrum bei Dr. Viehl"};
+      var appointment = {Date: opDate.setMonth(opDate.getMonth() + 12)  , Description:"Koloskopie Termin 1. Und Labormessung CEA Werts Im Spitalzentrum bei Dr. Viehl"};
       history[0] = appointment;
       appointment = {Date: opDate.setMonth(opDate.getMonth() + 24) ,Description:"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed d"};
       history[1] = appointment;
