@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('LoginCtrl', function($scope, $translate, I4MIMidataService, $timeout, $state) {
+.controller('LoginCtrl', function($scope, $translate, I4MIMidataService, $timeout, $state, jsonService) {
   // Use for testing the development environment
   $scope.user = {
     server: 'https://test.midata.coop:9000'
@@ -43,6 +43,7 @@ angular.module('starter.controllers', [])
   //Change the language
   $scope.switchLanguage = function(key) {
     $translate.use(key);
+    jsonService.loadJson(key);
   };
 
   $scope.showModalLogin = function() {

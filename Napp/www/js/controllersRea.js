@@ -78,7 +78,7 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope, $state, $translate) {
+.controller('EinstellungenCtrl', function($scope, $state, $translate, jsonService) {
   //Choice for Remindersounds
   $scope.soundList = [{
     id: 1,
@@ -118,7 +118,7 @@ currentLanguage, to detect the current language;
   // Change language if the selectoption changed
   $scope.onchangeLanguage = function(key) {
     $translate.use(key.token);
-
+    jsonService.loadJson(key);
   };
 })
 
