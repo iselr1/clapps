@@ -29,8 +29,8 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
     </div>
     <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
       <div class="appointment row">
-        <div class="month col col-15"> {{appointment.month}}</div>
-        <div class="col col-85">  {{appointment.description}}</div>
+        <div class="month col col-15"> {{appointment.month | translate}}</div>
+        <div class="col col-85">  {{appointment.description | translate}}</div>
       </div>
     </div>
   </div>
