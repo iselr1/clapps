@@ -17,7 +17,7 @@
         <div ng-repeat="info in myInfos" class="item item-text-wrap" ng-click="showContent({{$index}})">
               <h2 translate="{{info.h2}}"></h2>
               <div>
-                  <p id="infoContent{{$index}}" class="hidden content">{{info.content | translate}}
+                  <p id="infoContent{{$index}}" class="hidden content" translate="{{info.content}}">
                     <br /><br /><a href="{{info.link}}">Weitere Informationen sind hier zu finden.</a>
                     </p>
 

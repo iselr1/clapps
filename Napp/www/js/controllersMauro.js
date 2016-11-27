@@ -26,7 +26,7 @@ angular.module('starter.controllersMauro', [])
 
     $scope.myContacts = [];
     /*---------------Generating Dummy-Data START----------------*/
-
+    localStorage.setItem("contact", null);
     if(angular.isDefined(localStorage.getItem("contact").func)){
     $scope.myContacts.push( localStorage.getItem("contact"));
     }
@@ -113,10 +113,7 @@ angular.module('starter.controllersMauro', [])
         h2:"REHA",
         content:"REHACONTENT",
         link: "https://www.krebsliga.ch/ueber-krebs/rehabilitation/"});
-        $scope.myInfos.push({
-        h2:"Krebsliga",
-        content:"Inhalt Follow UP",
-        link: "was"});
+
         /*---------------Generating Dummy-Data END----------------*/
 
 
