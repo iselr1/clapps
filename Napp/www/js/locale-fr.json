@@ -71,5 +71,42 @@
   "REHA": "La réadaptation oncologique",
   "SPORT": "Bouger beaucoup",
   "FOLLOW_UP": "FFF___Nachsorge",
-  "NUTRITION": "Alimentation saine"
+  "NUTRITION": "Alimentation saine",
+  "MONTHS": [{
+    "id": "1",
+    "LABEL": "Jan"
+  }, {
+    "id": "2",
+    "LABEL": "Feb"
+  }, {
+    "id": "3",
+    "LABEL": "Mar"
+  }, {
+    "id": "4",
+    "LABEL": "Avr"
+  }, {
+    "id": "5",
+    "LABEL": "Mai"
+  }, {
+    "id": "6",
+    "LABEL": "Jui"
+  }, {
+    "id": "7",
+    "LABEL": "Jul"
+  }, {
+    "id": "8",
+    "LABEL": "Aou"
+  }, {
+    "id": "9",
+    "LABEL": "Sep"
+  }, {
+    "id": "10",
+    "LABEL": "Oct"
+  }, {
+    "id": "11",
+    "LABEL": "nouvelle"
+  }, {
+    "id": "12",
+    "LABEL": "Dez"
+  }]
 }

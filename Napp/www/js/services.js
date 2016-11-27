@@ -1,14 +1,15 @@
 angular.module('starter.services', [])
 
-.factory('jsonService', function($rootScope, $http) {
+.factory('jsonService', function($rootScope, $http, $translate) {
   var jsonService = {};
   var prefix = 'js/locale-';
   var suffix = '.json';
 
   jsonService.data = {};
 
-  // initialize it with the german json
-  $http.get(prefix + 'de' + suffix)
+  // initialize the json file with the currentLanguage
+  var key = ($translate.proposedLanguage() || $translate.use());
+  $http.get(prefix + key + suffix)
     .success(function(data) {
       jsonService.data.json = data;
       console.log('Json data is initialized');
