@@ -44,40 +44,46 @@ var doneAppointemnts = {
 "years":[{
   "fullYear":d.getFullYear()+1,
   "appointments":[{
-    "month": "",
-    "description": ""
+
   }]
 },{
   "fullYear":d.getFullYear()+2,
   "appointments":[{
-    "month": "",
-    "description": ""
+
   }]
 },{
   "fullYear":d.getFullYear()+3,
   "appointments":[{
-    "month": "",
-    "description": ""
+
   }]
 },{
   "fullYear":d.getFullYear()+4,
   "appointments":[{
-    "month": "",
-    "description": ""
   }]
 }]
 }
 
-      $scope.myAppointments.push(doneAppointemnts);
-  var d = new Date();
+  $scope.myAppointments.push(doneAppointemnts);
+
+for (i = 0; i < 4; i++) {
+
+  doneAppointemnts.years[i].appointments.splice(0,1);
+
+  doneAppointemnts.years[i].status = "hidden";
+  }
+
+
+    var d = new Date();
   var T1T2N0 = {
     "state":"FUTURE APPOINTMENTS",
     "years":[{
       "fullYear":d.getFullYear()+1,
       "appointments":[{
+
         "month": month[d.getMonth()],
         "description": "CEA-Titer"
     },{
+
       "month": month[d.getMonth()],
       "description": "Kolonsokpie"
     }]
@@ -85,15 +91,18 @@ var doneAppointemnts = {
   },{
     "fullYear":d.getFullYear()+2,
     "appointments":[{
+
       "month": month[d.getMonth()],
       "description": "CEA-Titer"
     }]
   },{
     "fullYear":d.getFullYear()+3,
     "appointments":[{
+
       "month": month[d.getMonth()],
       "description": "CEA-Titer"
   },{
+
     "month": month[d.getMonth()],
     "description": "Kolonskopie"
   }]
@@ -110,13 +119,25 @@ var doneAppointemnts = {
 
 $scope.myAppointments.push(T1T2N0);
 
-$scope.appointmentTerminated = function($status, $parent, $index){
+$scope.appointmentTerminated = function($status, $parent){
+
 if($status == 1){
-var year = T1T2N0.years[$parent].fullYear;
-var item = T1T2N0.years[$parent].appointments[$index];
-var test = delete T1T2N0.years[$parent].appointments[$index];
-alert(T1T2N0.years[$parent].appointments.length);
-doneAppointemnts.years[$parent].appointments.append(item);
+console.log(this);
+  var tempIndex = this.$index;
+
+var terminatedItem = T1T2N0.years[$parent].appointments[tempIndex];
+
+
+T1T2N0.years[$parent].appointments.splice(tempIndex, tempIndex+1);
+
+
+doneAppointemnts.years[$parent].appointments.push(terminatedItem);
+
+if(doneAppointemnts.years[$parent].appointments.length > 0){
+
+doneAppointemnts.years[$parent].status = "";
+}
+
 if(T1T2N0.years[$parent].appointments.length == 0){
 T1T2N0.years[$parent].status = "hidden";
 }

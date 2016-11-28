@@ -27,9 +27,9 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
       {{year.fullYear}}
     </div>
     <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
-      <div class="appointment row" ng-click="appointmentTerminated({{$parent.$parent.$index}},{{$parent.$index}},{{$index}})">
-        <div class="month col col-15"> {{appointment.month | translate}}</div>
-        <div class="col col-85">  {{appointment.description | translate}}</div>
+      <div class="appointment row" ng-click="appointmentTerminated({{$parent.$parent.$index}},{{$parent.$index}})">
+        <div class="month col col-15">{{appointment.month | translate}}</div>
+        <div class="col col-85">{{appointment.description | translate}}</div>
       </div>
     </div>
   </div>
