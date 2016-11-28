@@ -38,31 +38,42 @@ angular.module('starter.controllersTim', [])
       $scope.myAppointments = [];
 
       /*---------------Generating Dummy-Data START----------------*/
+var d = new Date();
+var doneAppointemnts = {
+"state":"DONE APPOINTMENTS",
+"years":[{
+  "fullYear":d.getFullYear()+1,
+  "appointments":[{
+    "month": "",
+    "description": ""
+  }]
+},{
+  "fullYear":d.getFullYear()+2,
+  "appointments":[{
+    "month": "",
+    "description": ""
+  }]
+},{
+  "fullYear":d.getFullYear()+3,
+  "appointments":[{
+    "month": "",
+    "description": ""
+  }]
+},{
+  "fullYear":d.getFullYear()+4,
+  "appointments":[{
+    "month": "",
+    "description": ""
+  }]
+}]
+}
 
-
-
-      $scope.myAppointments.push({
-      state:"DONE APPOINTMENTS",
-      years:[{
-        number:"2014",
-        appointments:[{
-          month: "Jan.",
-          description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed d"
-        }]
-      },{
-        number:"2015",
-        appointments:[{
-          month: "Feb.",
-          description: "Beschreibung des Termins"
-      }]
-
-    }]
-  });
+      $scope.myAppointments.push(doneAppointemnts);
   var d = new Date();
   var T1T2N0 = {
     "state":"FUTURE APPOINTMENTS",
     "years":[{
-      "number":d.getFullYear()+1,
+      "fullYear":d.getFullYear()+1,
       "appointments":[{
         "month": month[d.getMonth()],
         "description": "CEA-Titer"
@@ -72,13 +83,13 @@ angular.module('starter.controllersTim', [])
     }]
 
   },{
-    "number":d.getFullYear()+2,
+    "fullYear":d.getFullYear()+2,
     "appointments":[{
       "month": month[d.getMonth()],
       "description": "CEA-Titer"
     }]
   },{
-    "number":d.getFullYear()+3,
+    "fullYear":d.getFullYear()+3,
     "appointments":[{
       "month": month[d.getMonth()],
       "description": "CEA-Titer"
@@ -88,19 +99,31 @@ angular.module('starter.controllersTim', [])
   }]
 
   },{
-    "number":d.getFullYear()+4,
+    "fullYear":d.getFullYear()+4,
     "appointments":[{
       "month": month[d.getMonth()],
       "description": "CEA-Titer"
     }]
   }]
-  }
+}
 
 
+$scope.myAppointments.push(T1T2N0);
 
-  $scope.myAppointments.push(T1T2N0);
+$scope.appointmentTerminated = function($status, $parent, $index){
+if($status == 1){
+var year = T1T2N0.years[$parent].fullYear;
+var item = T1T2N0.years[$parent].appointments[$index];
+var test = delete T1T2N0.years[$parent].appointments[$index];
+alert(T1T2N0.years[$parent].appointments.length);
+doneAppointemnts.years[$parent].appointments.append(item);
+if(T1T2N0.years[$parent].appointments.length == 0){
+T1T2N0.years[$parent].status = "hidden";
+}
 
-  T1T2N0.years[3].number = "LOOOL";
+}
+}
+
 
 
   $scope.closeContent = function($index){
