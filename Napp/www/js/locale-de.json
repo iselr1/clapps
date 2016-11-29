@@ -11,9 +11,7 @@
   "APPOINTMENTS": "Termine",
   "EXPORT": "Export",
   "LOGOUT": "Logout",
-  "SPORT": "Sport",
   "FOLLOW_UP": "Nachsorge",
-  "NUTRITION": "Ernährung",
   "YOUR_WEIGHT_KG": "Ihr Gewicht(kg):",
   "YOUR_PULSE": "Ihr Puls:",
   "TODAY": "heute",
@@ -66,10 +64,37 @@
   "IMPRESSUMTEXT": "Die App wurde im Rahmen des Moduls Clinical Apps, des Studiengangs Medizininformatik, an der Berner Fachhochschule entwickelt durch:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> Die Projektidee kam von Herrn  Prof. Dr. med. Carsten Viehl er ist Chefarzt des Bereichs Chirurgie am Spitalzentrum Biel.<br><br> Haben Sie Fragen/Anregungen zur App, schreiben Sie dies bitte an:<br>sina@bfh.ch",
   "DONE APPOINTMENTS": "Abgeschlossene Termine",
   "FUTURE APPOINTMENTS": "Zukünftige Termine",
-  "SPORTCONTENT": "Wer sich regelmässig und ausreichend bewegt, verbessert sein Wohlbefinden, seine Gesundhedit und kann das Risiko für Darm- und Brustkrebs senken. Wer sich ausreichend bewegt, regt den Kreislauf an, erhöht den Energieverbrauch, beugt Übergewicht vor und stärkt zudem die Abwehrkräfte und die Knochen.",
-  "NUTRITIONCONTENT": "Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
-  "REHACONTENT": "Die Überlebensrate bei Krebserkrankten steigt. Doch die Krankheit und ihre Behandlung führen oft zu körperlichen, psychischen und sozialen Beeinträchtigungen. Onkologische Rehabilitationsprogramme verbessern die Lebensqualität von Krebsbetroffenen und erleichtern ihre Wiedereingliederung in den Alltag und ins Berufsleben.",
-  "REHA": "Rehabilitation",
+  "LINKINFO":"Weitere Informationen können sie hier abrufen.",
+  "INFORMATION":[{
+    "TITLE":"Ernährung",
+    "CONTENT":"Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
+    "LINK":"https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"
+    },{
+    "TITLE":"Sport",
+    "CONTENT":"Täglich eine halbe Stunde Bewegung kann das Lebensgefühl steigern, das Selbstvertrauen fördern, die Gedanken ordnen, die Müdigkeit vertreiben und vor allem: Es kann Spass machen.",
+    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/infomaterial/broschueren/fuer-erwachsene/koerperlich-aktiv-werden/"
+    },
+    {
+    "TITLE":"Rehabilitation",
+    "CONTENT":"Die Überlebensrate bei Krebserkrankten steigt. Doch die Krankheit und ihre Behandlung führen oft zu körperlichen, psychischen und sozialen Beeinträchtigungen. Onkologische Rehabilitationsprogramme verbessern die Lebensqualität von Krebsbetroffenen und erleichtern ihre Wiedereingliederung in den Alltag und ins Berufsleben.",
+    "LINK":"https://www.krebsliga.ch/ueber-krebs/rehabilitation/"
+    },
+    {
+    "TITLE":"Selbsthilfe",
+    "CONTENT":"Möchten Sie sich mit Menschen treffen und austauschen, die in der gleichen Situation wie Sie selbst sind oder waren? In unserer Zusammenstellung finden Sie Adressen von Selbsthilfeorganisationen. Auch die kantonalen Krebsligen können Ihnen mitteilen, wo und wann sich Selbsthilfegruppen in Ihrer Nähe treffen.",
+    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/selbsthilfe/"
+    },
+    {
+    "TITLE":"Krebsforum",
+    "CONTENT":"Haben auch Sie Erfahrungen mit Krebs und möchten diese mit anderen Betroffenen austauschen? Möchten Sie andere unterstützen und von Ihren Erfahrungen profitieren lassen? Suchen Sie Rat von Menschen, die das Gleiche erleben wie Sie? Ist jemand in Ihrer Familie an Krebs erkrankt und Sie suchen den Austausch mit andern Nahestehenden?",
+    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/meine-frage-zu-krebs/krebsforum/"
+      },
+     {
+    "TITLE":"Seminare 2017 für krebsbetroffene Menschen",
+    "CONTENT":"Haben Sie eine intensive medizinisch-therapeutische Behandlung hinter sich? Dann fühlen Sie sich möglicherweise erschöpft und müde und schwanken zwischen Hoffnung und Zuversicht sowie Angst und Misstrauen.",
+    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/kurse-und-seminare/seminare-2017-fuer-krebsbetroffene-menschen/"
+    }],
+
   "MONTHS": [{
     "id": "1",
     "LABEL": "Jan"

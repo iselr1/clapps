@@ -24,31 +24,19 @@ angular.module('starter.controllersMauro', [])
 
   .controller('KontakteCtrl', ['$scope', function($scope, $location) {
 
-
-
-
-    $scope.myContacts = [];
-
-    console.log(JSON.parse(localStorage.getItem('contacts')));
-
+  $scope.myContacts = [];
+  //CHeck if local Storage is EMPTY
+  //IF not empty --> Load LocalStorage into the DOM one contact by one
     if(localStorage.getItem('contacts')!= null){
       var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
         for (i = 0; i < parsedLocalStorage.length; i++) {
           var contact = parsedLocalStorage[i];
-          console.log(contact);
           $scope.myContacts.push(contact);
         }
     }
-    /*---------------Generating Dummy-Data START----------------*/
-
-
-
-
-
-    /*---------------Generating Dummy-Data END----------------*/
 
     // Adding the Data from the Contact Formular addContact to the Dom
-    //
+    // Save the Contact in the LocalStorage
 
     $scope.addContact = function(){
       var contact =
@@ -60,38 +48,17 @@ angular.module('starter.controllersMauro', [])
             "phone":$scope.addContact.phone,
             "mail":$scope.addContact.mail
         };
-
         $scope.myContacts.push(contact);
         localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
-
-      }
+    }
 
     // Removing a Contact from the DOM
-    // Getting the ID of the Contact from the Button
-
-
-
+    // Getting the ID of the Contact
+    // Delete the Contact from the localStorage
     $scope.removeContact = function(event){
       $scope.myContacts.splice(this.$index, this.$index+1);
       localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -124,26 +91,19 @@ angular.module('starter.controllersMauro', [])
   You'll find the following functions in it:
 
   */
-  .controller('InfosCtrl', function($scope, $location) {
+  .controller('InfosCtrl', function($scope, $location,jsonService) {
+    var jsonData = jsonService.getJson();
 
-        $scope.myInfos = [];
-        /*---------------Generating Dummy-Data START----------------*/
-        $scope.myInfos.push({
-        h2:"NUTRITION",
-        content:"NUTRITIONCONTENT",
-        link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"});
+    console.log(infos[0].TITLE);
 
-        $scope.myInfos.push({
-        h2:"SPORT",
-        content:"SPORTCONTENT",
-        link: "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/viel-bewegung/"});
+    $scope.myInfos = [];
 
-        $scope.myInfos.push({
-        h2:"REHA",
-        content:"REHACONTENT",
-        link: "https://www.krebsliga.ch/ueber-krebs/rehabilitation/"});
-
-        /*---------------Generating Dummy-Data END----------------*/
+    for (i = 0; i < infos.length; i++) {
+      $scope.myInfos.push({
+      h2:infos[i].TITLE,
+      content:infos[i].CONTENT,
+      link:infos[i].LINK});
+    }
 
 
         // Showing only One Element!

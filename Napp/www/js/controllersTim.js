@@ -1,40 +1,9 @@
 angular.module('starter.controllersTim', [])
 
 
-.controller('TermineCtrl', function($scope, $state) {
-
-      var month= ["JAN","FEB","MRZ","APR","MAI","JUN","JUL","AUG","SEP","OKT","NOV","DEZ"];
-      var opDate = new Date(16,03,10);
-
-      var schema = "stadium1";
-
-      var history = [ ];
-
-      if(schema = "stadium1"){
-      var actDate = opDate.getMonth();
-
-      var appointment = {Date: opDate.setMonth(actDate + 12)  , Description:"Koloskopie Termin 1. Und Labormessung CEA Werts Im Spitalzentrum bei Dr. Viehl"};
-      history[0] = appointment;
-      appointment = {Date: opDate.setMonth(actDate + 24) ,Description:"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed d"};
-      history[1] = appointment;
-      appointment = {Date: opDate.setMonth(actDate + 48) ,Description:"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed d"};
-      history[2] = appointment;
-      appointment = {Date: opDate.setMonth(actDate + 60) ,Description:"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed d"};
-      history[3] = appointment;
-
-      var mauroTestKolonT1T2N0 = {
-
-      }
-      }
-      else if (schema = "stadium2+3"){
-
-
-      }
-      else if (schema = "AlleStadien"){
-
-
-      }
-
+.controller('TermineCtrl', function($scope, $state,jsonService) {
+var jsonData = jsonService.getJson();
+      var month= jsonData.MONTHS;
       $scope.myAppointments = [];
 
       /*---------------Generating Dummy-Data START----------------*/
@@ -80,11 +49,11 @@ for (i = 0; i < 4; i++) {
       "fullYear":d.getFullYear()+1,
       "appointments":[{
 
-        "month": month[d.getMonth()],
+        "month": month[d.getMonth()].LABEL,
         "description": "CEA-Titer"
     },{
 
-      "month": month[d.getMonth()],
+      "month": month[d.getMonth()].LABEL,
       "description": "Kolonsokpie"
     }]
 
@@ -92,25 +61,25 @@ for (i = 0; i < 4; i++) {
     "fullYear":d.getFullYear()+2,
     "appointments":[{
 
-      "month": month[d.getMonth()],
+      "month": month[d.getMonth()].LABEL,
       "description": "CEA-Titer"
     }]
   },{
     "fullYear":d.getFullYear()+3,
     "appointments":[{
 
-      "month": month[d.getMonth()],
+      "month": month[d.getMonth()].LABEL,
       "description": "CEA-Titer"
   },{
 
-    "month": month[d.getMonth()],
+    "month": month[d.getMonth()].LABEL,
     "description": "Kolonskopie"
   }]
 
   },{
     "fullYear":d.getFullYear()+4,
     "appointments":[{
-      "month": month[d.getMonth()],
+      "month": month[d.getMonth()].LABEL,
       "description": "CEA-Titer"
     }]
   }]
