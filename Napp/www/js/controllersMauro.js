@@ -24,26 +24,32 @@ angular.module('starter.controllersMauro', [])
 
   .controller('KontakteCtrl', ['$scope', function($scope, $location) {
 
+
+
+
     $scope.myContacts = [];
-    /*---------------Generating Dummy-Data START----------------*/
-    localStorage.setItem("contact", null);
-    if(angular.isDefined(localStorage.getItem("contact").func)){
-    $scope.myContacts.push( localStorage.getItem("contact"));
+
+    console.log(JSON.parse(localStorage.getItem('contacts')));
+
+    if(localStorage.getItem('contacts')!= null){
+      var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
+        for (i = 0; i < parsedLocalStorage.length; i++) {
+          var contact = parsedLocalStorage[i];
+          console.log(contact);
+          $scope.myContacts.push(contact);
+        }
     }
-    $scope.myContacts.push({
-    func:"Hausarzt",
-    name:"Stefan Knöpfli",
-    street:"Bielstrasse 25",
-    location:"2051 Biel",
-    phone:"+4131312321223",
-    mail:"stefan.knöpfli@szb.ch"});
+    /*---------------Generating Dummy-Data START----------------*/
+
+
+
 
 
     /*---------------Generating Dummy-Data END----------------*/
 
     // Adding the Data from the Contact Formular addContact to the Dom
     //
-    $scope.addContact = {};
+
     $scope.addContact = function(){
       var contact =
         {
@@ -54,16 +60,39 @@ angular.module('starter.controllersMauro', [])
             "phone":$scope.addContact.phone,
             "mail":$scope.addContact.mail
         };
-        localStorage.setItem("contact", contact);
+
         $scope.myContacts.push(contact);
+        localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
+
       }
 
     // Removing a Contact from the DOM
     // Getting the ID of the Contact from the Button
 
+
+
     $scope.removeContact = function(event){
-    angular.element( document.querySelector('#contact'+event.target.id)).addClass('hidden');
+      $scope.myContacts.splice(this.$index, this.$index+1);
+      localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // Removing or Adding CSS Class to display the Contact Form

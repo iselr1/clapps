@@ -11,7 +11,7 @@
 
 <div class="list">
   <!---------LIST  START------------->
-  <div ng-repeat="contact in myContacts" class="contacts">
+  <div ng-repeat="contact in myContacts track by $index" class="contacts">
     <div class="item item-text-wrap" id="contact{{$index}}">
       <div class="row">
           <div class="col col-80">
