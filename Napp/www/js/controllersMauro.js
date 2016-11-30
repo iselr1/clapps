@@ -92,8 +92,9 @@ angular.module('starter.controllersMauro', [])
 
   */
   .controller('InfosCtrl', function($scope, $location,jsonService) {
-    var jsonData = jsonService.getJson();
-    var infos = jsonData.INFORMATION;
+    var data = jsonService.getJson();
+    $scope.data = jsonService.getJson();
+    var infos = data.INFORMATION;
 
     console.log(infos[0].TITLE);
 
