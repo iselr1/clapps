@@ -51,7 +51,6 @@ angular.module('starter.controllersMauro', [])
     // Save the Contact in the LocalStorage
 
     $scope.addContact = function(){
-      alert($scope.addContact.func);
       var contact =
         {
             "func": $scope.addContact.func,
