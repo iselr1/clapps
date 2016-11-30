@@ -8,18 +8,26 @@ Verson Nr.:         1.0
 Funktion: Formular zum einloggen mit dem MIDATA Account
 -->
 <ion-view view-title="{{'LOGIN' | translate}}">
-  <ion-nav-buttons side="right">
-    <button class="button" ng-click="switchLanguage('en')" translate="LANG_EN"></button>
-    <button class="button" ng-click="switchLanguage('de')" translate="LANG_DE"></button>
-    <button class="button" ng-click="switchLanguage('fr')" translate="LANG_FR"></button>
-  </ion-nav-buttons>
   <ion-content class="padding">
     <!--New icon: meles1-->
     <div class="row">
-        <div class="col icons">
-          <center><img src="img/sina.png"/></center>
-        </div>
+      <div class="col icons">
+        <center><img src="img/sina.png"/></center>
+      </div>
     </div>
-    <i4mi-midata-login user="user" controller-name="I4MIMidataLoginController"></i4mi-midata-login>
-    </ion-content>
-  </ion-view>
+    
+    <!-- Login -->
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input ng-model="login.email" type="text" placeholder="Email">
+      </label>
+      <label class="item item-input">
+        <input ng-model="login.password" type="password" placeholder="Password">
+      </label>
+      <label class="item item-input">
+        <input ng-model="login.server" type="text" value='https://test.midata.coop:9000' placeholder="https://test.midata.coop:9000">
+      </label>
+    </div>
+    <button type="submit" class="button button-full button-positive" ng-click="doLogin()">Login</button>
+  </ion-content>
+</ion-view>

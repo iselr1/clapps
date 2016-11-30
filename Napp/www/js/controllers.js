@@ -9,13 +9,21 @@ Funktion: Alle Controller für die Views "Navigation", "Login", "Home"
 */
 angular.module('starter.controllers', [])
   //The jsonService loades the language file with the currentLanguage
-  .controller('NavCtrl', function($scope, $location, $state, I4MIMidataService, jsonService) {
+  .controller('NavCtrl', function($scope, $location, $state, I4MIMidataService, jsonService, $ionicPlatform, $cordovaLocalNotification) {
+    //Anfrage für Berechtigung zum Senden von notifications auf IOS
+    $ionicPlatform.ready(function() {
+      if (ionic.Platform.isIOS()) {
+        window.plugin.notification.local.promptForPermission();
+      }
+    });
 
+    //Logout
     $scope.doLogout = function() {
-      //Logout function
-      I4MIMidataService.logout();
-      $state.go('login');
-    }
+        //Logout function
+        I4MIMidataService.logout();
+        $state.go('login');
+      }
+      // Home
     $scope.goHome = function() {
       $state.go('home');
     }
