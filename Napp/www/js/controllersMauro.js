@@ -22,11 +22,23 @@ angular.module('starter.controllersMauro', [])
   openForm & closeForm, to Open and Close the ContactForm;
   */
 
-  .controller('KontakteCtrl', ['$scope', function($scope, $location) {
+  .controller('KontakteCtrl', function($scope, $location, jsonService) {
+    $scope.myContacts = [];
 
-  $scope.myContacts = [];
-  //CHeck if local Storage is EMPTY
-  //IF not empty --> Load LocalStorage into the DOM one contact by one
+
+    // SET private variables
+    var jsonData = jsonService.getJson();
+    var minus =  angular.element( document.querySelector( '#minus' ));
+    var plus =  angular.element( document.querySelector( '#plus' ));
+    var addDoc =  angular.element( document.querySelector( '#addDoc' ));
+    var contactList =  angular.element( document.querySelector( '#contactList' ));
+    var form = angular.element( document.querySelector( '#contactForm' ) );
+    $scope.familyDoc = jsonData.FAMILIYDOC;
+    $scope.oncDoc = jsonData.ONCOLOGY;
+    $scope.gastDoc = jsonData.GASTROENTEROLOGIST;
+
+    //CHeck if local Storage is EMPTY
+    //IF not empty --> Load LocalStorage into the DOM one contact by one
     if(localStorage.getItem('contacts')!= null){
       var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
         for (i = 0; i < parsedLocalStorage.length; i++) {
@@ -39,6 +51,7 @@ angular.module('starter.controllersMauro', [])
     // Save the Contact in the LocalStorage
 
     $scope.addContact = function(){
+      alert($scope.addContact.func);
       var contact =
         {
             "func": $scope.addContact.func,
@@ -64,24 +77,25 @@ angular.module('starter.controllersMauro', [])
 
     // Removing or Adding CSS Class to display the Contact Form
     $scope.openForm = function(){
-      var form = angular.element( document.querySelector( '#contactForm' ) );
+
       form.removeClass('hidden');
-      angular.element( document.querySelector( '#minus' )).removeClass('hidden');
-      angular.element( document.querySelector( '#plus' )).removeClass('hidden');
-      angular.element( document.querySelector( '#contacts' )).addClass('hidden');
-      angular.element( document.getElementsByClassName( 'contacts' )).addClass('hidden');
+      minus.removeClass('hidden');
+      plus.removeClass('hidden');
+      contactList.addClass('hidden');
+      addDoc.addClass('hidden');
+
     };
 
     // Removing or Adding CSS Class to display the Contact Form
     $scope.closeForm = function(){
       var form = angular.element( document.querySelector( '#contactForm' ) );
       form.addClass('hidden');
-      angular.element( document.querySelector( '#minus' )).addClass('hidden');
-      angular.element( document.querySelector( '#plus' )).addClass('hidden');
-      angular.element( document.querySelector( '#contacts' )).removeClass('hidden');
-      angular.element( document.getElementsByClassName( 'contacts' )).removeClass('hidden');
+      minus.addClass('hidden');
+      plus.addClass('hidden');
+      contactList.removeClass('hidden');
+      addDoc.removeClass('hidden');
     };
-  }])
+  })
 
   //--------------------------------------------------------//
   //----------------CONTROLLER Infos------------------------//
@@ -108,12 +122,12 @@ angular.module('starter.controllersMauro', [])
     }
 
 
-        // Showing only One Element!
-        $scope.showContent = function($index){
-        angular.element(document.getElementsByClassName('shown')).addClass('hidden');
-        angular.element(document.querySelector('#infoContent'+$index)).removeClass('hidden');
-        angular.element(document.querySelector('#infoContent'+$index)).addClass('shown');
-        }
+      // Showing only One Element!
+      $scope.showContent = function($index){
+      angular.element(document.getElementsByClassName('shown')).addClass('hidden');
+      angular.element(document.querySelector('#infoContent'+$index)).removeClass('hidden');
+      angular.element(document.querySelector('#infoContent'+$index)).addClass('shown');
+      }
 
 
 

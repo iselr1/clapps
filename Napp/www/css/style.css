@@ -50,5 +50,13 @@ display:none;
   font-size:90%;
   font-weight: bold;
   vertical-align: middle;
-
+}
+textarea{
+  height:100px;
+}
+.detailButton{
+  background-color:#A3fffa;
+  font-weight:bold;
+  text-align: center;
+  float:right;
 }
