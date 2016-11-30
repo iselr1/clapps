@@ -6,43 +6,33 @@ var jsonData = jsonService.getJson();
       var month= jsonData.MONTHS;
       $scope.myAppointments = [];
 
-      /*---------------Generating Dummy-Data START----------------*/
 var d = new Date();
 var doneAppointemnts = {
 "state":"DONE APPOINTMENTS",
 "years":[{
   "fullYear":d.getFullYear()+1,
-  "appointments":[{
-
-  }]
+  "appointments":[{}]
 },{
   "fullYear":d.getFullYear()+2,
-  "appointments":[{
-
-  }]
+  "appointments":[{}]
 },{
   "fullYear":d.getFullYear()+3,
-  "appointments":[{
-
-  }]
+  "appointments":[{}]
 },{
   "fullYear":d.getFullYear()+4,
-  "appointments":[{
-  }]
+  "appointments":[{}]
 }]
 }
 
   $scope.myAppointments.push(doneAppointemnts);
 
 for (i = 0; i < 4; i++) {
-
   doneAppointemnts.years[i].appointments.splice(0,1);
-
   doneAppointemnts.years[i].status = "hidden";
   }
 
 
-    var d = new Date();
+  var d = new Date();
   var T1T2N0 = {
     "state":"FUTURE APPOINTMENTS",
     "years":[{
@@ -52,7 +42,6 @@ for (i = 0; i < 4; i++) {
         "month": month[d.getMonth()].LABEL,
         "description": "CEA-Titer"
     },{
-
       "month": month[d.getMonth()].LABEL,
       "description": "Kolonsokpie"
     }]
@@ -88,30 +77,24 @@ for (i = 0; i < 4; i++) {
 
 $scope.myAppointments.push(T1T2N0);
 
-$scope.appointmentTerminated = function($status, $parent){
+  $scope.appointmentTerminated = function($status, $parent){
+    if($status == 1){
 
-if($status == 1){
-console.log(this);
-  var tempIndex = this.$index;
+      var tempIndex = this.$index;
+      var terminatedItem = T1T2N0.years[$parent].appointments[tempIndex];
 
-var terminatedItem = T1T2N0.years[$parent].appointments[tempIndex];
+      T1T2N0.years[$parent].appointments.splice(tempIndex, tempIndex+1);
+      doneAppointemnts.years[$parent].appointments.push(terminatedItem);
 
+      if(doneAppointemnts.years[$parent].appointments.length > 0){
+        doneAppointemnts.years[$parent].status = "";
+      }
 
-T1T2N0.years[$parent].appointments.splice(tempIndex, tempIndex+1);
+      if(T1T2N0.years[$parent].appointments.length == 0){
+        T1T2N0.years[$parent].status = "hidden";
+      }
 
-
-doneAppointemnts.years[$parent].appointments.push(terminatedItem);
-
-if(doneAppointemnts.years[$parent].appointments.length > 0){
-
-doneAppointemnts.years[$parent].status = "";
-}
-
-if(T1T2N0.years[$parent].appointments.length == 0){
-T1T2N0.years[$parent].status = "hidden";
-}
-
-}
+    }
 }
 
 
@@ -120,7 +103,7 @@ T1T2N0.years[$parent].status = "hidden";
 
   if(angular.element(document.querySelector('.content'+$index)).hasClass('hidden'))
   {
-      angular.element(document.querySelector('.content'+$index)).removeClass('hidden');
+    angular.element(document.querySelector('.content'+$index)).removeClass('hidden');
   }
   else{
     angular.element(document.querySelector('.content'+$index)).addClass('hidden');

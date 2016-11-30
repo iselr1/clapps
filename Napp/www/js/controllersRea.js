@@ -118,7 +118,8 @@ currentLanguage, to detect the current language;
   // Change language if the selectoption changed
   $scope.onchangeLanguage = function(key) {
     $translate.use(key.token);
-    jsonService.loadJson(key);
+    jsonService.loadJson(key.token);
+
   };
 })
 

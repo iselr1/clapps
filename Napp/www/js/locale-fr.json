@@ -98,7 +98,7 @@
     "LABEL": "Jan"
   }, {
     "id": "2",
-    "LABEL": "Feb"
+    "LABEL": "Fév"
   }, {
     "id": "3",
     "LABEL": "Mar"
@@ -110,13 +110,13 @@
     "LABEL": "Mai"
   }, {
     "id": "6",
-    "LABEL": "Jui"
+    "LABEL": "Jun"
   }, {
     "id": "7",
     "LABEL": "Jul"
   }, {
     "id": "8",
-    "LABEL": "Aou"
+    "LABEL": "Aoû"
   }, {
     "id": "9",
     "LABEL": "Sep"
@@ -125,9 +125,9 @@
     "LABEL": "Oct"
   }, {
     "id": "11",
-    "LABEL": "nouvelle"
+    "LABEL": "Nov"
   }, {
     "id": "12",
-    "LABEL": "Dez"
+    "LABEL": "Déc"
   }]
 }
