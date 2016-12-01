@@ -15,8 +15,17 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
         <div class="input-label">
             <h2 translate="KOLOSK"></h2>
         </div>
+        <div class="col text-right">
+          <input type="radio" id="y" name="kolosk" value="yes"> <label for="y" translate="YES"></label>
+          <label>&nbsp;&nbsp;&nbsp;</label>
+          <input type="radio" id="n" name="kolosk" value="no"> <label for="n" translate="NO"></label>
+        </div>
     </label>
-            <ion-list radio-group [(ngModel)]="kolosk">
+  <!--  <ion-list>
+      <ion-radio ng-model="kolosk" ng-value="'yes'" translate="YES"></ion-radio>
+      <ion-radio ng-model="kolosk" ng-value="'no'" translate="NO"></ion-radio>
+    </ion-list>-->
+          <!--  <ion-list radio-group [(ngModel)]="kolosk">
                 <ion-item>
                     <ion-label translate="YES"></ion-label>
                     <ion-radio value="yes"></ion-radio>
@@ -25,7 +34,7 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
                     <ion-label translate="NO"></ion-label>
                     <ion-radio value="no"></ion-radio>
                 </ion-item>
-            </ion-list>
+            </ion-list> -->
   <!--  <div ng-app="starter.controllersSarah" ng-controller="OPCtrl">
         <input ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
     </div> -->
