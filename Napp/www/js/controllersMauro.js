@@ -71,7 +71,10 @@ angular.module('starter.controllersMauro', [])
       var tempIndex = this.$index
         var confirmPopup = $ionicPopup.confirm({
           title: jsonData.DELETEDOC,
-          template: jsonData.DELETDOCTEXT
+          template: jsonData.DELETDOCTEXT,
+          cancelText: jsonData.CANCEL,
+          cancelType: 'button-assertive'
+
 
         });
         console.log(confirmPopup);
