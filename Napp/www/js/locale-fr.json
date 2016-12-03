@@ -71,6 +71,8 @@
   "SWITCHAPPOINTSTATUS":"Rendez-vous terminé?",
   "ROLEOFDOCTOR":"Rôle de le médecin:",
   "SAVE":"Enregistrer",
+  "DELETEDOC":"Supprimer le contact",
+  "DELETDOCTEXT":"Êtes-vous sûr de vouloir supprimer cette contact?",
   "INFORMATION":[{
     "TITLE":"Alimentation saine",
     "CONTENT":"Une alimentation équilibrée, riche en fruits et en légumes et pauvre en aliments d’origine animale, peut diminuer le risque de différents cancers. On estime qu’un mode de vie sain permet de réduire le risque de cancer de 30 à 40 %. Ne pas fumer, se nourrir de façon équilibrée, boire peu ou pas d’alcool, pratiquer une activité physique suffisante et se protéger soigneusement du soleil : autant d’éléments qui font partie d’une bonne hygiène de vie.",

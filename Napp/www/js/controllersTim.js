@@ -45,30 +45,36 @@ var T1T2N0 = {
       "fullYear":d.getFullYear()+1,
       "appointments":[{
         "month": month[d.getMonth()].LABEL,
-        "description": "CEA-Titer"
+        "description": "CEA-Titer",
+        "results":""
     },{
       "month": month[d.getMonth()].LABEL,
-      "description": "Kolonsokpie"
+      "description": "Kolonsokpie",
+      "results":""
     }]
   },{
     "fullYear":d.getFullYear()+2,
     "appointments":[{
       "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer"
+      "description": "CEA-Titer",
+      "results":""
     }]
   },{
     "fullYear":d.getFullYear()+3,
     "appointments":[{
       "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer"
+      "description": "CEA-Titer",
+      "results":""
   },{
     "month": month[d.getMonth()].LABEL,
-    "description": "Kolonskopie"}]
+    "description": "Kolonskopie",
+    "results":""}]
   },{
     "fullYear":d.getFullYear()+4,
     "appointments":[{
       "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer"
+      "description": "CEA-Titer",
+      "results":""
     }]
   }]
 }
@@ -76,8 +82,19 @@ $scope.myAppointments.push(T1T2N0);
 
   $scope.showAppointmentDetails = function(status, parent, desc){
 
+    if(status == 1){
+      $scope.saveAppointment.toggle = false;
+      var  fromAppointments = T1T2N0;
+
+    }
+    else{
+      $scope.saveAppointment.toggle = true;
+      var  fromAppointments = doneAppointments;
+    }
+
       var tempIndex = this.$index;
-      var terminatedItem = T1T2N0.years[parent].appointments[tempIndex];
+      var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
+      $scope.saveAppointment.results = terminatedItem.results;
 
       details.removeClass('hidden');
       allAppointments.addClass("hidden");
@@ -87,37 +104,47 @@ $scope.myAppointments.push(T1T2N0);
       $scope.parent=parent;
       $scope.index=tempIndex;
   }
-  $scope.appointmentTerminated = function(status, parent, index){
-    if(status == 1){
+  $scope.switchAppointmentStatus = function(fromAppointments, toAppointments, parent, index){
+
       var tempIndex = index;
-      var terminatedItem = T1T2N0.years[parent].appointments[tempIndex];
+      var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
 
-      T1T2N0.years[parent].appointments.splice(tempIndex, tempIndex+1);
-      doneAppointments.years[parent].appointments.push(terminatedItem);
+      fromAppointments.years[parent].appointments.splice(tempIndex, tempIndex+1);
+      toAppointments.years[parent].appointments.push(terminatedItem);
 
-      if(doneAppointments.years[parent].appointments.length > 0){
-        doneAppointments.years[parent].status = "";
+      if(toAppointments.years[parent].appointments.length > 0){
+        toAppointments.years[parent].status = "";
       }
 
-      if(T1T2N0.years[parent].appointments.length == 0){
-        T1T2N0.years[parent].status = "hidden";
+      if(fromAppointments.years[parent].appointments.length == 0){
+        fromAppointments.years[parent].status = "hidden";
       }
-
     }
-  }
+
   $scope.saveAppointment = function(status, parent, index){
     if(status == 1){
-
-      var tempAppoint = T1T2N0.years[parent].appointments[index];
-      if($scope.saveAppointment.date !== undefined){
+    var  fromAppointments = T1T2N0;
+    var  toAppointments = doneAppointments;
+    var toggleState = true;
+    }
+    else{
+    var  fromAppointments = doneAppointments;
+    var  toAppointments = T1T2N0;
+    var  toggleState = false;
+    }
+      var tempAppoint = fromAppointments.years[parent].appointments[index];
+      tempAppoint.results = $scope.saveAppointment.results;
+      if($scope.saveAppointment.date !== undefined ){
         tempAppoint.month = $scope.saveAppointment.date;
+        $scope.saveAppointment.date = undefined;
       }
-      if($scope.saveAppointment.toggle==true){
-      $scope.appointmentTerminated(status, parent, index);
+      if($scope.saveAppointment.toggle==toggleState){
+      $scope.switchAppointmentStatus(fromAppointments, toAppointments, parent, index);
       }
       $scope.saveAppointment.toggle = false;
+      $scope.saveAppointment.results = "";
       $scope.cancelAppointment();
-    }
+
   }
 
 

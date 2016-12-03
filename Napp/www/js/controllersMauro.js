@@ -22,7 +22,7 @@ angular.module('starter.controllersMauro', [])
   openForm & closeForm, to Open and Close the ContactForm;
   */
 
-  .controller('KontakteCtrl', function($scope, $location, jsonService) {
+  .controller('KontakteCtrl', function($scope, $location, jsonService, $ionicPopup) {
     $scope.myContacts = [];
 
 
@@ -68,21 +68,33 @@ angular.module('starter.controllersMauro', [])
     // Getting the ID of the Contact
     // Delete the Contact from the localStorage
     $scope.removeContact = function(event){
-      $scope.myContacts.splice(this.$index, this.$index+1);
-      localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
-    }
+      var tempIndex = this.$index
+        var confirmPopup = $ionicPopup.confirm({
+          title: jsonData.DELETEDOC,
+          template: jsonData.DELETDOCTEXT
+
+        });
+        console.log(confirmPopup);
+        confirmPopup.then(function(res) {
+          if(res) {
+            console.log(tempIndex);
+            $scope.myContacts.splice(tempIndex, tempIndex+1);
+            localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
+          }
+        });
+      };
+
+
 
 
 
     // Removing or Adding CSS Class to display the Contact Form
     $scope.openForm = function(){
-
       form.removeClass('hidden');
       minus.removeClass('hidden');
       plus.removeClass('hidden');
       contactList.addClass('hidden');
       addDoc.addClass('hidden');
-
     };
 
     // Removing or Adding CSS Class to display the Contact Form
