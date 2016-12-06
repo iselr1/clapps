@@ -71,6 +71,7 @@
   "SWITCHAPPOINTSTATUS":"Rendez-vous terminé?",
   "ROLEOFDOCTOR":"Rôle de le médecin:",
   "SAVE":"Enregistrer",
+  "DATEOP":"Date de l'Operation",
   "DELETEDOC":"Supprimer le contact",
   "DELETDOCTEXT":"Êtes-vous sûr de vouloir supprimer cette contact?",
   "INFORMATION":[{

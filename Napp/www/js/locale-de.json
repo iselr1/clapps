@@ -72,6 +72,7 @@
   "SWITCHAPPOINTSTATUS":"Ist der Termin abgeschlossen?",
   "ROLEOFDOCTOR":"Rolle des Behandelden",
   "SAVE":"Speichern",
+  "DATEOP":"Operationsdatum",
   "DELETEDOC":"Kontakteintrag entfernen",
   "DELETDOCTEXT":"Sind sie sicher, dass sie ihren Kontakteintrag entfernen möchten?",
   "INFORMATION":[{

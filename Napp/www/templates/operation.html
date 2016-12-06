@@ -23,15 +23,22 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
       </div>
     </div>
 
-    <div class="row item-input">
-      <div class="col">
-        <label class="item item-input">
-          <span class="input-label" translate="DATE"></span>
-          <!--<input type="date">-->
+
+    <label class="item item-input">
+       <span class="input-label" translate="DATEOP"></span>
+       <input type="date" id="opdate" placeholder="dd.mm.yyyy" ng-click="openDatePicker()">
+     </label>
+
+    <!--<div class="row item-input">
+      <div class="col col-90">
+        <label class="item item-input" translate="DATEOP">
         </label>
-        <button class="button button-calm" ng-click="openDatePicker()">test</button>
+        <br>
+          <span class="input-label" ></span>
+          <input type="date" placeholder="dd.mm.yyyy" ng-click="openDatePicker()">
       </div>
-    </div>
+    </div>-->
+
     <div class="row">
         <div class="col">
           <center><button class="button button-calm" ng-click="goHome()" translate="NEXT"/></center>
