@@ -35,6 +35,6 @@ Function: Possiblity to alter diffrent settings like, the reminder sound and the
     ng-options="language.id as language.name for language in languageList" ng-change="onchangeLanguage(languageList[languageSelected-1])">
     </select>
     </label>
-  <button class="button button-small button-positive" ng-click="schedule()">Notification Test</button>
+  <button class="button button-small button-positive" ng-click="schedule('test', 'msg')">Notification Test</button>
   </ion-content>
 </ion-view>

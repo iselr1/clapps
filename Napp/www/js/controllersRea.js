@@ -22,7 +22,16 @@ onchangeLanguage, to alter the app language;
 currentLanguage, to detect the current language;
 */
 
-.controller('KoerperCtrl', function($scope, $state, I4MIMidataService) {
+.controller('KoerperCtrl', function($scope, $state, I4MIMidataService, schemaService) {
+  // Testing of Schema generation
+  schemaService.setCancertype("colon");
+  schemaService.setStagingT('1');
+  schemaService.setStagingN('0');
+  schemaService.setStagingM('0');
+  schemaService.setColonoscopyComplete(true);
+  schemaService.setOpDate(new Date);
+  console.log(new Date);
+  schemaService.genSchema();
 
   // Chart for the weight
   var $configLineWeight = {
@@ -93,27 +102,16 @@ currentLanguage, to detect the current language;
 //--------------------------------------------------------//
 
 .controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService) {
-
-  $scope.add = function() {
-    var alarmTime = new Date();
-    alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-    $cordovaLocalNotification.add({
-      id: "1234",
-      date: alarmTime,
-      message: "This is a message",
-      title: "This is a title",
-      autoCancel: true,
-      sound: null
-    }).then(function() {
-      alert("The notification has been set");
+  $scope.$on('onReminderAdded', function(event, id, state, json) {
+    console.log('notification ADDED, id: ' + id + ' state:' + state + ' json:' + json);
+  });
+  $scope.schedule = function(tit, msg) {
+    window.plugin.notification.local.add({
+      id: 'MYLN',
+      title: tit,
+      message: msg,
     });
   };
-
-  $scope.isScheduled = function() {
-    $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
-      alert("Notification 1234 Scheduled: " + isScheduled);
-    });
-  }
 
   // ========== Scheduling
 
