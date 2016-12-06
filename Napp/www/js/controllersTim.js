@@ -49,7 +49,7 @@ var T1T2N0 = {
         "results":""
     },{
       "month": month[d.getMonth()].LABEL,
-      "description": "Kolonsokpie",
+      "description": "Koloskopie",
       "results":""
     }]
   },{
@@ -67,7 +67,7 @@ var T1T2N0 = {
       "results":""
   },{
     "month": month[d.getMonth()].LABEL,
-    "description": "Kolonskopie",
+      "description": "Koloskopie",
     "results":""}]
   },{
     "fullYear":d.getFullYear()+4,
