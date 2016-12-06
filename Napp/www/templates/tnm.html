@@ -20,11 +20,15 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
             <option> {{'REKA' | translate}}</option>
         </select>
     </label>
-    <label class="item item-input">
+    <div class="row">
+      <div class="col">
+      <label class="item item-input">
         <div class="input-label">
             <h2 translate="TNMSTAG"></h2>
         </div>
-        <div class="col text-right">
+      </div>
+
+        <div class="col">
           <select>
               <option selected>T0</option>
               <option>T1</option>
@@ -32,17 +36,22 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
               <option>T3</option>
               <option>T4</option>
           </select>
+        </div>
+        <div class="col">
           <select>
               <option selected>N0</option>
               <option>N1</option>
               <option>N2</option>
               <option>N3</option>
           </select>
+            </div>
+              <div class="col">
           <select>
               <option selected>M0</option>
               <option>M1</option>
               <option>M2</option>
           </select>
+            </div>
         </div>
     </label>
     <!--<label class="item item-input">

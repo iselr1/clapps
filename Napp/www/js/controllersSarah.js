@@ -56,82 +56,24 @@ angular.module('starter.controllersSarah', [])
     $state.go('op');
   };
 
-
-/*  mobiscrollfunction = function (x, y, cx, cy, radius) {
-    console.log(x);
-    console.log(y);
-    console.log(cx);
-    console.log(cy);
-    console.log(radius);
-    var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
-    return distancesquared <= radius * radius;
-  };
-
-  (function ($) {
-
-    function init() {
-
-        mobiscroll.scroller('#test', {
-            theme: theme,
-            display: display,
-            lang: lang,
-            wheels: [
-                [{
-                    label: 'First wheel',
-                    data: ['0', '1', '2', '3', '4', '5', '6', '7']
-                }, {
-                    label: 'Second wheel',
-                    data: [{
-                        value: 0,
-                        display: 'a'
-                    }, {
-                        value: 1,
-                        display: 'b'
-                    }, {
-                        value: 2,
-                        display: 'c'
-                    }, {
-                        value: 3,
-                        display: 'd'
-                    }]
-                }]
-            ]
-        });
-    }
-
-})(mobiscroll.$);*/
-
 })
 
 /* -- Controller für Operationen View -- */
-.controller('OPCtrl', function($scope, $location, $state) {
+.controller('OPCtrl', function($scope, $location, $state, ionicDatePicker) {
 
     // Weiterleitung nach Home Screen
     $scope.goHome = function() {
     $state.go('home');
   };
 
+  var ipObj1 = {
+  callback: function (val) {  //Mandatory
+    console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+  }};
 
-  /*     var now = new Date(),
-           max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
-
-       $scope.settings = {
-           theme: 'mobiscroll',
-           display: 'bottom',
-           max: max
-       };*/
-
-/*.module('demoApp', ['mobiscroll-datetime'])
-.controller('demoController', ['$scope', function ($scope) {}]);*/
-
-/*  var now = new Date(),
-  max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
-
-  var instance = mobiscroll.date('#demo', {
-    theme: 'mobiscroll',
-    display: 'bottom',
-    max: max
-});*/
+$scope.openDatePicker = function(){
+  ionicDatePicker.openDatePicker(ipObj1);
+};
 
 })
 ;

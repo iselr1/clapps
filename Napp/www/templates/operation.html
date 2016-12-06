@@ -11,37 +11,27 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-    <label class="item item-input">
-        <div class="input-label">
-            <h2 translate="KOLOSK"></h2>
-        </div>
-        <div class="col text-right">
-          <input type="radio" id="y" name="kolosk" value="yes"> <label for="y" translate="YES"></label>
-          <label>&nbsp;&nbsp;&nbsp;</label>
-          <input type="radio" id="n" name="kolosk" value="no"> <label for="n" translate="NO"></label>
-        </div>
-    </label>
-  <!--  <ion-list>
-      <ion-radio ng-model="kolosk" ng-value="'yes'" translate="YES"></ion-radio>
-      <ion-radio ng-model="kolosk" ng-value="'no'" translate="NO"></ion-radio>
-    </ion-list>-->
-          <!--  <ion-list radio-group [(ngModel)]="kolosk">
-                <ion-item>
-                    <ion-label translate="YES"></ion-label>
-                    <ion-radio value="yes"></ion-radio>
-                </ion-item>
-                <ion-item>
-                    <ion-label translate="NO"></ion-label>
-                    <ion-radio value="no"></ion-radio>
-                </ion-item>
-            </ion-list> -->
-  <!--  <div ng-app="starter.controllersSarah" ng-controller="OPCtrl">
-        <input ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
-    </div> -->
-    <label class="item item-input">
-      <span class="input-label" translate="DATE"></span>
-      <input type="date">
-    </label>
+    <div class="row item-input">
+      <div class="col">
+          <label class="item item-input" translate="KOLOSK">
+          </label>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="y" name="kolosk" value="yes"> <label for="y" translate="YES"></label>
+          <br><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="n" name="kolosk" value="no"> <label for="n" translate="NO"></label>
+          <br><br>
+      </div>
+    </div>
+
+    <div class="row item-input">
+      <div class="col">
+        <label class="item item-input">
+          <span class="input-label" translate="DATE"></span>
+          <!--<input type="date">-->
+        </label>
+        <button class="button button-calm" ng-click="openDatePicker()">test</button>
+      </div>
+    </div>
     <div class="row">
         <div class="col">
           <center><button class="button button-calm" ng-click="goHome()" translate="NEXT"/></center>
