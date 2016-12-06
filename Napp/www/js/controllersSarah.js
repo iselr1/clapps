@@ -62,16 +62,19 @@ angular.module('starter.controllersSarah', [])
 .controller('OPCtrl', function($scope, $location, $state, ionicDatePicker, $filter) {
 
     // Weiterleitung nach Home Screen
-    $scope.goHome = function() {
+  $scope.goHome = function() {
     $state.go('home');
   };
+
+ $scope.buttonOPText = 'dd.mm.yyyy';
 
   var ipObj1 = {
   callback: function (val) {  //Mandatory
     console.log('Return value from the datepicker popup is : ' + val, new Date(val));
     var dateAsString = $filter('date')(val, "dd.MM.yyyy");
     console.log('Return value from the datepicker popup is formatted : ' + dateAsString);
-    document.getElementById('opdate').value = dateAsString;
+    $scope.buttonOPText = dateAsString;
+  //  document.getElementById('opdate').value = dateAsString;
   }};
 
 $scope.openDatePicker = function(){
