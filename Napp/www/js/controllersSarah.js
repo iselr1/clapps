@@ -8,7 +8,7 @@ Verson Nr.:         1.0
 Funktion: Alle Controller für die Views "Welcome", "TNM-Staging", "Operation"
 */
 
-angular.module('starter.controllersSarah', [])
+angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
 /* -- Controller für Welcome View -- */
 .controller('WelcomeCtrl', function($scope, $location, $state, $translate) {
