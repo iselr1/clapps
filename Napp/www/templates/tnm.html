@@ -12,46 +12,48 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
   </ion-nav-buttons>
   <ion-content>
     <label class="item item-input item-select">
-        <div class="input-label">
-            <h2 translate="CANCER"></h2>
-        </div>
-        <select ng-model="cancertype" ng-change="showSelectValue(cancertype)">
-            <option value="colon" selected>{{'KOKA' | translate}}</option>
-            <option value="rektum"> {{'REKA' | translate}}</option>
-        </select>
+      <div class="input-label">
+        <h2 translate="CANCER"></h2>
+      </div>
+      <select ng-model="cancertype" ng-change="showSelectValue(cancertype)">
+        <option value="colon" selected>{{'KOKA' | translate}}</option>
+        <option value="rektum">
+          {{'REKA' | translate}}</option>
+      </select>
     </label>
 
     <div class="row item-input">
       <div class="col">
-          <label class="item item-input" translate="TNMSTAG">
-          </label>
+        <label class="item item-input" translate="TNMSTAG"></label>
       </div>
     </div>
     <div class="row">
       <div class="col">
-          <proton:multi-list-picker>
-            <proton:multi-list-picker-list ng-model="tstage" ng-change="showSelectTValue(tstage)">
-              <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item value="3">T3</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item value="4">T4</proton:multi-list-picker-list-item>
-            </proton:multi-list-picker-list>
-            <proton:multi-list-picker-list>
-              <proton:multi-list-picker-list-item>N0</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>N1</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>N2</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>N3</proton:multi-list-picker-list-item>
-            </proton:multi-list-picker-list>
-            <proton:multi-list-picker-list>
-              <proton:multi-list-picker-list-item>M0</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>M1</proton:multi-list-picker-list-item>
-            </proton:multi-list-picker-list>
-          </proton:multi-list-picker>
-     </div>
+
+        <proton:multi-list-picker ng-model="value">
+          <proton:multi-list-picker-list alias="tstage">
+            <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="3">T3</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="4">T4</proton:multi-list-picker-list-item>
+          </proton:multi-list-picker-list>
+          <proton:multi-list-picker-list alias="nstage">
+            <proton:multi-list-picker-list-item value="0">N0</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="1">N1</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="2">N2</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="3">N3</proton:multi-list-picker-list-item>
+          </proton:multi-list-picker-list>
+          <proton:multi-list-picker-list alias="mstage">
+            <proton:multi-list-picker-list-item value="0">M0</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list-item value="1">M1</proton:multi-list-picker-list-item>
+          </proton:multi-list-picker-list>
+        </proton:multi-list-picker>
+      </div>
     </div>
 
-  <!--  <div class="row">
+
+    <!--  <div class="row">
       <div class="col">
       <label class="item item-input">
         <div class="input-label">
@@ -68,9 +70,9 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
       <input type="date">
     </label>-->
     <div class="row">
-        <div class="col">
-          <center><button class="button button-calm" ng-click="goOP()" translate="NEXT"/></center>
-        </div>
+      <div class="col">
+        <center><button class="button button-calm" ng-click="goOP()" translate="NEXT"/></center>
+      </div>
     </div>
   </ion-content>
 </ion-view>

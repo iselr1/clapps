@@ -15,7 +15,9 @@ background-color:#d3fffa;
 .ct-chartLineWeight{
   background-color: #FFF;
 }
-
+.proton-multi-list-picker {
+    font-size: 20px;
+}
 .hidden{
 display:none;
 }

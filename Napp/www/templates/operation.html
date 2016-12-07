@@ -11,8 +11,19 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
-    <div class="row item-input">
+    <div class="row">
       <div class="col">
+
+        <div class="toggle-wrapper">
+        <span class="toggle-question" translate="KOLOSK"></span>
+      </div>
+        <ion-toggle class="meds-toggle"
+                    toggle-class="toggle-calm"
+                    ng-model="complete"
+                    ng-checked="complete" ng-change="setComplete(complete)" ng-click="update()">
+          <div class="toggle-text" translate="{{setComplete.text}}"></div>
+        </ion-toggle>
+        <!--
           <label class="item item-input" translate="KOLOSK">
           </label>
           <br>
@@ -20,14 +31,22 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
           <br><br>
           &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="colosc" name="colosc" value="no"> <label for="n" translate="NO"></label>
           <br><br>
+          -->
       </div>
     </div>
 
-    <label class="item item-input">
-       <span class="input-label" translate="DATEOP"></span>
+    <div class="row">
+      <div class="col" translate="DATEOP"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+      <label class="item item-input">
+
        <button class="button button-clear button-dark" ng-click="openDatePicker()">{{buttonOPText}}</button>
        <!--<input type="date" id="opdate" placeholder="dd.mm.yyyy" ng-click="openDatePicker()">-->
     </label>
+  </div>
+  </div>
 
     <div class="row">
         <div class="col">
