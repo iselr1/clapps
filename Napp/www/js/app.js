@@ -4,11 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-timepicker', 'formlyIonic', 'nvd3', 'i4mi', 'starter.controllers', 'starter.controllersRea', 'starter.controllersSarah', 'starter.controllersTim', 'starter.controllersMauro', 'starter.services', 'jsonFormatter', 'pascalprecht.translate'])
+angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-timepicker', 'formlyIonic', 'nvd3', 'i4mi', 'starter.controllers', 'starter.controllersRea', 'starter.controllersSarah', 'starter.controllersTim', 'starter.controllersMauro', 'starter.services', 'jsonFormatter', 'pascalprecht.translate', ])
   .constant('APPNAME', 'SINA')
   .constant('APPSECRET', 'S9I35N28A')
   .run(function($ionicPlatform, $cordovaLocalNotification) {
+
     $ionicPlatform.ready(function() {
+      if (window.navigator && window.navigator.splashscreen) {
+        window.plugins.orientationLock.unlock();
+      }
       // Check for permissions to show local notifications - iOS 8 NEEDS permission to run!
       $cordovaLocalNotification.hasPermission().then(function(granted) {
         $cordovaLocalNotification.cancelAll();
@@ -43,23 +47,23 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-time
 .config(function($stateProvider, $urlRouterProvider, $translateProvider, ionicDatePickerProvider) {
 
   var datePickerObj = {
-       inputDate: new Date(),
-       titleLabel: 'Select a Date',
-       setLabel: 'Set',
-       todayLabel: 'Today',
-       closeLabel: 'Close',
-       mondayFirst: false,
-       weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-       monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-       templateType: 'popup',
-       from: new Date(2012, 8, 1),
-       to: new Date(2018, 8, 1),
-       showTodayButton: true,
-       dateFormat: 'dd MMMM yyyy',
-       closeOnSelect: false,
-       disableWeekdays: []
-     };
-     ionicDatePickerProvider.configDatePicker(datePickerObj);
+    inputDate: new Date(),
+    titleLabel: 'Select a Date',
+    setLabel: 'Set',
+    todayLabel: 'Today',
+    closeLabel: 'Close',
+    mondayFirst: false,
+    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    templateType: 'popup',
+    from: new Date(2012, 8, 1),
+    to: new Date(2018, 8, 1),
+    showTodayButton: true,
+    dateFormat: 'dd MMMM yyyy',
+    closeOnSelect: false,
+    disableWeekdays: []
+  };
+  ionicDatePickerProvider.configDatePicker(datePickerObj);
 
 
   // path to laod the language files
