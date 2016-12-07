@@ -15,9 +15,9 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
         <div class="input-label">
             <h2 translate="CANCER"></h2>
         </div>
-        <select>
-            <option selected>{{'KOKA' | translate}}</option>
-            <option> {{'REKA' | translate}}</option>
+        <select ng-model="cancertype" ng-change="showSelectValue(cancertype)">
+            <option value="colon" selected>{{'KOKA' | translate}}</option>
+            <option value="rektum"> {{'REKA' | translate}}</option>
         </select>
     </label>
 
@@ -30,12 +30,12 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
     <div class="row">
       <div class="col">
           <proton:multi-list-picker>
-            <proton:multi-list-picker-list>
-              <proton:multi-list-picker-list-item>T0</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>T1</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>T2</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>T3</proton:multi-list-picker-list-item>
-              <proton:multi-list-picker-list-item>T4</proton:multi-list-picker-list-item>
+            <proton:multi-list-picker-list ng-model="tstage" ng-change="showSelectTValue(tstage)">
+              <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
+              <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
+              <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
+              <proton:multi-list-picker-list-item value="3">T3</proton:multi-list-picker-list-item>
+              <proton:multi-list-picker-list-item value="4">T4</proton:multi-list-picker-list-item>
             </proton:multi-list-picker-list>
             <proton:multi-list-picker-list>
               <proton:multi-list-picker-list-item>N0</proton:multi-list-picker-list-item>

@@ -49,20 +49,44 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 })
 
 /* -- Controller für TNM Staging View -- */
-.controller('TNMCtrl', function($scope, $location, $state) {
+.controller('TNMCtrl', function($scope, $location, $state, schemaService){
+
+$scope.showSelectValue = function(cancertype) {
+    console.log(cancertype);
+    schemaService.setCancertype(cancertype);
+}
+
+$scope.showSelectTValue = function(tstage) {
+    console.log(tstage);
+    //schemaService.setStagingT(tstage);
+}
+
+    // Testing of Schema generation
+  /*
+    schemaService.setStagingT('1');
+    schemaService.setStagingN('0');
+    schemaService.setStagingM('0');
+  */
+
 
   // Weiterleitung nach Operationen
   $scope.goOP = function() {
+    //console.log($scope.cancertype);
     $state.go('op');
   };
 
 })
 
 /* -- Controller für Operationen View -- */
-.controller('OPCtrl', function($scope, $location, $state, ionicDatePicker, $filter) {
+.controller('OPCtrl', function($scope, $location, $state, ionicDatePicker, $filter, schemaService) {
+
+
+  /*schemaService.setColonoscopyComplete(true);
+  */
 
     // Weiterleitung nach Home Screen
   $scope.goHome = function() {
+    schemaService.genSchema();
     $state.go('home');
   };
 
@@ -71,6 +95,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
   var ipObj1 = {
   callback: function (val) {  //Mandatory
     console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+    schemaService.setOpDate(new Date(val));
     var dateAsString = $filter('date')(val, "dd.MM.yyyy");
     console.log('Return value from the datepicker popup is formatted : ' + dateAsString);
     $scope.buttonOPText = dateAsString;
