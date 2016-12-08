@@ -77,9 +77,9 @@ angular.module('starter.services', [])
 
   // *************************Get function**************************
   schemaService.getAllAftercareItems = function() {
-    return allAftercareItems;
-  }
-
+      return allAftercareItems;
+    }
+    // Funktion to get the years(sorted ascending) of the appoinments in the schema
   schemaService.getYears = function() {
     var years = []
     for (var index in allAftercareItems) {
@@ -89,6 +89,10 @@ angular.module('starter.services', [])
 
       }
     }
+    // Sort the years ascending
+    years.sort(function(a, b) {
+      return a - b
+    });
     return years;
   }
 
