@@ -74,9 +74,22 @@ angular.module('starter.services', [])
   // Array for the diffrent aftercare items
   var allAftercareItems = [];
 
+
   // *************************Get function**************************
   schemaService.getAllAftercareItems = function() {
     return allAftercareItems;
+  }
+
+  schemaService.getYears = function() {
+    var years = []
+    for (var index in allAftercareItems) {
+      if (years.indexOf(allAftercareItems[index].date.getFullYear()) < 0) {
+        years.push(allAftercareItems[index].date.getFullYear());
+      } else {
+
+      }
+    }
+    return years;
   }
 
   // *************************** Set functions **********************

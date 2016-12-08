@@ -23,16 +23,18 @@ currentLanguage, to detect the current language;
 */
 
 .controller('KoerperCtrl', function($scope, $state, I4MIMidataService, schemaService) {
-  // Testing of Schema generation
-  schemaService.setCancertype("colon");
-  schemaService.setStagingT('1');
-  schemaService.setStagingN('0');
-  schemaService.setStagingM('0');
-  schemaService.setColonoscopyComplete(true);
-  schemaService.setOpDate(new Date);
-  console.log(new Date);
-  schemaService.genSchema();
-
+  /*
+    // Testing of Schema generation
+    schemaService.setCancertype("colon");
+    schemaService.setStagingT('1');
+    schemaService.setStagingN('0');
+    schemaService.setStagingM('0');
+    schemaService.setColoscopyComplete(true);
+    schemaService.setOpDate(new Date);
+    console.log(new Date);
+    schemaService.genSchema();
+    console.log(schemaService.getYears());
+  */
   // Chart for the weight
   var $configLineWeight = {
     name: '.ct-chartLineWeight',
