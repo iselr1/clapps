@@ -118,7 +118,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
   // Go to the Homescreen & set the coloskopie value and generate the Schema
   $scope.goHome = function() {
-    schemaService.setColonoscopyComplete($scope.complete);
+    schemaService.setColoscopyComplete($scope.complete);
     console.log($scope.complete);
     schemaService.genSchema();
     $state.go('home');

@@ -141,5 +141,12 @@
   }, {
     "id": "12",
     "LABEL": "Dez"
-  }]
+  }],
+  "CEA":"CEA-Titer",
+  "CEACLINIC": "Klinische Untersuchung, CEA-Titer",
+  "COLOSCOPY": "Koloskopie",
+  "ENDOSCOPY": "Untere flexible Endoskopie",
+  "ENDOSONOGRAPHYORMRIPERLVIC": "Endosonographie oder Becken MRI",
+  "CTABDOMENPELVIC": "CT Thorax-Abdomen-Becken",
+  "CTABDOMEN": "CT Thorax-Abdomen"
 }
