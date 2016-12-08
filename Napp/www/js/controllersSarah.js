@@ -49,11 +49,12 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 })
 
 /* -- Controller für TNM Staging View -- */
-.controller('TNMCtrl', function($scope, $location, $state, schemaService) {
+.controller('TNMCtrl', function($scope, $location, $state, schemaService, $ionicPopup, $translate) {
 
+  var cancer = '';
   $scope.showSelectValue = function(cancertype) {
-      console.log(cancertype);
-      schemaService.setCancertype(cancertype);
+      cancer = cancertype;
+      console.log(cancer);
     }
     // Initialize an array for the stages
   $scope.value = {};
@@ -61,6 +62,8 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
   // Weiterleitung nach Operationen
   $scope.goOP = function() {
+    // Set the cancertype to the schema
+    schemaService.setCancertype(cancer);
     // Set the values of the diffrent stages
     $scope.$watch('value.tstage', function() {
       console.log($scope.value.tstage);
@@ -74,9 +77,45 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
       console.log($scope.value.mstage);
       schemaService.setStagingM($scope.value.mstage);
     })
-    $state.go('op');
-  };
 
+    if (cancer == '') {
+      // If the cancertype was not choosen the user gets informed with a popup
+      var popTitle = $translate.instant('IMPORTANT');
+      var popTemplate = $translate.instant('FILLCORRECTCANCER');
+
+      var alertPopup = $ionicPopup.alert({
+        title: popTitle,
+        template: popTemplate,
+      });
+      // If the value for m is 1 we can't generate an appropriate aftercare plan, and the user gets informed with a popup
+    } else if ($scope.value.mstage == 1) {
+      var popTitle = $translate.instant('IMPORTANT');
+      var popTemplate = $translate.instant('DONOTUSETHISAPP');
+
+      var alertPopup = $ionicPopup.alert({
+        title: popTitle,
+        template: popTemplate,
+      });
+      alertPopup.then(function() {
+          ionic.Platform.exitApp();
+          window.close();
+        })
+        // If the values vor tnm are all zero the user is assigned via a popup to fill the staging correctly
+    } else if (($scope.value.tstage == 0) && ($scope.value.nstage == 0) && ($scope.value.mstage == 0)) {
+      var popTitle = $translate.instant('IMPORTANT');
+      var popTemplate = $translate.instant('FILLCORRECTTNM');
+
+      var alertPopup = $ionicPopup.alert({
+        title: popTitle,
+        template: popTemplate,
+      });
+    }
+    // The user the tnm correctly so we can go to the next page
+    else {
+      $state.go('op');
+    }
+
+  }
 })
 
 /* -- Controller für Operationen View -- */

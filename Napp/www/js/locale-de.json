@@ -142,11 +142,15 @@
     "id": "12",
     "LABEL": "Dez"
   }],
-  "CEA":"CEA-Titer",
+  "CEA": "CEA-Titer",
   "CEACLINIC": "Klinische Untersuchung, CEA-Titer",
   "COLOSCOPY": "Koloskopie",
   "ENDOSCOPY": "Untere flexible Endoskopie",
   "ENDOSONOGRAPHYORMRIPERLVIC": "Endosonographie oder Becken MRI",
   "CTABDOMENPELVIC": "CT Thorax-Abdomen-Becken",
-  "CTABDOMEN": "CT Thorax-Abdomen"
+  "CTABDOMEN": "CT Thorax-Abdomen",
+  "IMPORTANT": "WICHTIG",
+  "DONOTUSETHISAPP": "Die App ist nicht für Personen mit Ihrem medizinischen Hintergrund geeignet, bitte befolgen Sie die Anweisungen Ihres Arztes für die Nachsorge.",
+  "FILLCORRECTCANCER": "Bitte wählen Sie ihre Krebsart",
+  "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus."
 }
