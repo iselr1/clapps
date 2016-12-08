@@ -28,10 +28,11 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
       </div>
     </div>
     <div class="row">
+      <div class="col col-25"></div>
       <div class="col">
 
-        <proton:multi-list-picker ng-model="value">
-          <proton:multi-list-picker-list alias="tstage">
+        <proton:multi-list-picker ng-model="value" style="width:100%">
+          <proton:multi-list-picker-list alias="tstage" strict-matching="trues">
             <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
             <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
             <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
@@ -50,6 +51,7 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
           </proton:multi-list-picker-list>
         </proton:multi-list-picker>
       </div>
+      <div class="col col-25"></div>
     </div>
 
 
