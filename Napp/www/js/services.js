@@ -135,7 +135,6 @@ angular.module('starter.services', [])
 
   function setAfterCareItems(interval, opdate, description, itemArray) {
 
-    console.log()
     for (var i = 0; i < interval.length; i++) {
       var afterCareItem = {};
       afterCareItem.date = new Date(new Date(opdate).setMonth(opdate.getMonth() + interval[i]));
@@ -156,7 +155,7 @@ angular.module('starter.services', [])
       }
       // The person has stage 2 or 3
       else if (((stagingT == 1 || stagingT == 2) && (stagingN > 0) && (stagingM == 0)) || ((stagingT == 3 || stagingT == 4) && stagingM == 0)) {
-        allAftercareItems = setAfterCareItems(ceaTiterStageTwoThree, opDate, d_ceaClinic);
+        allAftercareItems = setAfterCareItems(ceaTiterStageTwoThree, opDate, d_ceaClinic, allAftercareItems);
 
         allAftercareItems = setAfterCareItemsColoscopy(coloscopyStageTwoThree, opDate, coloscopyComplete, d_coloscopy, allAftercareItems);
 
