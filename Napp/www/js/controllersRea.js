@@ -23,7 +23,7 @@ currentLanguage, to detect the current language;
 */
 
 .controller('KoerperCtrl', function($scope, $state, I4MIMidataService, schemaService) {
-  /*
+
     // Testing of Schema generation
     schemaService.setCancertype("colon");
     schemaService.setStagingT('1');
@@ -33,8 +33,8 @@ currentLanguage, to detect the current language;
     schemaService.setOpDate(new Date);
     console.log(new Date);
     schemaService.genSchema();
-    console.log(schemaService.getYears());
-  */
+    schemaService.getAllAftercareItems();
+
   // Chart for the weight
   var $configLineWeight = {
     name: '.ct-chartLineWeight',

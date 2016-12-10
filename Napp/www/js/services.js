@@ -77,24 +77,44 @@ angular.module('starter.services', [])
 
   // *************************Get function**************************
   schemaService.getAllAftercareItems = function() {
-      return allAftercareItems;
-    }
-    // Funktion to get the years(sorted ascending) of the appoinments in the schema
-  schemaService.getYears = function() {
     var years = []
-    for (var index in allAftercareItems) {
-      if (years.indexOf(allAftercareItems[index].date.getFullYear()) < 0) {
-        years.push(allAftercareItems[index].date.getFullYear());
-      } else {
-
+    var itemArray = allAftercareItems;
+    for (var index in itemArray) {
+      if (years.indexOf(itemArray[index].date.getFullYear()) < 0) {
+        years.push(itemArray[index].date.getFullYear());
       }
     }
-    // Sort the years ascending
-    years.sort(function(a, b) {
-      return a - b
-    });
-    return years;
-  }
+    var statusObject = {};
+        // Status der Termine ob Abgeschlossen oder Zukunft
+        statusObject.status = "myStatus";
+        // Array mit den Jahren wird dem status Objekt hinzugefügt
+        var yearsArray = [];
+        statusObject['years'] = yearsArray;
+
+    for(var j = 0; j < years.length; j++){
+      var yearObject = {};
+      yearObject.fullYear = years[j];
+      var appointmentsArray = [];
+      yearObject['appointments'] = appointmentsArray;
+      yearsArray.push(yearObject);
+      console.log(itemArray);
+      for(var k = 0; k < itemArray.length; k++){
+if (typeof itemArray[k].date != "number") {
+        if(years[j] == itemArray[k].date.getFullYear()){
+          itemArray[k].date = itemArray[k].date.getMonth();
+          appointmentsArray.push(itemArray[k]);
+        }
+}
+      }
+
+    }
+    console.log(statusObject);
+
+
+    return statusObject;
+
+      return allAftercareItems;
+    }
 
   // *************************** Set functions **********************
   schemaService.setCancertype = function(type) {
@@ -133,6 +153,7 @@ angular.module('starter.services', [])
     return itemArray;
   }
 
+
   function setAfterCareItems(interval, opdate, description, itemArray) {
 
     for (var i = 0; i < interval.length; i++) {
@@ -140,8 +161,9 @@ angular.module('starter.services', [])
       afterCareItem.date = new Date(new Date(opdate).setMonth(opdate.getMonth() + interval[i]));
       afterCareItem.description = description;
       itemArray.push(afterCareItem);
-    }
-    return itemArray;
+      }
+      return itemArray;
+
   }
   // To generate the date plans for the diffrent aftercare items according to the cancer and it's stage
   schemaService.genSchema = function() {
@@ -149,7 +171,6 @@ angular.module('starter.services', [])
       // The person has stage 1
       if ((stagingT == 1 || stagingT == 2) && stagingN == 0 && stagingM == 0) {
         allAftercareItems = setAfterCareItems(ceaTiterStageOne, opDate, d_cea, allAftercareItems);
-
         allAftercareItems = setAfterCareItemsColoscopy(coloscopyStageOne, opDate, coloscopyComplete, d_coloscopy, allAftercareItems);
         console.log(allAftercareItems);
       }
