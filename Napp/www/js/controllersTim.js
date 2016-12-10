@@ -1,101 +1,62 @@
 angular.module('starter.controllersTim', [])
 
 
-.controller('TermineCtrl', function($scope, $state, jsonService) {
+.controller('TermineCtrl', function($scope, $state, jsonService, schemaService) {
+
+  // Get some Values from jsonService
+  // Set Language List
   $scope.data = jsonService.getJson();
   var jsonData = jsonService.getJson();
   var month= jsonData.MONTHS;
   $scope.familyDoc = jsonData.FAMILIYDOC;
   $scope.oncDoc = jsonData.ONCOLOGY;
   $scope.gastDoc = jsonData.GASTROENTEROLOGIST;
-
   $scope.myAppointments = [];
-
   var details = angular.element( document.querySelector( '#details' ));
   var allAppointments = angular.element( document.querySelector( '#allAppointments' ));
 
-  var d = new Date();
-  var doneAppointments = {
-  "state":"DONE APPOINTMENTS",
-  "years":[{
-    "fullYear":d.getFullYear()+1,
-    "appointments":[{}]
-  },{
-    "fullYear":d.getFullYear()+2,
-    "appointments":[{}]
-  },{
-    "fullYear":d.getFullYear()+3,
-    "appointments":[{}]
-  },{
-    "fullYear":d.getFullYear()+4,
-    "appointments":[{}]
-  }]
+
+  // Check if Schema is already generated
+  // If not create the Schema
+  if(localStorage.getItem('appointmentStatus') == null){
+    var done = schemaService.getDomStructure();
+    var future =  schemaService.getAllAftercareItems();
+    for (i = 0; i < done.years.length; i++) {done.years[i].status = "hidden";}
+    localStorage.setItem('future', JSON.stringify(future));
+    localStorage.setItem('done', JSON.stringify(done));
+    localStorage.setItem('appointmentStatus', "done");
   }
+
+  // Load the Schema from the LocalStorage into the DOM
+  var doneAppointments = JSON.parse(localStorage.getItem('done'));
+  var actSchema = JSON.parse(localStorage.getItem('future'));
   $scope.myAppointments.push(doneAppointments);
+  $scope.myAppointments.push(actSchema);
 
-  for (i = 0; i < 4; i++) {
-    doneAppointments.years[i].appointments.splice(0,1);
-    doneAppointments.years[i].status = "hidden";
-  }
-
-var d = new Date();
-var T1T2N0 = {
-    "state":"FUTURE APPOINTMENTS",
-    "years":[{
-      "fullYear":d.getFullYear()+1,
-      "appointments":[{
-        "month": month[d.getMonth()].LABEL,
-        "description": "CEA-Titer",
-        "results":""
-    },{
-      "month": month[d.getMonth()].LABEL,
-      "description": "Koloskopie",
-      "results":""
-    }]
-  },{
-    "fullYear":d.getFullYear()+2,
-    "appointments":[{
-      "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer",
-      "results":""
-    }]
-  },{
-    "fullYear":d.getFullYear()+3,
-    "appointments":[{
-      "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer",
-      "results":""
-  },{
-    "month": month[d.getMonth()].LABEL,
-      "description": "Koloskopie",
-    "results":""}]
-  },{
-    "fullYear":d.getFullYear()+4,
-    "appointments":[{
-      "month": month[d.getMonth()].LABEL,
-      "description": "CEA-Titer",
-      "results":""
-    }]
-  }]
-}
-$scope.myAppointments.push(T1T2N0);
-
+  // Show the Details of the Appointment
   $scope.showAppointmentDetails = function(status, parent, desc){
 
-    if(status == 1){
-      $scope.saveAppointment.toggle = false;
-      var  fromAppointments = T1T2N0;
-
-    }
-    else{
-      $scope.saveAppointment.toggle = true;
-      var  fromAppointments = doneAppointments;
-    }
-
+    // First of all Check if its a done Appointment or a future Appointment
+    if(status == 1)
+      {
+        // This is an Appointment from the future Appointments
+        $scope.saveAppointment.toggle = false;
+        var  fromAppointments = actSchema;
+      }
+      else
+      {
+        // This is an Appointment from the doneAppointments
+        $scope.saveAppointment.toggle = true;
+        var  fromAppointments = doneAppointments;
+      }
+      // Get the Index of the actual appointment
+      // and load the information into the detail View!
       var tempIndex = this.$index;
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
       $scope.saveAppointment.results = terminatedItem.results;
+      $scope.saveAppointment.date = terminatedItem.date;
 
+      // Add and remove some css hidden class to fade in and out
       details.removeClass('hidden');
       allAppointments.addClass("hidden");
 
@@ -104,60 +65,93 @@ $scope.myAppointments.push(T1T2N0);
       $scope.parent=parent;
       $scope.index=tempIndex;
   }
-  $scope.switchAppointmentStatus = function(fromAppointments, toAppointments, parent, index){
-
-      var tempIndex = index;
-      var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
-
-      fromAppointments.years[parent].appointments.splice(tempIndex, tempIndex+1);
-      toAppointments.years[parent].appointments.push(terminatedItem);
-
-      if(toAppointments.years[parent].appointments.length > 0){
-        toAppointments.years[parent].status = "";
-      }
-
-      if(fromAppointments.years[parent].appointments.length == 0){
-        fromAppointments.years[parent].status = "hidden";
-      }
-    }
-
+  // When Save appointment button is pressed
+  // The Actual Switch from the list into the other list.
   $scope.saveAppointment = function(status, parent, index){
+
+    // Check if its from the done Appointment List or from the Future appointment List
+    // This is from the actual Schema into the Done Appointments
     if(status == 1){
-    var  fromAppointments = T1T2N0;
+    var  fromAppointments = actSchema;
     var  toAppointments = doneAppointments;
     var toggleState = true;
     }
+    // This is from the doneAppointments back into the Schema
     else{
     var  fromAppointments = doneAppointments;
-    var  toAppointments = T1T2N0;
+    var  toAppointments = actSchema;
     var  toggleState = false;
     }
-      var tempAppoint = fromAppointments.years[parent].appointments[index];
-      tempAppoint.results = $scope.saveAppointment.results;
+
+    // Save the Data into the DOM Tree and JSON Object
+    var tempAppoint = fromAppointments.years[parent].appointments[index];
+    tempAppoint.results = $scope.saveAppointment.results;
+    // Check if Date is undefined
       if($scope.saveAppointment.date !== undefined ){
-        tempAppoint.month = $scope.saveAppointment.date;
+        tempAppoint.date = $scope.saveAppointment.date;
         $scope.saveAppointment.date = undefined;
       }
+      // Check the toggleState to do the activate the switchAppointmentStatus function
       if($scope.saveAppointment.toggle==toggleState){
       $scope.switchAppointmentStatus(fromAppointments, toAppointments, parent, index);
       }
+      // Reset the toggle
+      // Reset the results
       $scope.saveAppointment.toggle = false;
       $scope.saveAppointment.results = "";
+      // Use the CancelAppointment Function to close the detail View
       $scope.cancelAppointment();
-
+      // Save the Data into the localStorage
+      saveData();
   }
 
+  //Switch the Status of the Appointment, from Future to done or vice versa.
+  $scope.switchAppointmentStatus = function(fromAppointments, toAppointments, parent, index){
 
+      // get the actual Appointment
+      var tempIndex = index;
+      var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
+
+      // Splitt it from the Appointment List into the other list.
+      fromAppointments.years[parent].appointments.splice(tempIndex, tempIndex+1);
+      toAppointments.years[parent].appointments.push(terminatedItem);
+
+      // Check if Appointment List is Empty!
+      // If Appointmentlist is not empty remove hidden Class
+      if(toAppointments.years[parent].appointments.length > 0){
+        toAppointments.years[parent].status = "";
+      }
+      // Check if Appointment List is Empty!
+      // If Appointmentlist it is empty, hide it
+      if(fromAppointments.years[parent].appointments.length == 0){
+        fromAppointments.years[parent].status = "hidden";
+      }
+      // Save the Data into the localStorage
+      saveData();
+    }
+
+  //Cancel the AppointentDetail view
   $scope.cancelAppointment = function(){
+    // remove the hidden class from the appointemntLists
+    // add the hiddenClass to the detailView
     details.addClass("hidden");
     allAppointments.removeClass("hidden");
   }
 
+  // fold the List function
   $scope.closeContent = function($index){
+    // Select the object and check if it has the class hidden
+    // remove it or add it
     if(angular.element(document.querySelector('.content'+$index)).hasClass('hidden'))
     {angular.element(document.querySelector('.content'+$index)).removeClass('hidden');}
     else{angular.element(document.querySelector('.content'+$index)).addClass('hidden');}
   }
+
+  // Save the Data into the localStorage
+  saveData = function(){
+    localStorage.setItem('future', JSON.stringify(actSchema));
+    localStorage.setItem('done', JSON.stringify(doneAppointments));
+    }
 })
 
 .controller('ExportCtrl', function($scope, $state) {
@@ -186,5 +180,7 @@ $scope.myAppointments.push(T1T2N0);
             alert("Notification 1234 Scheduled: " + isScheduled);
         });
     }
+
+
 
 });

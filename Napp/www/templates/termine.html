@@ -22,7 +22,7 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
     ------------------------------------->
     <div id="allAppointments">
       <div class="list card appointments"  ng-repeat="history in myAppointments">
-        <div class="history item " ng-click="closeContent({{$index}})" translate="{{history.state}} <i class ='icon icon ion-arrow-down-b' style='float:right; font-size:130%'></i>">
+        <div class="history item " ng-click="closeContent({{$index}})" translate="{{history.state}}">
         </div>
 
 
@@ -33,7 +33,7 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
 
             <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
               <div class="appointment row" >
-                <div class="month col col-33">{{appointment.month | translate}}</div>
+                <div class="month col col-33">{{appointment.date | translate}}</div>
                 <div class="col">{{appointment.description | translate}}</div>
                 <div class="col col-25 detailButton" ng-click="showAppointmentDetails({{$parent.$parent.$index}},{{$parent.$index}},'{{appointment.description}}')"><span translate="DETAILS" ></span></div>
               </div>

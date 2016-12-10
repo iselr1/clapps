@@ -24,17 +24,6 @@ currentLanguage, to detect the current language;
 
 .controller('KoerperCtrl', function($scope, $state, I4MIMidataService, schemaService) {
 
-    // Testing of Schema generation
-    schemaService.setCancertype("colon");
-    schemaService.setStagingT('1');
-    schemaService.setStagingN('0');
-    schemaService.setStagingM('0');
-    schemaService.setColoscopyComplete(true);
-    schemaService.setOpDate(new Date);
-    console.log(new Date);
-    schemaService.genSchema();
-    schemaService.getAllAftercareItems();
-
   // Chart for the weight
   var $configLineWeight = {
     name: '.ct-chartLineWeight',
@@ -88,7 +77,9 @@ currentLanguage, to detect the current language;
 })
 
 .controller('UeberCtrl', function($scope, $state) {
+
   $scope.goSettings = function() {
+      console.log(localStorage.getItem('appointmentStatus'));
     $state.go('einstellungen');
   };
   $scope.goDataprotection = function() {

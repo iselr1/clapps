@@ -45,6 +45,7 @@ angular.module('starter.services', [])
   var d_endosonography = jsonData.ENDOSONOGRAPHYORMRIPERLVIC;
   var d_ctAbomenPelvic = jsonData.CTABDOMENPELVIC;
   var d_ctAbdomen = jsonData.CTABDOMEN;
+  var d_month = jsonData.MONTHS;
 
   // Variables for the schema generation
   var cancertype = '';
@@ -76,7 +77,7 @@ angular.module('starter.services', [])
 
 
   // *************************Get function**************************
-  schemaService.getAllAftercareItems = function() {
+  schemaService.getYears = function (){
     var years = []
     var itemArray = allAftercareItems;
     for (var index in itemArray) {
@@ -84,9 +85,30 @@ angular.module('starter.services', [])
         years.push(itemArray[index].date.getFullYear());
       }
     }
+    return years;
+  }
+  schemaService.getDomStructure = function(){
+    var years = schemaService.getYears();
+    var doneAppointments = {}
+    doneAppointments.state = "DONE APPOINTMENTS";
+    var yearsArray= [];
+    doneAppointments['years'] = yearsArray;
+
+      for(var j = 0; j < years.length; j++){
+      var yearObject = {};
+      yearObject.fullYear = years[j];
+      var appointmentsArray = [];
+      yearObject['appointments'] = appointmentsArray;
+      yearsArray.push(yearObject);
+    }
+    return doneAppointments;
+  }
+  schemaService.getAllAftercareItems = function() {
+    var itemArray = allAftercareItems;
+    var years = schemaService.getYears();
     var statusObject = {};
         // Status der Termine ob Abgeschlossen oder Zukunft
-        statusObject.status = "myStatus";
+        statusObject.state = "FUTURE APPOINTMENTS";
         // Array mit den Jahren wird dem status Objekt hinzugefügt
         var yearsArray = [];
         statusObject['years'] = yearsArray;
@@ -99,9 +121,9 @@ angular.module('starter.services', [])
       yearsArray.push(yearObject);
       console.log(itemArray);
       for(var k = 0; k < itemArray.length; k++){
-if (typeof itemArray[k].date != "number") {
+if (itemArray[k].date instanceof Date) {
         if(years[j] == itemArray[k].date.getFullYear()){
-          itemArray[k].date = itemArray[k].date.getMonth();
+          itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
           appointmentsArray.push(itemArray[k]);
         }
 }
@@ -112,9 +134,7 @@ if (typeof itemArray[k].date != "number") {
 
 
     return statusObject;
-
-      return allAftercareItems;
-    }
+  }
 
   // *************************** Set functions **********************
   schemaService.setCancertype = function(type) {
