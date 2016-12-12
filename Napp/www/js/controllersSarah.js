@@ -18,7 +18,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     $state.go('tnm');
   };
 
-  //Choice for language
+  // Sprache auswählen
   $scope.languageList = [{
     id: '1',
     name: 'Deutsch',
@@ -29,10 +29,10 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     token: 'fr'
   }];
 
-  // Set the selectoption to the current language
+  // Die ausgewählte Sprache setzen
   $scope.languageSelected = currentLanguage();
 
-  // Get the current language
+  // Momentane Sprache holen
   function currentLanguage() {
     if (($translate.proposedLanguage() || $translate.use()) == "fr") {
       return '2';
@@ -41,7 +41,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     }
   };
 
-  // Change language if the selectoption changed
+  // Sprache ändern, wenn anderes ausgewählt im Select
   $scope.onchangeLanguage = function(key) {
     $translate.use(key.token);
   };
@@ -52,6 +52,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 .controller('TNMCtrl', function($scope, $location, $state, schemaService, $ionicPopup, $translate) {
 
   var cancer = '';
+
   $scope.showSelectValue = function(cancertype) {
       cancer = cancertype;
       console.log(cancer);
