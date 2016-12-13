@@ -22,7 +22,7 @@ onchangeLanguage, to alter the app language;
 currentLanguage, to detect the current language;
 */
 
-.controller('KoerperCtrl', function($scope, $state, I4MIMidataService, schemaService) {
+.controller('KoerperCtrl', function($scope, $state, I4MIMidataService) {
 
   // Chart for the weight
   var $configLineWeight = {
@@ -79,7 +79,7 @@ currentLanguage, to detect the current language;
 .controller('UeberCtrl', function($scope, $state) {
 
   $scope.goSettings = function() {
-      console.log(localStorage.getItem('appointmentStatus'));
+    console.log(localStorage.getItem('appointmentStatus'));
     $state.go('einstellungen');
   };
   $scope.goDataprotection = function() {

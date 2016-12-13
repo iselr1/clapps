@@ -77,7 +77,7 @@ angular.module('starter.services', [])
 
 
   // *************************Get function**************************
-  schemaService.getYears = function (){
+  schemaService.getYears = function() {
     var years = []
     var itemArray = allAftercareItems;
     for (var index in itemArray) {
@@ -87,14 +87,14 @@ angular.module('starter.services', [])
     }
     return years;
   }
-  schemaService.getDomStructure = function(){
+  schemaService.getDomStructure = function() {
     var years = schemaService.getYears();
     var doneAppointments = {}
     doneAppointments.state = "DONE APPOINTMENTS";
-    var yearsArray= [];
+    var yearsArray = [];
     doneAppointments['years'] = yearsArray;
 
-      for(var j = 0; j < years.length; j++){
+    for (var j = 0; j < years.length; j++) {
       var yearObject = {};
       yearObject.fullYear = years[j];
       var appointmentsArray = [];
@@ -107,28 +107,34 @@ angular.module('starter.services', [])
     var itemArray = allAftercareItems;
     var years = schemaService.getYears();
     var statusObject = {};
-        // Status der Termine ob Abgeschlossen oder Zukunft
-        statusObject.state = "FUTURE APPOINTMENTS";
-        // Array mit den Jahren wird dem status Objekt hinzugefügt
-        var yearsArray = [];
-        statusObject['years'] = yearsArray;
+    // Status der Termine ob Abgeschlossen oder Zukunft
+    statusObject.state = "FUTURE APPOINTMENTS";
+    // Array mit den Jahren wird dem status Objekt hinzugefügt
+    var yearsArray = [];
+    statusObject['years'] = yearsArray;
 
-    for(var j = 0; j < years.length; j++){
+    for (var j = 0; j < years.length; j++) {
       var yearObject = {};
       yearObject.fullYear = years[j];
       var appointmentsArray = [];
       yearObject['appointments'] = appointmentsArray;
       yearsArray.push(yearObject);
       console.log(itemArray);
-      for(var k = 0; k < itemArray.length; k++){
-if (itemArray[k].date instanceof Date) {
-        if(years[j] == itemArray[k].date.getFullYear()){
-          itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
-          appointmentsArray.push(itemArray[k]);
+      for (var k = 0; k < itemArray.length; k++) {
+        if (itemArray[k].date instanceof Date) {
+          if (years[j] == itemArray[k].date.getFullYear()) {
+            itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
+            appointmentsArray.push(itemArray[k]);
+          }
         }
-}
       }
-
+      //Sort the appointmentsArray according to the dates
+      appointmentsArray.sort(function(a, b) {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+      });
+      console.log(appointmentsArray);
     }
     console.log(statusObject);
 
@@ -181,8 +187,8 @@ if (itemArray[k].date instanceof Date) {
       afterCareItem.date = new Date(new Date(opdate).setMonth(opdate.getMonth() + interval[i]));
       afterCareItem.description = description;
       itemArray.push(afterCareItem);
-      }
-      return itemArray;
+    }
+    return itemArray;
 
   }
   // To generate the date plans for the diffrent aftercare items according to the cancer and it's stage
