@@ -1,7 +1,7 @@
 angular.module('starter.controllersTim', [])
 
 
-.controller('TermineCtrl', function($scope, $state,$filter,ionicDatePicker, jsonService, schemaService) {
+.controller('TermineCtrl', function($scope,$ionicScrollDelegate, $state,$filter,ionicDatePicker, jsonService, schemaService) {
 
   // Get some Values from jsonService
   // Set Language List
@@ -35,7 +35,7 @@ angular.module('starter.controllersTim', [])
   console.log(actSchema);
   // Show the Details of the Appointment
   $scope.showAppointmentDetails = function(status, parent, desc, month){
-
+     $ionicScrollDelegate.getScrollPosition().top;
     // First of all Check if its a done Appointment or a future Appointment
     if(status == 1)
       {
