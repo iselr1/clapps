@@ -69,14 +69,14 @@ currentLanguage, to detect the current language;
   $scope.showNoValPopup = function(vitalsign) {
     var alertPopup = $ionicPopup.alert({
       title: "Keinen Wert eingetragen!",
-      template: "Bitte gib dein" + vitalsign + "im dafür vorgesehenen Feld ein."
+      template: "Bitte gib dein " + vitalsign + " im dafür vorgesehenen Feld ein."
     });
   }
 
   $scope.showNotNumeric = function(vitalsign) {
       var alertPopup = $ionicPopup.alert({
         title: 'Ungültiger Wert eingetragen!',
-        template: "Bitte gib dein" + vitalsign + "in kg an. Beispiel: 75"
+        template: "Bitte gib dein " + vitalsign + " als Zahl an. Beispiel: 62"
       });
     }
     // general options for the chartist
