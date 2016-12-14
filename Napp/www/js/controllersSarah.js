@@ -13,6 +13,10 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 /* -- Controller für Welcome View -- */
 .controller('WelcomeCtrl', function($scope, $location, $state, $translate) {
 
+  if(localStorage.getItem('appointmentStatus') === 'done'){
+      $state.go('home');
+  }
+
   // Weiterleitung nach TNM Staging
   $scope.goTNM = function() {
     $state.go('tnm');

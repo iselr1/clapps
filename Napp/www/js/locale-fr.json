@@ -150,5 +150,8 @@
   "IMPORTANT": "IMPORTANT",
   "DONOTUSETHISAPP": "Cette Application n'est pas applicable pour des personnes avec votre histoire médicale, s'il vous plaît respecter les instruction de vôtre médcin concernant votre suivi médical.",
   "FILLCORRECTCANCER": "S'il vous plaît choissisez vôtre type de carcinome",
-  "FILLCORRECTTNM": "S'il vous plaît remplissez la classification TNM selon les directives de vôtre médcin."
+  "FILLCORRECTTNM": "S'il vous plaît remplissez la classification TNM selon les directives de vôtre médcin.",
+  "RESET":"Effacer",
+  "RESETAPP":"Effacer toutes les données",
+  "RESETAPPTEXT":"Êtes-vous sûr de vouloir supprimer tous les données?"
 }

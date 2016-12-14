@@ -16,6 +16,7 @@ Function: Possiblity to alter diffrent settings like, the reminder sound and the
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
+    <div class="card">
     <!-- Alter the sound of the reminder -->
     <label class="item item-input item-select">
         <div class="input-label">
@@ -35,6 +36,14 @@ Function: Possiblity to alter diffrent settings like, the reminder sound and the
     ng-options="language.id as language.name for language in languageList" ng-change="onchangeLanguage(languageList[languageSelected-1])">
     </select>
     </label>
+      <label class="item">
+
+            <span translate="RESETAPP"></span><button translate = "RESET" class="button  button-assertive" style="float:right;" ng-click="resetApp()"></button>
+
+      </label>
+      <label class="item ">
   <button class="button button-small button-positive" ng-click="schedule('test', 'msg')">Notification Test</button>
+</label>
+</div>
   </ion-content>
 </ion-view>

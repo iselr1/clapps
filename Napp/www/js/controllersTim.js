@@ -1,7 +1,7 @@
 angular.module('starter.controllersTim', [])
 
 
-.controller('TermineCtrl', function($scope, $state, jsonService, schemaService) {
+.controller('TermineCtrl', function($scope, $state,$filter,ionicDatePicker, jsonService, schemaService) {
 
   // Get some Values from jsonService
   // Set Language List
@@ -32,9 +32,9 @@ angular.module('starter.controllersTim', [])
   var actSchema = JSON.parse(localStorage.getItem('future'));
   $scope.myAppointments.push(doneAppointments);
   $scope.myAppointments.push(actSchema);
-
+  console.log(actSchema);
   // Show the Details of the Appointment
-  $scope.showAppointmentDetails = function(status, parent, desc){
+  $scope.showAppointmentDetails = function(status, parent, desc, month){
 
     // First of all Check if its a done Appointment or a future Appointment
     if(status == 1)
@@ -61,6 +61,7 @@ angular.module('starter.controllersTim', [])
       allAppointments.addClass("hidden");
 
       $scope.descDetail = desc;
+      $scope.descMonth = month;
       $scope.status=status;
       $scope.parent=parent;
       $scope.index=tempIndex;
@@ -82,7 +83,6 @@ angular.module('starter.controllersTim', [])
     var  toAppointments = actSchema;
     var  toggleState = false;
     }
-
     // Save the Data into the DOM Tree and JSON Object
     var tempAppoint = fromAppointments.years[parent].appointments[index];
     tempAppoint.results = $scope.saveAppointment.results;
@@ -113,7 +113,8 @@ angular.module('starter.controllersTim', [])
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
 
       // Splitt it from the Appointment List into the other list.
-      fromAppointments.years[parent].appointments.splice(tempIndex, tempIndex+1);
+
+      fromAppointments.years[parent].appointments.splice(tempIndex, 1);
       toAppointments.years[parent].appointments.push(terminatedItem);
 
       // Check if Appointment List is Empty!
@@ -152,6 +153,20 @@ angular.module('starter.controllersTim', [])
     localStorage.setItem('future', JSON.stringify(actSchema));
     localStorage.setItem('done', JSON.stringify(doneAppointments));
     }
+
+    var ipObj1 = {
+      callback: function(val) { //Mandatory
+        console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+        schemaService.setOpDate(new Date(val));
+        var dateAsString = $filter('date')(val, "dd.MM.yyyy");
+        console.log('Return value from the datepicker popup is formatted : ' + dateAsString);
+        $scope.saveAppointment.date = dateAsString;
+      }
+    };
+
+    $scope.openDatePicker = function() {
+      ionicDatePicker.openDatePicker(ipObj1);
+    };
 })
 
 .controller('ExportCtrl', function($scope, $state) {

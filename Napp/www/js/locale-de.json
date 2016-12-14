@@ -152,5 +152,9 @@
   "IMPORTANT": "WICHTIG",
   "DONOTUSETHISAPP": "Die App ist nicht für Personen mit Ihrem medizinischen Hintergrund geeignet, bitte befolgen Sie die Anweisungen Ihres Arztes für die Nachsorge.",
   "FILLCORRECTCANCER": "Bitte wählen Sie ihre Krebsart",
-  "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus."
+  "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus.",
+  "RESET":"Löschen",
+  "RESETAPP":"Alle Daten löschen",
+  "RESETAPPTEXT":"Sind Sie sicher, dass sie alle Daten löschen möchten?"
+
 }

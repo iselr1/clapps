@@ -94,10 +94,31 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService) {
+.controller('EinstellungenCtrl', function($scope,$state, $cordovaLocalNotification, $translate, jsonService, $ionicPopup) {
+
+
+  $scope.resetApp = function(){
+    var jsonData = jsonService.getJson();
+      var confirmPopup = $ionicPopup.confirm({
+
+        title: jsonData.RESETAPP,
+        template: jsonData.RESETAPPTEXT,
+        cancelText: jsonData.CANCEL,
+        cancelType: 'button-assertive'
+      });
+      confirmPopup.then(function(res) {
+        if(res) {
+          localStorage.clear();
+          $state.go('welcome');
+        }
+      });
+
+  }
+/*
   $scope.$on('onReminderAdded', function(event, id, state, json) {
     console.log('notification ADDED, id: ' + id + ' state:' + state + ' json:' + json);
   });
+
   $scope.schedule = function(tit, msg) {
     window.plugin.notification.local.add({
       id: 'MYLN',
@@ -105,7 +126,7 @@ currentLanguage, to detect the current language;
       message: msg,
     });
   };
-
+*/
   // ========== Scheduling
 
   /*  $scope.scheduleSingleNotification = function() {

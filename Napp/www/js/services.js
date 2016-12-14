@@ -80,6 +80,14 @@ angular.module('starter.services', [])
   schemaService.getYears = function() {
     var years = []
     var itemArray = allAftercareItems;
+
+    //Sort the appointmentsArray according to the dates
+    itemArray.sort(function(a, b) {
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(a.date) - new Date(b.date);
+    });
+
     for (var index in itemArray) {
       if (years.indexOf(itemArray[index].date.getFullYear()) < 0) {
         years.push(itemArray[index].date.getFullYear());
@@ -123,17 +131,15 @@ angular.module('starter.services', [])
       for (var k = 0; k < itemArray.length; k++) {
         if (itemArray[k].date instanceof Date) {
           if (years[j] == itemArray[k].date.getFullYear()) {
+            itemArray[k].oldDate = itemArray[k].date;
+            itemArray[k].month = d_month[itemArray[k].date.getMonth()].LABEL;
             itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
+
             appointmentsArray.push(itemArray[k]);
           }
         }
       }
-      //Sort the appointmentsArray according to the dates
-      appointmentsArray.sort(function(a, b) {
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
-        return new Date(b.date) - new Date(a.date);
-      });
+
       console.log(appointmentsArray);
     }
     console.log(statusObject);
