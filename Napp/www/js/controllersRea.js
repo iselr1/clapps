@@ -22,7 +22,7 @@ onchangeLanguage, to alter the app language;
 currentLanguage, to detect the current language;
 */
 
-.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout) {
+.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup) {
   $scope.Weight = {};
   $scope.addWeight = function() {
     var val = $scope.Weight.value;
