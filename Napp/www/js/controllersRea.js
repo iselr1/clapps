@@ -22,58 +22,254 @@ onchangeLanguage, to alter the app language;
 currentLanguage, to detect the current language;
 */
 
-.controller('KoerperCtrl', function($scope, $state, I4MIMidataService) {
-
-  // Chart for the weight
-  var $configLineWeight = {
-    name: '.ct-chartLineWeight',
-    labels: 'Week',
-    series: [51, 51.2, 53, 52.5, 52, 52.2],
-    fullWidth: "true",
-    showArea: "true",
-  };
-
-  var chartLineWeight = new ChartJS($configLineWeight);
-  chartLineWeight.line();
-  // Chart for the pulse
-  var $configLinePulse = {
-    name: '.ct-chartLinePulse',
-    labels: 'Week',
-    series: [66, 68, 65, 70, 67, 69],
-    fullWidth: "true",
-    showArea: "false",
-  };
-
-  var chartLinePulse = new ChartJS($configLinePulse);
-  chartLinePulse.line();
-
-  //Adding the data from the input fields into the chart
-  $scope.Pulse = {};
-  $scope.addPulse = function() {
-    var newPulse = $scope.Pulse.value;
-    var currentDate = new Date;
-    var dateFormated = currentDate.getDate() + '.' + currentDate.getMonth() + '.' + currentDate.getFullYear();
-    console.log(dateFormated);
-    $configLinePulse.series.push(newPulse);
-    console.log($configLinePulse.series);
-    chartLinePulse = new ChartJS($configLinePulse);
-    chartLinePulse.line();
-    $scope.Pulse.value = "";
-  };
+.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout) {
   $scope.Weight = {};
   $scope.addWeight = function() {
-    var newWeight = $scope.Weight.value;
-    var currentDate = new Date;
-    var dateFormated = currentDate.getDate() + '.' + currentDate.getMonth() + '.' + currentDate.getFullYear();
-    console.log(newWeight);
-    console.log(dateFormated);
-    $configLineWeight.series.push(newWeight);
-    console.log($configLineWeight.series);
-    chartLineWeight = new ChartJS($configLineWeight);
-    chartLineWeight.line();
-    $scope.Weight.value = "";
+    var val = $scope.Weight.value;
+
+    if (val == "") {
+      $scope.showNoValPopup("Gewicht");
+    } else if (isNaN(val)) {
+      $scope.showNotNumeric("Gewicht");
+    } else {
+      var type = 'weight';
+
+      ownMidataService.save(val, type).then(function(e) {
+        console.log('Resource Created: ' + e);
+        //HARD CODED WEIGHT
+        $scope.getObservation('w');
+        // Set value of the input field to empty
+        $scope.Weight.value = '';
+        console.log($scope.Weight.value);
+      });
+    }
+  }
+  $scope.Pulse = {};
+  $scope.addPulse = function() {
+    var val = $scope.Pulse.value;
+
+    if (val == "") {
+      $scope.showNoValPopup("Puls");
+    } else if (isNaN(val)) {
+      $scope.showNotNumeric("Puls");
+    } else {
+      var type = 'pulse';
+
+      ownMidataService.save(val, type).then(function(e) {
+        console.log('Resource Created: ' + e);
+        //HARD CODED WEIGHT
+        $scope.getObservation('p');
+        // Set value of the input field to empty
+        $scope.Pulse.value = '';
+        console.log($scope.Pulse.value)
+      });
+    }
+  }
+
+  $scope.showNoValPopup = function(vitalsign) {
+    var alertPopup = $ionicPopup.alert({
+      title: "Keinen Wert eingetragen!",
+      template: "Bitte gib dein" + vitalsign + "im dafür vorgesehenen Feld ein."
+    });
+  }
+
+  $scope.showNotNumeric = function(vitalsign) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Ungültiger Wert eingetragen!',
+        template: "Bitte gib dein" + vitalsign + "in kg an. Beispiel: 75"
+      });
+    }
+    // general options for the chartist
+  var $options = {
+    axisX: {
+      type: Chartist.FixedScaleAxis,
+      divisor: 5,
+      labelInterpolationFnc: function(value) {
+        return moment(value).format('H D MMM YY ');
+      }
+    },
+    axisY: {
+      onlyInteger: true,
+      offset: 20
+    }
+  };
+  var $responsiveOptions = {
+    fullWidth: true,
+    chartPadding: {
+      right: 20
+    },
+    lineSmooth: Chartist.Interpolation.cardinal({
+      fillHoles: true,
+    }),
+    low: 0
   };
 
+  // getter for the Pulse and Weight value
+  $scope.getObservation = function(resource) {
+    res = "Observation";
+    params = {};
+    ownMidataService.search(res, params).then(function(observations) {
+      result = [];
+      //--> only pulses
+      if (resource == "p") {
+        for (var i = 0; i < observations.length; i++) {
+          if (observations[i]._fhir == null) {
+            if (observations[i].code.coding["0"].display == "Herzschlag" ||
+              observations[i].code.coding["0"].display == "Herzfrequenz") {
+              result.push({
+                time: observations[i].effectiveDateTime,
+                value: observations[i].valueQuantity.value
+              });
+            }
+          }
+        }
+        console.log(result); //return
+        // to show the last 5 values in a chart
+        var objects = [];
+        if (result.length > 5) {
+          for (var i = (result.length - 5); i < result.length; i++) {
+            var data = {};
+            var d = new Date(result[i].time);
+            data.x = d;
+            data.y = result[i].value;
+            objects.push(data);
+            console.log("hier" + objects);
+          }
+        } else {
+          for (var i = 0; i < result.length; i++) {
+            var data = {};
+            var d = new Date(result[i].time);
+            data.x = d;
+            data.y = result[i].value;
+            objects.push(data);
+            console.log("hier" + objects);
+          }
+        }
+
+
+        var $configLine = {
+          series: [{
+            name: 'series-1',
+            data: objects
+          }]
+        };
+
+
+        var chart = new Chartist.Line('.ct-chartLinePulse', $configLine, $options, $responsiveOptions);
+        console.log(chart);
+        //--> only weights
+      } else if (resource == "w") {
+        for (var i = 0; i < observations.length; i++) {
+          if (observations[i]._fhir != null) {
+            if (observations[i]._fhir.code.coding["0"].display == "Weight Measured" ||
+              observations[i]._fhir.code.coding["0"].display == "Body weight Measured" ||
+              observations[i]._fhir.code.coding["0"].display == "Gewicht") {
+              result.push({
+                time: observations[i]._fhir.effectiveDateTime,
+                value: observations[i]._fhir.valueQuantity.value
+              });
+            }
+          }
+        }
+        console.log(result); //return
+        // to show the last 5 values in a chart
+        var objects = [];
+        if (result.length > 5) {
+          for (var i = (result.length - 5); i < result.length; i++) {
+            var data = {};
+            var d = new Date(result[i].time);
+            data.x = d;
+            data.y = result[i].value;
+            objects.push(data);
+            console.log("hier" + objects);
+          }
+        } else {
+          for (var i = 0; i < result.length; i++) {
+            var data = {};
+            var d = new Date(result[i].time);
+            data.x = d;
+            data.y = result[i].value;
+            objects.push(data);
+            console.log("hier" + objects);
+          }
+        }
+
+        var $configLine = {
+          series: [{
+            name: 'series-1',
+            data: objects
+          }]
+        };
+
+        var chart = new Chartist.Line('.ct-chartLineWeight', $configLine, $options, $responsiveOptions);
+        console.log(chart);
+      } else {
+        //return all obs
+      }
+
+
+    })
+  };
+
+  var hanaolalsad = ownMidataService.loggedIn();
+  if (!hanaolalsad) {
+    ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
+  }
+  var timer = $timeout(function refresh() {
+    if (ownMidataService.loggedIn()) {
+      $scope.getObservation("w");
+      $scope.getObservation("p");
+    } else {
+      timer = $timeout(refresh, 1000);
+    }
+  }, 1000);
+
+  /*
+    var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
+      series: [{
+        name: 'series-1',
+        data: [{
+          x: moment(),
+          y: 11
+        }, {
+          x: new Date("12-20-2016"),
+          y: 40
+        }, {
+          x: new Date("12-21-2016"),
+          y: 45
+        }, {
+          x: new Date("12-22-2016"),
+          y: 40
+        }, {
+          x: new Date("12-23-2016"),
+          y: 20
+        }, {
+          x: new Date("12-24-2016"),
+          y: 32
+        }, {
+          x: new Date("12-25-2016"),
+          y: 18
+        }]
+      }]
+    }, {
+      axisX: {
+        type: Chartist.FixedScaleAxis,
+        divisor: 5,
+        labelInterpolationFnc: function(value) {
+          return moment(value).format('D MMM YY');
+        }
+      }
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 20
+      },
+      lineSmooth: Chartist.Interpolation.cardinal({
+        fillHoles: true,
+      }),
+      low: 0
+    });
+    console.log(chartPulse); */
 })
 
 .controller('UeberCtrl', function($scope, $state) {
@@ -94,165 +290,25 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope,$state, $cordovaLocalNotification, $translate, jsonService, $ionicPopup) {
-
-
-  $scope.resetApp = function(){
+.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService) {
+  $scope.resetApp = function() {
     var jsonData = jsonService.getJson();
-      var confirmPopup = $ionicPopup.confirm({
+    var confirmPopup = $ionicPopup.confirm({
 
-        title: jsonData.RESETAPP,
-        template: jsonData.RESETAPPTEXT,
-        cancelText: jsonData.CANCEL,
-        cancelType: 'button-assertive'
-      });
-      confirmPopup.then(function(res) {
-        if(res) {
-          localStorage.clear();
-          $state.go('welcome');
-        }
-      });
+      title: jsonData.RESETAPP,
+      template: jsonData.RESETAPPTEXT,
+      cancelText: jsonData.CANCEL,
+      cancelType: 'button-assertive'
+    });
+    confirmPopup.then(function(res) {
+      if (res) {
+        localStorage.clear();
+        $state.go('welcome');
+      }
+    });
 
   }
-/*
-  $scope.$on('onReminderAdded', function(event, id, state, json) {
-    console.log('notification ADDED, id: ' + id + ' state:' + state + ' json:' + json);
-  });
 
-  $scope.schedule = function(tit, msg) {
-    window.plugin.notification.local.add({
-      id: 'MYLN',
-      title: tit,
-      message: msg,
-    });
-  };
-*/
-  // ========== Scheduling
-
-  /*  $scope.scheduleSingleNotification = function() {
-        $cordovaLocalNotification.schedule({
-          id: 1,
-          title: 'Title here',
-          text: 'Text here',
-          data: {
-            customProperty: 'custom value'
-          }
-        }).then(function(result) {
-          // ...
-          alert('worked');
-        });
-      };
-
-      $scope.scheduleMultipleNotifications = function() {
-        $cordovaLocalNotification.schedule([{
-          id: 1,
-          title: 'Title 1 here',
-          text: 'Text 1 here',
-          data: {
-            customProperty: 'custom 1 value'
-          }
-        }, {
-          id: 2,
-          title: 'Title 2 here',
-          text: 'Text 2 here',
-          data: {
-            customProperty: 'custom 2 value'
-          }
-        }, {
-          id: 3,
-          title: 'Title 3 here',
-          text: 'Text 3 here',
-          data: {
-            customProperty: 'custom 3 value'
-          }
-        }]).then(function(result) {
-          // ...
-        });
-  };
-
-  $scope.scheduleDelayedNotification = function() {
-    var now = new Date().getTime();
-    var _10SecondsFromNow = new Date(now + 10 * 1000);
-
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      title: 'Title here',
-      text: 'Text here',
-      at: _10SecondsFromNow
-    }).then(function(result) {
-      // ...
-    });
-  };
-
-  $scope.scheduleEveryMinuteNotification = function() {
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      title: 'Title here',
-      text: 'Text here',
-      every: 'minute'
-    }).then(function(result) {
-      // ...
-    });
-  };
-
-  // =========/ Scheduling
-
-  // ========== Update
-
-  $scope.updateSingleNotification = function() {
-    $cordovaLocalNotification.update({
-      id: 1,
-      title: 'Title - UPDATED',
-      text: 'Text - UPDATED'
-    }).then(function(result) {
-      // ...
-    });
-  };
-
-  $scope.updateMultipleNotifications = function() {
-    $cordovaLocalNotification.update([{
-      id: 1,
-      title: 'Title 1 - UPDATED',
-      text: 'Text 1 - UPDATED'
-    }, {
-      id: 2,
-      title: 'Title 2 - UPDATED',
-      text: 'Text 2 - UPDATED'
-    }, {
-      id: 3,
-      title: 'Title 3 - UPDATED',
-      text: 'Text 3 - UPDATED'
-    }]).then(function(result) {
-      // ...
-    });
-  };
-
-  // =========/ Update
-
-  // ========== Cancelation
-
-  $scope.cancelSingleNotification = function() {
-    $cordovaLocalNotification.cancel(1).then(function(result) {
-      // ...
-    });
-  };
-
-  $scope.cancelMultipleNotifications = function() {
-    $cordovaLocalNotification.cancel([1, 2]).then(function(result) {
-      // ...
-    });
-  };
-
-  $scope.cancelAllNotifications = function() {
-    $cordovaLocalNotification.cancelAll().then(function(result) {
-      // ...
-    });
-  };
-
-
-  });
-
-  */
   //Choice for Remindersounds
   $scope.soundList = [{
     id: 1,
