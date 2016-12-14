@@ -210,20 +210,23 @@ currentLanguage, to detect the current language;
 
     })
   };
-
-  var hanaolalsad = ownMidataService.loggedIn();
-  if (!hanaolalsad) {
-    ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
-  }
-  var timer = $timeout(function refresh() {
-    if (ownMidataService.loggedIn()) {
-      $scope.getObservation("w");
-      $scope.getObservation("p");
-    } else {
-      timer = $timeout(refresh, 1000);
+  //TO SHOW ALLWAYS THE CHARTS
+  $scope.getObservation("w");
+  $scope.getObservation("p");
+  /* To test the function without login first
+    var hanaolalsad = ownMidataService.loggedIn();
+    if (!hanaolalsad) {
+      ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
     }
-  }, 1000);
-
+    var timer = $timeout(function refresh() {
+      if (ownMidataService.loggedIn()) {
+        $scope.getObservation("w");
+        $scope.getObservation("p");
+      } else {
+        timer = $timeout(refresh, 1000);
+      }
+    }, 1000);
+  */
   /*
     var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
       series: [{

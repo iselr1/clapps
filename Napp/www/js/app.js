@@ -4,45 +4,46 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-timepicker', 'formlyIonic', 'nvd3', 'i4mi', 'starter.controllers', 'starter.controllersRea', 'starter.controllersSarah', 'starter.controllersTim', 'starter.controllersMauro', 'starter.services', 'jsonFormatter', 'pascalprecht.translate', ])
+angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-timepicker', 'formlyIonic', 'nvd3', 'i4mi', 'starter.controllers', 'starter.controllersRea', 'starter.controllersSarah', 'starter.controllersTim', 'starter.controllersMauro', 'starter.ownServices', 'starter.services', 'jsonFormatter', 'pascalprecht.translate', ])
   .constant('APPNAME', 'SINA')
   .constant('APPSECRET', 'S9I35N28A')
-  .run(function($ionicPlatform, $cordovaLocalNotification) {
 
-    $ionicPlatform.ready(function() {
-      if (window.navigator && window.navigator.splashscreen) {
-        window.plugins.orientationLock.unlock();
-      }
-      // Check for permissions to show local notifications - iOS 8 NEEDS permission to run!
-      $cordovaLocalNotification.hasPermission().then(function(granted) {
-        $cordovaLocalNotification.cancelAll();
-        if (!granted) {
-          $cordovaLocalNotification.promptForPermission();
-        };
-      });
+.run(function($ionicPlatform, $cordovaLocalNotification) {
 
-      document.addEventListener("deviceReady", function() {
-        // Event handling for Local Notifications
-        window.plugin.notification.local.onclick = function(id, state, json) {
-          $rootScope.$broadcast('onNotificationClick', id, state, json);
-        };
-        // You can add more here for oncancel, ontrigger etc.
-      });
-
-
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      if (window.cordova && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(true);
-
-      }
-      if (window.StatusBar) {
-        // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
-      }
+  $ionicPlatform.ready(function() {
+    if (window.navigator && window.navigator.splashscreen) {
+      window.plugins.orientationLock.unlock();
+    }
+    // Check for permissions to show local notifications - iOS 8 NEEDS permission to run!
+    $cordovaLocalNotification.hasPermission().then(function(granted) {
+      $cordovaLocalNotification.cancelAll();
+      if (!granted) {
+        $cordovaLocalNotification.promptForPermission();
+      };
     });
-  })
+
+    document.addEventListener("deviceReady", function() {
+      // Event handling for Local Notifications
+      window.plugin.notification.local.onclick = function(id, state, json) {
+        $rootScope.$broadcast('onNotificationClick', id, state, json);
+      };
+      // You can add more here for oncancel, ontrigger etc.
+    });
+
+
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+  });
+})
 
 .config(function($stateProvider, $urlRouterProvider, $translateProvider, ionicDatePickerProvider) {
 

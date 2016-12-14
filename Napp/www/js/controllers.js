@@ -29,24 +29,51 @@ angular.module('starter.controllers', [])
     }
   })
 
-.controller('LoginCtrl', function($scope, $translate, I4MIMidataService, $timeout, $state, jsonService) {
-  // Use for testing the development environment
-  $scope.user = {
-    server: 'https://test.midata.coop:9000'
+.controller('LoginCtrl', function($scope, $translate, ownMidataService, $timeout, $state, jsonService, $ionicLoading) {
+  // Values for login
+  $scope.login = {};
+  $scope.login.email = '';
+  $scope.login.password = '';
+
+  var loggedIn;
+  // Login
+  $scope.doLogin = function() {
+
+    if ($scope.login.email != '' && $scope.login.password != '')
+      ownMidataService.login($scope.login.email, $scope.login.password, 'member');
+
+    // Zeige Loading Spinner
+    $ionicLoading.show({
+      template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+    });
+
+    setTimeout(function() {
+      $scope.checkUser();
+
+      // Verstecke Loading Spinner
+      $ionicLoading.hide();
+    }, 3000);
   }
 
-  // Connect with MIDATA
-  $scope.loggedIn = I4MIMidataService.loggedIn();
 
 
-  // Call every Second
-  var timer = $timeout(function refresh() {
-    if (I4MIMidataService.loggedIn()) {
+  // Check if valid User
+  $scope.checkUser = function() {
+    loggedIn = ownMidataService.loggedIn();
+    console.log(loggedIn);
+    if (loggedIn) {
+      //$state.go('home');
       $state.go('welcome');
     } else {
-      timer = $timeout(refresh, 1000);
+      ownMidataService.logout();
     }
-  }, 1000);
+  }
+
+  // Logout
+  $scope.logout = function() {
+    console.info("Logout");
+    ownMidataService.logout();
+  }
 
   //Change the language
   $scope.switchLanguage = function(key) {
@@ -54,9 +81,6 @@ angular.module('starter.controllers', [])
     jsonService.loadJson(key);
   };
 
-  $scope.showModalLogin = function() {
-    I4MIMidataService.login();
-  }
 })
 
 .controller('HomeCtrl', function($scope, $stateParams, $state) {
