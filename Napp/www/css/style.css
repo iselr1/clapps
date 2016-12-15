@@ -60,3 +60,12 @@ textarea{
   text-align: center;
   float:right;
 }
+.homeButtons {
+  border: 8px solid #d3fffa;
+  background-color:#FFF;
+  padding-top:10px;
+
+}
+.homeBox{
+  background-color:#d3fffa;
+}
