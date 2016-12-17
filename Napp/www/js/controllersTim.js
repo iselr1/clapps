@@ -55,6 +55,7 @@ angular.module('starter.controllersTim', [])
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
       $scope.saveAppointment.results = terminatedItem.results;
       $scope.saveAppointment.date = terminatedItem.date;
+      console.log(terminatedItem);
       $scope.saveAppointment.year = terminatedItem.oldDate.substring(0, 4);
       // Add and remove some css hidden class to fade in and out
       details.removeClass('hidden');
