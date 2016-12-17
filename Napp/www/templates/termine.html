@@ -30,9 +30,9 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
 
             <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
               <div class="appointment row" >
-                <div class="month col col-33">{{appointment.date | translate}}</div>
-                <div class="col">{{appointment.description | translate}}  |  {{appointment.month | translate}}</div>
-                <div class="col col-25 detailButton" ng-click="showAppointmentDetails({{$parent.$parent.$index}},{{$parent.$index}},'{{appointment.description}}', '{{appointment.month}}')"><span translate="DETAILS" ></span></div>
+                <div class="month col col-25">{{appointment.date | translate}}</div>
+                <div class="col">{{appointment.description | translate}}</div>
+                <div class="col col-25 detailButton" ng-click="showAppointmentDetails({{$parent.$parent.$index}},{{$parent.$index}},'{{appointment.description}}', '{{appointment.fullMonth}}')"><span translate="DETAILS" ></span></div>
               </div>
             </div>
           </div>
@@ -49,12 +49,18 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
   <div id="details" class="list hidden">
     <!----------------TITLE-------------------->
       <label class="item" style="text-align:center;">
-        <span>{{descDetail}} | {{descMonth}} </span>
+        <span>{{descDetail}}</span>
       </label>
+      <!----------------TimePeriod of the Appointment-------------------->
+      <div class="item item-text-wrap" style="background-color:#FFF;">
+        <span translate="TIMEPERIOD"></span> <br /><br />
+        <span><span translate="TIMEPERIODTEXT"></span><b>{{descMonth}}{{saveAppointment.fullMonth}}</b></span>
+      </div>
       <!----------------Date of the Appointment-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">
-        <span class="input-label" translate="DATEOFAPPOINTMENT"></span>
-        <input type="text" ng-click="openDatePicker()" ng-model="saveAppointment.date" placeholder="dd.mm.yyyy">
+        <span class="input-label" translate="DATEOFAPPOINTMENT"></span> <br />
+          <button class="button button-clear button-dark" ng-click="openDatePicker()">{{saveAppointment.date}}</button>
+            <div class="hidden"><input type="text" ng-model="saveAppointment.date" placeholder="dd.mm.yyyy"></div>
       </label>
       <!----------------Text-Area / Results-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">

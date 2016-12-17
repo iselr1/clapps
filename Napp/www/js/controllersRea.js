@@ -293,7 +293,7 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService) {
+.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService,$ionicPopup,$state) {
   $scope.resetApp = function() {
     var jsonData = jsonService.getJson();
     var confirmPopup = $ionicPopup.confirm({

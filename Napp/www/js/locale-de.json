@@ -107,40 +107,52 @@
 
   "MONTHS": [{
     "id": "1",
-    "LABEL": "Jan"
+    "LABEL": "Jan",
+    "FULL": " Januar"
   }, {
     "id": "2",
-    "LABEL": "Feb"
+    "LABEL": "Feb",
+    "FULL": " Februar"
   }, {
     "id": "3",
-    "LABEL": "Mrz"
+    "LABEL": "Mrz",
+    "FULL": " März"
   }, {
     "id": "4",
-    "LABEL": "Apr"
+    "LABEL": "Apr",
+    "FULL": " April"
   }, {
     "id": "5",
-    "LABEL": "Mai"
+    "LABEL": "Mai",
+    "FULL": " Mai"
   }, {
     "id": "6",
-    "LABEL": "Jun"
+    "LABEL": "Jun",
+    "FULL": " Juni"
   }, {
     "id": "7",
-    "LABEL": "Jul"
+    "LABEL": "Jul",
+    "FULL": " Juli"
   }, {
     "id": "8",
-    "LABEL": "Aug"
+    "LABEL": "Aug",
+    "FULL": " August"
   }, {
     "id": "9",
-    "LABEL": "Sep"
+    "LABEL": "Sep",
+    "FULL": " September"
   }, {
     "id": "10",
-    "LABEL": "Okt"
+    "LABEL": "Okt",
+    "FULL": " Oktober"
   }, {
     "id": "11",
-    "LABEL": "Nov"
+    "LABEL": "Nov",
+    "FULL": " November"
   }, {
     "id": "12",
-    "LABEL": "Dez"
+    "LABEL": "Dez",
+    "FULL": " Dezember"
   }],
   "CEA": "CEA-Titer",
   "CEACLINIC": "Klinische Untersuchung, CEA-Titer",
@@ -155,6 +167,8 @@
   "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus.",
   "RESET":"Löschen",
   "RESETAPP":"Alle Daten löschen",
-  "RESETAPPTEXT":"Sind Sie sicher, dass sie alle Daten löschen möchten?"
+  "RESETAPPTEXT":"Sind Sie sicher, dass sie alle Daten löschen möchten?",
+  "TIMEPERIOD":"Zeitperiode des Termines",
+  "TIMEPERIODTEXT":"Ab folgendem Monat, sollten Sie einen Termin vereinbaren: "
 
 }

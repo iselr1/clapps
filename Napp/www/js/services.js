@@ -133,6 +133,7 @@ angular.module('starter.services', [])
           if (years[j] == itemArray[k].date.getFullYear()) {
             itemArray[k].oldDate = itemArray[k].date;
             itemArray[k].month = d_month[itemArray[k].date.getMonth()].LABEL;
+            itemArray[k].fullMonth = d_month[itemArray[k].date.getMonth()].FULL;
             itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
 
             appointmentsArray.push(itemArray[k]);
