@@ -162,5 +162,7 @@
   "FILLCORRECTTNM": "S'il vous plaît remplissez la classification TNM selon les directives de vôtre médcin.",
   "RESET":"Effacer",
   "RESETAPP":"Effacer toutes les données",
-  "RESETAPPTEXT":"Êtes-vous sûr de vouloir supprimer tous les données?"
+  "RESETAPPTEXT":"Êtes-vous sûr de vouloir supprimer tous les données?",
+  "TIMEPERIOD":"Période de temps de la date",
+  "TIMEPERIODTEXT":"Vous devez prendre un rendez-vous a partir du mois: "
 }
