@@ -22,15 +22,28 @@ onchangeLanguage, to alter the app language;
 currentLanguage, to detect the current language;
 */
 
-.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup) {
+.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup, jsonService) {
+  // Min value for pulse
+  var minPuls = 30;
+  // Max value for pulse
+  var maxPuls = 150;
+  // Min value for weight
+  var minWeight = 30;
+  // Max value for weight
+  var maxWeight = 250;
+  // To get acces to the translation tags
+  var jsonData = jsonService.getJson();
+
   $scope.Weight = {};
   $scope.addWeight = function() {
     var val = $scope.Weight.value;
 
     if (val == "") {
-      $scope.showNoValPopup("Gewicht");
+      $scope.showNoValPopup(jsonData.WEIGHT);
     } else if (isNaN(val)) {
-      $scope.showNotNumeric("Gewicht");
+      $scope.showNotNumeric(jsonData.WEIGHT);
+    } else if ((val < minWeight) || (val > maxWeight)) {
+      $scope.showNotPossibleWeight();
     } else {
       var type = 'weight';
 
@@ -49,9 +62,11 @@ currentLanguage, to detect the current language;
     var val = $scope.Pulse.value;
 
     if (val == "") {
-      $scope.showNoValPopup("Puls");
+      $scope.showNoValPopup(jsonData.PULSE);
     } else if (isNaN(val)) {
-      $scope.showNotNumeric("Puls");
+      $scope.showNotNumeric(jsonData.PULSE);
+    } else if ((val < minPuls) || (val > maxPuls)) {
+      $scope.showNotPossiblePuls();
     } else {
       var type = 'pulse';
 
@@ -68,15 +83,27 @@ currentLanguage, to detect the current language;
 
   $scope.showNoValPopup = function(vitalsign) {
     var alertPopup = $ionicPopup.alert({
-      title: "Keinen Wert eingetragen!",
-      template: "Bitte gib dein " + vitalsign + " im dafür vorgesehenen Feld ein."
+      title: jsonData.NOVALUE,
+      template: jsonData.PLEASEGIVE + vitalsign + jsonData.ACCORDINGFIELD
     });
   }
 
   $scope.showNotNumeric = function(vitalsign) {
+    var alertPopup = $ionicPopup.alert({
+      title: jsonData.INVALIDVALUE,
+      template: jsonData.PLEASEGIVE + vitalsign + jsonData.ASANUMBER
+    });
+  }
+  $scope.showNotPossiblePuls = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: jsonData.INVALIDVALUE,
+      template: jsonData.PULSMINMAX
+    });
+  }
+  $scope.showNotPossibleWeight = function() {
       var alertPopup = $ionicPopup.alert({
-        title: 'Ungültiger Wert eingetragen!',
-        template: "Bitte gib dein " + vitalsign + " als Zahl an. Beispiel: 62"
+        title: jsonData.INVALIDVALUE,
+        template: jsonData.WEIGHTMINMAX
       });
     }
     // general options for the chartist

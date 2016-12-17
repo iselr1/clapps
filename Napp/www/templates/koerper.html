@@ -19,11 +19,11 @@ Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
       <div class="col col-80">
         <label class="item item-input" style="border:none">
           <span class="input-label" translate="YOUR_WEIGHT_KG"></span>
-          <input type="number" ng-model="Weight.value"></input>
+          <input type="number" ng-model="Weight.value" placeholder="60"></input>
         </label>
       </div>
       <div class="col col-20">
-        <button class="button button-small button-calm" ng-click="addWeight()" translate="{{'SAVE' | translate}}"></button>
+        <button class="button button-small button-block button-balanced" ng-click="addWeight()" translate="{{'SAVE' | translate}}"></button>
       </div>
     </div>
     <div class="ct-chartLineWeight ct-perfect-fifth"></div>
@@ -31,11 +31,11 @@ Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
       <div class="col col-80">
         <label class="item item-input" style="border:none">
           <span class="input-label" translate="YOUR_PULSE"></span>
-          <input type="number" ng-model="Pulse.value"></input>
+          <input type="number" ng-model="Pulse.value" placeholder="60"></input>
         </label>
       </div>
       <div class="col col-20">
-        <button class="button button-small button-calm" ng-click="addPulse()" translate="{{'SAVE' | translate}}"></button>
+        <button class="button button-small button-block button-balanced" ng-click="addPulse()" translate="{{'SAVE' | translate}}"></button>
       </div>
     </div>
     <div class="row">
