@@ -55,10 +55,11 @@ textarea{
   height:100px;
 }
 .detailButton{
-  background-color:#A3fffa;
+  background-color:#C3fffa;
   font-weight:bold;
   text-align: center;
   float:right;
+  border: 1px solid rgba(33, 68, 72, 0.59);
 }
 .homeButtons {
   border: 8px solid #d3fffa;

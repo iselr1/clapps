@@ -114,40 +114,52 @@
     }],
   "MONTHS": [{
     "id": "1",
-    "LABEL": "Jan"
+    "LABEL": "Jan",
+    "FULL": "Janvier"
   }, {
     "id": "2",
-    "LABEL": "Fév"
+    "LABEL": "Fév",
+    "FULL": "Février"
   }, {
     "id": "3",
-    "LABEL": "Mar"
+    "LABEL": "Mar",
+    "FULL": "Mars"
   }, {
     "id": "4",
-    "LABEL": "Avr"
+    "LABEL": "Avr",
+    "FULL": "Avril"
   }, {
     "id": "5",
-    "LABEL": "Mai"
+    "LABEL": "Mai",
+    "FULL": "Mai"
   }, {
     "id": "6",
-    "LABEL": "Jun"
+    "LABEL": "Jun",
+    "FULL": "Juin"
   }, {
     "id": "7",
-    "LABEL": "Jul"
+    "LABEL": "Jul",
+    "FULL": "Juillet"
   }, {
     "id": "8",
-    "LABEL": "Aoû"
+    "LABEL": "Aoû",
+    "FULL": "Août"
   }, {
     "id": "9",
-    "LABEL": "Sep"
+    "LABEL": "Sep",
+    "FULL": "Septembre"
   }, {
     "id": "10",
-    "LABEL": "Oct"
+    "LABEL": "Oct",
+    "FULL": "Octobre"
   }, {
     "id": "11",
-    "LABEL": "Nov"
+    "LABEL": "Nov",
+    "FULL": "Novembre"
   }, {
     "id": "12",
-    "LABEL": "Déc"
+    "LABEL": "Déc",
+    "FULL": "Décembre"
   }],
   "CEA":"CEA",
   "CEACLINIC": "Examen clinique et CEA",
