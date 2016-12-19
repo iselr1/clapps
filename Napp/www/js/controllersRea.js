@@ -321,6 +321,18 @@ currentLanguage, to detect the current language;
 //--------------------------------------------------------//
 
 .controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService,$ionicPopup,$state) {
+
+    $scope.scheduleInstantNotification = function () {
+          $cordovaLocalNotification.schedule({
+          id: 1,
+          text: 'Instant Notification',
+          title: 'Instant'
+        }).then(function () {
+          alert("Instant Notification set");
+        });
+      };
+
+
   $scope.resetApp = function() {
     var jsonData = jsonService.getJson();
     var confirmPopup = $ionicPopup.confirm({

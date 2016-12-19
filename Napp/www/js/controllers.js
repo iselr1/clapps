@@ -83,9 +83,12 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $state) {
+.controller('HomeCtrl', function($scope, $stateParams, $state, $cordovaLocalNotification) {
+
   $scope.goTermine = function() {
+    $scope.scheduleInstantNotification();
     $state.go('termine');
+
   };
 
   $scope.goKoerper = function() {
