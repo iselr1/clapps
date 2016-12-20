@@ -133,6 +133,14 @@ currentLanguage, to detect the current language;
 
   // getter for the Pulse and Weight value
   $scope.drawChart = function(result, obsType) {
+    // To sort the Array with the midata data according to their entry date otherwise no line will be drawn between the points
+    result.sort(function(a, b) {
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(a.time) - new Date(b.time);
+    });
+    console.log(result);
+
     // to show the last 5 values in a chart
     var objects = [];
     if (result.length > 5) {
@@ -171,10 +179,10 @@ currentLanguage, to detect the current language;
       //other type
     }
   };
-  /*//TO SHOW ALLWAYS THE CHARTS
+  //TO SHOW ALLWAYS THE CHARTS
   ownMidataService.getObservation('p', {}, $scope.drawChart);
   ownMidataService.getObservation('w', {}, $scope.drawChart);
-  */
+  /*
   //To test the function without login first
   var hanaolalsad = ownMidataService.loggedIn();
   if (!hanaolalsad) {
@@ -182,59 +190,59 @@ currentLanguage, to detect the current language;
   }
   var timer = $timeout(function refresh() {
     if (ownMidataService.loggedIn()) {
-      //  ownMidataService.getObservation('p', {}, $scope.drawChart);
+      ownMidataService.getObservation('p', {}, $scope.drawChart);
       ownMidataService.getObservation('w', {}, $scope.drawChart);
     } else {
       timer = $timeout(refresh, 1000);
     }
   }, 1000);
-
-
-  var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
-    series: [{
-      name: 'series-1',
-      data: [{
-        x: new Date("12-21-2016"),
-        y: 11
-      }, {
-        x: new Date("12-20-2016"),
-        y: 40
-      }, {
-        x: new Date("12-21-2016"),
-        y: 45
-      }, {
-        x: new Date("12-22-2016"),
-        y: 40
-      }, {
-        x: new Date("12-23-2016"),
-        y: 20
-      }, {
-        x: new Date("12-24-2016"),
-        y: 32
-      }, {
-        x: new Date("12-25-2016"),
-        y: 18
+*/
+  /*
+    var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
+      series: [{
+        name: 'series-1',
+        data: [{
+          x: new Date("12-21-2016"),
+          y: 11
+        }, {
+          x: new Date("12-20-2016"),
+          y: 40
+        }, {
+          x: new Date("12-21-2016"),
+          y: 45
+        }, {
+          x: new Date("12-22-2016"),
+          y: 40
+        }, {
+          x: new Date("12-23-2016"),
+          y: 20
+        }, {
+          x: new Date("12-24-2016"),
+          y: 32
+        }, {
+          x: new Date("12-25-2016"),
+          y: 18
+        }]
       }]
-    }]
-  }, {
-    axisX: {
-      type: Chartist.FixedScaleAxis,
-      divisor: 5,
-      labelInterpolationFnc: function(value) {
-        return moment(value).format('D MMM YY');
+    }, {
+      axisX: {
+        type: Chartist.FixedScaleAxis,
+        divisor: 5,
+        labelInterpolationFnc: function(value) {
+          return moment(value).format('D MMM YY');
+        }
       }
-    }
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 20
-    },
-    lineSmooth: Chartist.Interpolation.cardinal({
-      fillHoles: true,
-    }),
-    low: 0
-  });
-  console.log(chartPulse);
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 20
+      },
+      lineSmooth: Chartist.Interpolation.cardinal({
+        fillHoles: true,
+      }),
+      low: 0
+    });
+    console.log(chartPulse);*/
 })
 
 .controller('UeberCtrl', function($scope, $state) {
