@@ -48,9 +48,9 @@ currentLanguage, to detect the current language;
       var type = 'weight';
 
       ownMidataService.save(val, type).then(function(e) {
-        console.log('Resource Created: ' + e);
+        console.log('Resource Created: ' + e + val);
         //HARD CODED WEIGHT
-        $scope.getObservation('w');
+        ownMidataService.getObservation('w', {}, $scope.drawChart);
         // Set value of the input field to empty
         $scope.Weight.value = '';
         console.log($scope.Weight.value);
@@ -73,10 +73,10 @@ currentLanguage, to detect the current language;
       ownMidataService.save(val, type).then(function(e) {
         console.log('Resource Created: ' + e);
         //HARD CODED WEIGHT
-        $scope.getObservation('p');
+        ownMidataService.getObservation('p', {}, $scope.drawChart);
         // Set value of the input field to empty
         $scope.Pulse.value = '';
-        console.log($scope.Pulse.value)
+
       });
     }
   }
@@ -107,12 +107,12 @@ currentLanguage, to detect the current language;
       });
     }
     // general options for the chartist
-  var $options = {
+  var options = {
     axisX: {
       type: Chartist.FixedScaleAxis,
       divisor: 5,
       labelInterpolationFnc: function(value) {
-        return moment(value).format('H D MMM YY ');
+        return moment(value).format('D MMM YY ');
       }
     },
     axisY: {
@@ -120,7 +120,7 @@ currentLanguage, to detect the current language;
       offset: 20
     }
   };
-  var $responsiveOptions = {
+  var responsiveOptions = {
     fullWidth: true,
     chartPadding: {
       right: 20
@@ -132,174 +132,109 @@ currentLanguage, to detect the current language;
   };
 
   // getter for the Pulse and Weight value
-  $scope.getObservation = function(resource) {
-    res = "Observation";
-    params = {};
-    ownMidataService.search(res, params).then(function(observations) {
-      result = [];
-      //--> only pulses
-      if (resource == "p") {
-        for (var i = 0; i < observations.length; i++) {
-          if (observations[i]._fhir == null) {
-            if (observations[i].code.coding["0"].display == "Herzschlag" ||
-              observations[i].code.coding["0"].display == "Herzfrequenz") {
-              result.push({
-                time: observations[i].effectiveDateTime,
-                value: observations[i].valueQuantity.value
-              });
-            }
-          }
-        }
-        console.log(result); //return
-        // to show the last 5 values in a chart
-        var objects = [];
-        if (result.length > 5) {
-          for (var i = (result.length - 5); i < result.length; i++) {
-            var data = {};
-            var d = new Date(result[i].time);
-            data.x = d;
-            data.y = result[i].value;
-            objects.push(data);
-            console.log("hier" + objects);
-          }
-        } else {
-          for (var i = 0; i < result.length; i++) {
-            var data = {};
-            var d = new Date(result[i].time);
-            data.x = d;
-            data.y = result[i].value;
-            objects.push(data);
-            console.log("hier" + objects);
-          }
-        }
+  $scope.drawChart = function(result, obsType) {
+    // to show the last 5 values in a chart
+    var objects = [];
+    if (result.length > 5) {
+      for (var i = (result.length - 5); i < result.length; i++) {
+        var data = {};
+        var d = new Date(result[i].time);
+        console.log(d);
+        data.x = d;
+        data.y = result[i].value;
+        objects.push(data);
 
-
-        var $configLine = {
-          series: [{
-            name: 'series-1',
-            data: objects
-          }]
-        };
-
-
-        var chart = new Chartist.Line('.ct-chartLinePulse', $configLine, $options, $responsiveOptions);
-        console.log(chart);
-        //--> only weights
-      } else if (resource == "w") {
-        for (var i = 0; i < observations.length; i++) {
-          if (observations[i]._fhir != null) {
-            if (observations[i]._fhir.code.coding["0"].display == "Weight Measured" ||
-              observations[i]._fhir.code.coding["0"].display == "Body weight Measured" ||
-              observations[i]._fhir.code.coding["0"].display == "Gewicht") {
-              result.push({
-                time: observations[i]._fhir.effectiveDateTime,
-                value: observations[i]._fhir.valueQuantity.value
-              });
-            }
-          }
-        }
-        console.log(result); //return
-        // to show the last 5 values in a chart
-        var objects = [];
-        if (result.length > 5) {
-          for (var i = (result.length - 5); i < result.length; i++) {
-            var data = {};
-            var d = new Date(result[i].time);
-            data.x = d;
-            data.y = result[i].value;
-            objects.push(data);
-            console.log("hier" + objects);
-          }
-        } else {
-          for (var i = 0; i < result.length; i++) {
-            var data = {};
-            var d = new Date(result[i].time);
-            data.x = d;
-            data.y = result[i].value;
-            objects.push(data);
-            console.log("hier" + objects);
-          }
-        }
-
-        var $configLine = {
-          series: [{
-            name: 'series-1',
-            data: objects
-          }]
-        };
-
-        var chart = new Chartist.Line('.ct-chartLineWeight', $configLine, $options, $responsiveOptions);
-        console.log(chart);
-      } else {
-        //return all obs
       }
-
-
-    })
-  };
-  //TO SHOW ALLWAYS THE CHARTS
-  $scope.getObservation("w");
-  $scope.getObservation("p");
-  /* To test the function without login first
-    var hanaolalsad = ownMidataService.loggedIn();
-    if (!hanaolalsad) {
-      ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
+    } else {
+      for (var i = 0; i < result.length; i++) {
+        var data = {};
+        data.x = result[i].time;
+        data.y = result[i].value;
+        objects.push(data);
+        console.log(objects);
+      }
     }
-    var timer = $timeout(function refresh() {
-      if (ownMidataService.loggedIn()) {
-        $scope.getObservation("w");
-        $scope.getObservation("p");
-      } else {
-        timer = $timeout(refresh, 1000);
-      }
-    }, 1000);
-  */
-  /*
-    var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
+
+    var configLine = {
       series: [{
         name: 'series-1',
-        data: [{
-          x: moment(),
-          y: 11
-        }, {
-          x: new Date("12-20-2016"),
-          y: 40
-        }, {
-          x: new Date("12-21-2016"),
-          y: 45
-        }, {
-          x: new Date("12-22-2016"),
-          y: 40
-        }, {
-          x: new Date("12-23-2016"),
-          y: 20
-        }, {
-          x: new Date("12-24-2016"),
-          y: 32
-        }, {
-          x: new Date("12-25-2016"),
-          y: 18
-        }]
+        data: objects
       }]
-    }, {
-      axisX: {
-        type: Chartist.FixedScaleAxis,
-        divisor: 5,
-        labelInterpolationFnc: function(value) {
-          return moment(value).format('D MMM YY');
-        }
+    };
+    if (obsType == 'p') {
+      var chart = new Chartist.Line('.ct-chartLinePulse', configLine, options, responsiveOptions);
+      console.log(chart);
+    } else if (obsType == 'w') {
+      var chart = new Chartist.Line('.ct-chartLineWeight', configLine, options, responsiveOptions);
+      console.log(chart);
+    } else {
+      //other type
+    }
+  };
+  /*//TO SHOW ALLWAYS THE CHARTS
+  ownMidataService.getObservation('p', {}, $scope.drawChart);
+  ownMidataService.getObservation('w', {}, $scope.drawChart);
+  */
+  //To test the function without login first
+  var hanaolalsad = ownMidataService.loggedIn();
+  if (!hanaolalsad) {
+    ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
+  }
+  var timer = $timeout(function refresh() {
+    if (ownMidataService.loggedIn()) {
+      //  ownMidataService.getObservation('p', {}, $scope.drawChart);
+      ownMidataService.getObservation('w', {}, $scope.drawChart);
+    } else {
+      timer = $timeout(refresh, 1000);
+    }
+  }, 1000);
+
+
+  var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
+    series: [{
+      name: 'series-1',
+      data: [{
+        x: new Date("12-21-2016"),
+        y: 11
+      }, {
+        x: new Date("12-20-2016"),
+        y: 40
+      }, {
+        x: new Date("12-21-2016"),
+        y: 45
+      }, {
+        x: new Date("12-22-2016"),
+        y: 40
+      }, {
+        x: new Date("12-23-2016"),
+        y: 20
+      }, {
+        x: new Date("12-24-2016"),
+        y: 32
+      }, {
+        x: new Date("12-25-2016"),
+        y: 18
+      }]
+    }]
+  }, {
+    axisX: {
+      type: Chartist.FixedScaleAxis,
+      divisor: 5,
+      labelInterpolationFnc: function(value) {
+        return moment(value).format('D MMM YY');
       }
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 20
-      },
-      lineSmooth: Chartist.Interpolation.cardinal({
-        fillHoles: true,
-      }),
-      low: 0
-    });
-    console.log(chartPulse); */
+    }
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 20
+    },
+    lineSmooth: Chartist.Interpolation.cardinal({
+      fillHoles: true,
+    }),
+    low: 0
+  });
+  console.log(chartPulse);
 })
 
 .controller('UeberCtrl', function($scope, $state) {
@@ -320,17 +255,17 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService,$ionicPopup,$state) {
+.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService, $ionicPopup, $state) {
 
-    $scope.scheduleInstantNotification = function () {
-          $cordovaLocalNotification.schedule({
-          id: 1,
-          text: 'Instant Notification',
-          title: 'Instant'
-        }).then(function () {
-          alert("Instant Notification set");
-        });
-      };
+  $scope.scheduleInstantNotification = function() {
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      text: 'Instant Notification',
+      title: 'Instant'
+    }).then(function() {
+      alert("Instant Notification set");
+    });
+  };
 
 
   $scope.resetApp = function() {
