@@ -7,7 +7,6 @@ angular.module('starter.controllersTim', [])
   // Set Language List
   $scope.data = jsonService.getJson();
   var jsonData = jsonService.getJson();
-  var month= jsonData.MONTHS;
   $scope.familyDoc = jsonData.FAMILIYDOC;
   $scope.oncDoc = jsonData.ONCOLOGY;
   $scope.gastDoc = jsonData.GASTROENTEROLOGIST;

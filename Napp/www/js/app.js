@@ -89,7 +89,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ionic-datepicker', 'ionic-time
   document.addEventListener('deviceready', function() {
     // cordova.plugins.email is now available
     // cordova.plugins.notification.local is now available
-    alert("email und notification available");
   }, false);
 
   $stateProvider

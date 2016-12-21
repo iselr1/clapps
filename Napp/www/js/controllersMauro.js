@@ -81,7 +81,7 @@ angular.module('starter.controllersMauro', [])
         confirmPopup.then(function(res) {
           if(res) {
             console.log(tempIndex);
-            $scope.myContacts.splice(tempIndex, tempIndex+1);
+            $scope.myContacts.splice(tempIndex, 1);
             localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
           }
         });

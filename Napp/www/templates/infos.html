@@ -1,32 +1,33 @@
 //Author: Mauro
 <ion-view view-title="{{'INFOS' | translate}}">
   <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content>
 
-<!------------------------------------
+    <!------------------------------------
 ------------CONTENT START-------------
 ------------------------------------->
 
     <div class="card">
-        <div ng-repeat="info in myInfos" class="item item-text-wrap" ng-click="showContent({{$index}})">
-              <h2 translate="{{info.h2}}"></h2>
-              <div>
-                  <p id="infoContent{{$index}}" class="hidden content">
-                    <span translate="{{info.content}}"></span>
-                    <br /><br /><a href="{{info.link}}"><span translate="LINKINFO"></span></a>
-                    </p>
-
-              </div>
+      <div ng-repeat="info in myInfos" class="item item-text-wrap" ng-click="showContent({{$index}})">
+        <h2 translate="{{info.h2}}"></h2>
+        <div>
+          <p id="infoContent{{$index}}" class="hidden content">
+            <span translate="{{info.content}}"></span>
+            <br/><br/>
+            <a href="{{info.link}}">
+              <span translate="LINKINFO"></span>
+            </a>
+          </p>
         </div>
+      </div>
     </div>
 
-<!------------------------------------
+    <!------------------------------------
 ------------CONTENT END---------------
 ------------------------------------->
 

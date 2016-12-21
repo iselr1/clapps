@@ -15,11 +15,11 @@
     <div class="item item-text-wrap" id="contact{{$index}}">
       <div class="row">
           <div class="col col-80">
-          <p>{{contact.func}} : {{contact.name}}<br />
-          {{'STREET' | translate}}: {{contact.street}}<br />
-          {{'LOCATION' | translate}}: {{contact.location}}<br />
-          {{'PHONE' | translate}}: {{contact.phone}}<br />
-          {{'MAIL' | translate}}: {{contact.mail}}
+          <p><span  translate={{contact.func}}></span> : {{contact.name}}<br />
+            <span translate="STREET"></span>: {{contact.street}}<br />
+            <span translate="LOCATION"></span>: {{contact.location}}<br />
+          <span translate="PHONE"></span>: {{contact.phone}}<br />
+            <span translate="MAIL"></span>: {{contact.mail}}
           </p>
         </div>
           <div class="contactButtons">
@@ -44,9 +44,9 @@
                 <div class="input-label" translate="FUNCTION">
                 </div>
                 <select ng-model="addContact.func">
-                  <option>{{familyDoc}}</option>
-                  <option>{{oncDoc}}</option>
-                  <option>{{gastDoc}}</option>
+                  <option value="FAMILIYDOC">{{familyDoc}}</option>
+                  <option value="ONCOLOGY">{{oncDoc}}</option>
+                  <option value="GASTROENTEROLOGIST">{{gastDoc}}</option>
                 </select>
               </label>
             <label class="item item-input item-stacked-label">
@@ -80,8 +80,8 @@
             {{'CANCEL' | translate}}
           </button>
             <!---ADD Doctor---->
-            <button class="button button-calm"  id="addDoc" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
-            {{'ADDDOCTOR' | translate}}
+            <button class="button button-calm" translate='ADDDOCTOR'  id="addDoc" ng-click="openForm()"  style="float:right; margin-right:5px; margin-bottom:5px; margin-top:5px;">
+
           </button>
 
 

@@ -112,55 +112,57 @@
     "CONTENT":"Après un traitement éprouvant, vous vous sentez probablement fatigué, voire épuisé, et vous oscillez entre espoir et angoisse, confiance et défiance. Durant cette phase de réadaptation et de reprise de la vie de tous les jours, la Ligue contre le cancer est également là pour vous conseiller et vous épauler.",
     "LINK":"https://www.liguecancer.ch/conseil-et-soutien/cours-et-stages/stages-2017-pour-les-personnes-touchees-par-le-cancer/"
     }],
-  "MONTHS": [{
-    "id": "1",
-    "LABEL": "Jan",
-    "FULL": "Janvier"
-  }, {
-    "id": "2",
-    "LABEL": "Fév",
-    "FULL": "Février"
-  }, {
-    "id": "3",
-    "LABEL": "Mar",
-    "FULL": "Mars"
-  }, {
-    "id": "4",
-    "LABEL": "Avr",
-    "FULL": "Avril"
-  }, {
-    "id": "5",
-    "LABEL": "Mai",
-    "FULL": "Mai"
-  }, {
-    "id": "6",
-    "LABEL": "Jun",
-    "FULL": "Juin"
-  }, {
-    "id": "7",
-    "LABEL": "Jul",
-    "FULL": "Juillet"
-  }, {
-    "id": "8",
-    "LABEL": "Aoû",
-    "FULL": "Août"
-  }, {
-    "id": "9",
-    "LABEL": "Sep",
-    "FULL": "Septembre"
-  }, {
-    "id": "10",
-    "LABEL": "Oct",
-    "FULL": "Octobre"
-  }, {
-    "id": "11",
-    "LABEL": "Nov",
-    "FULL": "Novembre"
-  }, {
-    "id": "12",
-    "LABEL": "Déc",
-    "FULL": "Décembre"
-  }],
+
+      "MONTHS": {
+        "0": {
+          "LABEL": "Jan",
+          "FULL": " Janvier"
+        },
+        "1": {
+          "LABEL": "Fev",
+          "FULL": " Fevrier"
+        },
+        "2": {
+          "LABEL": "Mar",
+          "FULL": "Mars"
+        },
+        "3": {
+          "LABEL": "Avr",
+          "FULL": " Avril"
+        },
+        "4": {
+          "LABEL": "Mai",
+          "FULL": " Mai"
+        },
+        "5": {
+          "LABEL": "Juin",
+          "FULL": " Juin"
+        },
+        "6": {
+          "LABEL": "Juil",
+          "FULL": " Juillet"
+        },
+        "7": {
+          "LABEL": "Août",
+          "FULL": " Aoe"
+        },
+        "8": {
+          "LABEL": "Sep",
+          "FULL": " Septembre"
+        },
+        "9": {
+          "LABEL": "Oct",
+          "FULL": " Octobre"
+        },
+        "10": {
+          "LABEL": "Nov",
+          "FULL": " Novembre"
+        },
+        "11": {
+          "LABEL": "Dec",
+          "FULL": " Décembre"
+        }
+      },
   "CEA":"CEA",
   "CEACLINIC": "Examen clinique et CEA",
   "COLOSCOPY": "Coloscopie",

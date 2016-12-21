@@ -73,96 +73,93 @@
   "IMPRESSUMTEXT": "Die App wurde im Rahmen des Moduls Clinical Apps, des Studiengangs Medizininformatik, an der Berner Fachhochschule entwickelt durch:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> Die Projektidee kam von Herrn  Prof. Dr. med. Carsten Viehl er ist Chefarzt des Bereichs Chirurgie am Spitalzentrum Biel.<br><br> Haben Sie Fragen/Anregungen zur App, schreiben Sie dies bitte an:<br>sina@bfh.ch",
   "DONE APPOINTMENTS": "Abgeschlossene Termine",
   "FUTURE APPOINTMENTS": "Zukünftige Termine",
-  "LINKINFO":"Weitere Informationen können sie hier abrufen.",
-  "DETAILS":"Details",
-  "DATEOFAPPOINTMENT":"An welchem Tag?",
-  "APPOINTMENTDESCRIPTION":"Ergebnisse können hier erfasst werden:",
-  "COMMENTS":"Ergebnisse",
-  "SWITCHAPPOINTSTATUS":"Ist der Termin abgeschlossen?",
-  "ROLEOFDOCTOR":"Rolle des Behandelden",
-  "SAVE":"Speichern",
-  "DATEOP":"Operationsdatum",
-  "DELETEDOC":"Kontakteintrag entfernen",
-  "DELETDOCTEXT":"Sind sie sicher, dass sie ihren Kontakteintrag entfernen möchten?",
-  "INFORMATION":[{
-    "TITLE":"Ernährung",
-    "CONTENT":"Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
-    "LINK":"https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"
-    },{
-    "TITLE":"Sport",
-    "CONTENT":"Täglich eine halbe Stunde Bewegung kann das Lebensgefühl steigern, das Selbstvertrauen fördern, die Gedanken ordnen, die Müdigkeit vertreiben und vor allem: Es kann Spass machen.",
-    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/infomaterial/broschueren/fuer-erwachsene/koerperlich-aktiv-werden/"
-    },
-    {
-    "TITLE":"Rehabilitation",
-    "CONTENT":"Die Überlebensrate bei Krebserkrankten steigt. Doch die Krankheit und ihre Behandlung führen oft zu körperlichen, psychischen und sozialen Beeinträchtigungen. Onkologische Rehabilitationsprogramme verbessern die Lebensqualität von Krebsbetroffenen und erleichtern ihre Wiedereingliederung in den Alltag und ins Berufsleben.",
-    "LINK":"https://www.krebsliga.ch/ueber-krebs/rehabilitation/"
-    },
-    {
-    "TITLE":"Selbsthilfe",
-    "CONTENT":"Möchten Sie sich mit Menschen treffen und austauschen, die in der gleichen Situation wie Sie selbst sind oder waren? In unserer Zusammenstellung finden Sie Adressen von Selbsthilfeorganisationen. Auch die kantonalen Krebsligen können Ihnen mitteilen, wo und wann sich Selbsthilfegruppen in Ihrer Nähe treffen.",
-    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/selbsthilfe/"
-    },
-    {
-    "TITLE":"Krebsforum",
-    "CONTENT":"Haben auch Sie Erfahrungen mit Krebs und möchten diese mit anderen Betroffenen austauschen? Möchten Sie andere unterstützen und von Ihren Erfahrungen profitieren lassen? Suchen Sie Rat von Menschen, die das Gleiche erleben wie Sie? Ist jemand in Ihrer Familie an Krebs erkrankt und Sie suchen den Austausch mit andern Nahestehenden?",
-    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/meine-frage-zu-krebs/krebsforum/"
-      },
-     {
-    "TITLE":"Seminare 2017 für krebsbetroffene Menschen",
-    "CONTENT":"Haben Sie eine intensive medizinisch-therapeutische Behandlung hinter sich? Dann fühlen Sie sich möglicherweise erschöpft und müde und schwanken zwischen Hoffnung und Zuversicht sowie Angst und Misstrauen.",
-    "LINK":"https://www.krebsliga.ch/beratung-unterstuetzung/kurse-und-seminare/seminare-2017-fuer-krebsbetroffene-menschen/"
-    }],
-
-  "MONTHS": [{
-    "id": "1",
-    "LABEL": "Jan",
-    "FULL": " Januar"
+  "LINKINFO": "Weitere Informationen können sie hier abrufen.",
+  "DETAILS": "Details",
+  "DATEOFAPPOINTMENT": "An welchem Tag?",
+  "APPOINTMENTDESCRIPTION": "Ergebnisse können hier erfasst werden:",
+  "COMMENTS": "Ergebnisse",
+  "SWITCHAPPOINTSTATUS": "Ist der Termin abgeschlossen?",
+  "ROLEOFDOCTOR": "Rolle des Behandelden",
+  "SAVE": "Speichern",
+  "DATEOP": "Operationsdatum",
+  "DELETEDOC": "Kontakteintrag entfernen",
+  "DELETDOCTEXT": "Sind sie sicher, dass sie ihren Kontakteintrag entfernen möchten?",
+  "INFORMATION": [{
+    "TITLE": "Ernährung",
+    "CONTENT": "Eine ausgewogene Ernährung mit viel Gemüse und Früchten und wenig tierischen Lebensmitteln kann das Risiko für verschiedene Krebsarten senken. Die Weltgesundheitsorganisation WHO geht davon aus, dass das Krebsrisiko mit einem gesunden Lebensstil um 30 bis 40 Prozent gesenkt werden kann. Nichtrauchen, ausgewogene Ernährung, wenig Alkohol, ausreichend Bewegung und umfassender Sonnenschutz – dies alles sind Bestandteile eines gesunden Lebensstils.",
+    "LINK": "https://www.krebsliga.ch/krebs-vorbeugen/gesunder-lebensstil/gesunde-ernaehrung/"
   }, {
-    "id": "2",
-    "LABEL": "Feb",
-    "FULL": " Februar"
+    "TITLE": "Sport",
+    "CONTENT": "Täglich eine halbe Stunde Bewegung kann das Lebensgefühl steigern, das Selbstvertrauen fördern, die Gedanken ordnen, die Müdigkeit vertreiben und vor allem: Es kann Spass machen.",
+    "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/infomaterial/broschueren/fuer-erwachsene/koerperlich-aktiv-werden/"
   }, {
-    "id": "3",
-    "LABEL": "Mrz",
-    "FULL": " März"
+    "TITLE": "Rehabilitation",
+    "CONTENT": "Die Überlebensrate bei Krebserkrankten steigt. Doch die Krankheit und ihre Behandlung führen oft zu körperlichen, psychischen und sozialen Beeinträchtigungen. Onkologische Rehabilitationsprogramme verbessern die Lebensqualität von Krebsbetroffenen und erleichtern ihre Wiedereingliederung in den Alltag und ins Berufsleben.",
+    "LINK": "https://www.krebsliga.ch/ueber-krebs/rehabilitation/"
   }, {
-    "id": "4",
-    "LABEL": "Apr",
-    "FULL": " April"
+    "TITLE": "Selbsthilfe",
+    "CONTENT": "Möchten Sie sich mit Menschen treffen und austauschen, die in der gleichen Situation wie Sie selbst sind oder waren? In unserer Zusammenstellung finden Sie Adressen von Selbsthilfeorganisationen. Auch die kantonalen Krebsligen können Ihnen mitteilen, wo und wann sich Selbsthilfegruppen in Ihrer Nähe treffen.",
+    "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/selbsthilfe/"
   }, {
-    "id": "5",
-    "LABEL": "Mai",
-    "FULL": " Mai"
+    "TITLE": "Krebsforum",
+    "CONTENT": "Haben auch Sie Erfahrungen mit Krebs und möchten diese mit anderen Betroffenen austauschen? Möchten Sie andere unterstützen und von Ihren Erfahrungen profitieren lassen? Suchen Sie Rat von Menschen, die das Gleiche erleben wie Sie? Ist jemand in Ihrer Familie an Krebs erkrankt und Sie suchen den Austausch mit andern Nahestehenden?",
+    "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/meine-frage-zu-krebs/krebsforum/"
   }, {
-    "id": "6",
-    "LABEL": "Jun",
-    "FULL": " Juni"
-  }, {
-    "id": "7",
-    "LABEL": "Jul",
-    "FULL": " Juli"
-  }, {
-    "id": "8",
-    "LABEL": "Aug",
-    "FULL": " August"
-  }, {
-    "id": "9",
-    "LABEL": "Sep",
-    "FULL": " September"
-  }, {
-    "id": "10",
-    "LABEL": "Okt",
-    "FULL": " Oktober"
-  }, {
-    "id": "11",
-    "LABEL": "Nov",
-    "FULL": " November"
-  }, {
-    "id": "12",
-    "LABEL": "Dez",
-    "FULL": " Dezember"
+    "TITLE": "Seminare 2017 für krebsbetroffene Menschen",
+    "CONTENT": "Haben Sie eine intensive medizinisch-therapeutische Behandlung hinter sich? Dann fühlen Sie sich möglicherweise erschöpft und müde und schwanken zwischen Hoffnung und Zuversicht sowie Angst und Misstrauen.",
+    "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/kurse-und-seminare/seminare-2017-fuer-krebsbetroffene-menschen/"
   }],
+
+  "MONTHS": {
+    "0": {
+      "LABEL": "Jan",
+      "FULL": " Januar"
+    },
+    "1": {
+      "LABEL": "Feb",
+      "FULL": " Februar"
+    },
+    "2": {
+      "LABEL": "Mrz",
+      "FULL": " März"
+    },
+    "3": {
+      "LABEL": "Apr",
+      "FULL": " April"
+    },
+    "4": {
+      "LABEL": "Mai",
+      "FULL": " Mai"
+    },
+    "5": {
+      "LABEL": "Jun",
+      "FULL": " Juni"
+    },
+    "6": {
+      "LABEL": "Jul",
+      "FULL": " Juli"
+    },
+    "7": {
+      "LABEL": "Aug",
+      "FULL": " August"
+    },
+    "8": {
+      "LABEL": "Sep",
+      "FULL": " September"
+    },
+    "9": {
+      "LABEL": "Okt",
+      "FULL": " Oktober"
+    },
+    "10": {
+      "LABEL": "Nov",
+      "FULL": " November"
+    },
+    "11": {
+      "LABEL": "Dez",
+      "FULL": " Dezember"
+    }
+  },
   "CEA": "CEA-Titer",
   "CEACLINIC": "Klinische Untersuchung, CEA-Titer",
   "COLOSCOPY": "Koloskopie",
@@ -174,9 +171,9 @@
   "DONOTUSETHISAPP": "Die App ist nicht für Personen mit Ihrem medizinischen Hintergrund geeignet, bitte befolgen Sie die Anweisungen Ihres Arztes für die Nachsorge.",
   "FILLCORRECTCANCER": "Bitte wählen Sie ihre Krebsart",
   "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus.",
-  "RESET":"Löschen",
-  "RESETAPP":"Alle Daten löschen",
-  "RESETAPPTEXT":"Sind Sie sicher, dass sie alle Daten löschen möchten?",
-  "TIMEPERIOD":"Zeitperiode des Termines",
-  "TIMEPERIODTEXT":"Ab folgendem Monat, sollten Sie einen Termin vereinbaren: "
+  "RESET": "Löschen",
+  "RESETAPP": "Alle Daten löschen",
+  "RESETAPPTEXT": "Sind Sie sicher, dass sie alle Daten löschen möchten?",
+  "TIMEPERIOD": "Zeitperiode des Termines",
+  "TIMEPERIODTEXT": "Ab folgendem Monat, sollten Sie einen Termin vereinbaren: "
 }

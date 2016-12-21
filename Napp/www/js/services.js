@@ -38,14 +38,14 @@ angular.module('starter.services', [])
 
   //Load descriptions in appropriate language
   var jsonData = jsonService.getJson();
-  var d_cea = jsonData.CEA;
-  var d_ceaClinic = jsonData.CEACLINIC;
-  var d_coloscopy = jsonData.COLOSCOPY;
-  var d_endoscopy = jsonData.ENDOSCOPY;
-  var d_endosonography = jsonData.ENDOSONOGRAPHYORMRIPERLVIC;
-  var d_ctAbomenPelvic = jsonData.CTABDOMENPELVIC;
-  var d_ctAbdomen = jsonData.CTABDOMEN;
-  var d_month = jsonData.MONTHS;
+  var d_cea = "CEA";
+  var d_ceaClinic = "CEACLINIC";
+  var d_coloscopy = "COLOSCOPY";
+  var d_endoscopy = "ENDOSCOPY";
+  var d_endosonography = "ENDOSONOGRAPHYORMRIPERLVIC";
+  var d_ctAbomenPelvic = "CTABDOMENPELVIC";
+  var d_ctAbdomen = "CTABDOMEN";
+
 
   // Variables for the schema generation
   var cancertype = '';
@@ -132,9 +132,9 @@ angular.module('starter.services', [])
         if (itemArray[k].date instanceof Date) {
           if (years[j] == itemArray[k].date.getFullYear()) {
             itemArray[k].oldDate = itemArray[k].date;
-            itemArray[k].month = d_month[itemArray[k].date.getMonth()].LABEL;
-            itemArray[k].fullMonth = d_month[itemArray[k].date.getMonth()].FULL;
-            itemArray[k].date = d_month[itemArray[k].date.getMonth()].LABEL;
+            itemArray[k].month = "MONTHS."+itemArray[k].date.getMonth()+".LABEL";
+            itemArray[k].fullMonth = "MONTHS."+itemArray[k].date.getMonth()+".FULL";
+            itemArray[k].date = "MONTHS."+itemArray[k].date.getMonth()+".LABEL";
 
             appointmentsArray.push(itemArray[k]);
           }
