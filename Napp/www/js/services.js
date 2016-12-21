@@ -4,14 +4,26 @@ angular.module('starter.services', [])
   var jsonService = {};
   var prefix = 'js/locale-';
   var suffix = '.json';
-
+  var key = '';
   jsonService.data = {};
 
   // initialize the json file with the currentLanguage
-  var key = ($translate.proposedLanguage() || $translate.use());
+  if (localStorage.getItem('language') != null) {
+    key = localStorage.getItem('language').slice(1, 3);
+    console.log(key);
+  } else {
+    key = ($translate.proposedLanguage() || $translate.use());
+  }
+  console.log($http.get(prefix + key + suffix));
   $http.get(prefix + key + suffix)
     .success(function(data) {
+      $translate.use(key);
+      //Array leeren
+      jsonService.data.json = {};
+      //Array mit neuen Werten befüllen
       jsonService.data.json = data;
+
+      console.log(key);
       console.log('Json data is initialized');
     });
 
@@ -19,6 +31,7 @@ angular.module('starter.services', [])
   jsonService.loadJson = function(key) {
     $http.get(prefix + key + suffix)
       .success(function(data) {
+        $translate.use(key);
         //Array leeren
         jsonService.data.json = {};
         //Array mit neuen Werten befüllen
@@ -132,9 +145,9 @@ angular.module('starter.services', [])
         if (itemArray[k].date instanceof Date) {
           if (years[j] == itemArray[k].date.getFullYear()) {
             itemArray[k].oldDate = itemArray[k].date;
-            itemArray[k].month = "MONTHS."+itemArray[k].date.getMonth()+".LABEL";
-            itemArray[k].fullMonth = "MONTHS."+itemArray[k].date.getMonth()+".FULL";
-            itemArray[k].date = "MONTHS."+itemArray[k].date.getMonth()+".LABEL";
+            itemArray[k].month = "MONTHS." + itemArray[k].date.getMonth() + ".LABEL";
+            itemArray[k].fullMonth = "MONTHS." + itemArray[k].date.getMonth() + ".FULL";
+            itemArray[k].date = "MONTHS." + itemArray[k].date.getMonth() + ".LABEL";
 
             appointmentsArray.push(itemArray[k]);
           }

@@ -322,18 +322,30 @@ currentLanguage, to detect the current language;
   }];
   // Set the selectoption to the current language
   $scope.languageSelected = currentLanguage();
-  // Get the current language
+  // Get current language
   function currentLanguage() {
-    if (($translate.proposedLanguage() || $translate.use()) == "fr") {
-      return '2';
+    if (localStorage.getItem('language') != null) {
+      if (localStorage.getItem('language').slice(1, 3) == "fr") {
+        return '2';
+      } else {
+        return '1';
+      }
     } else {
       return '1';
+      if (($translate.proposedLanguage() || $translate.use()) == "fr") {
+        return '2';
+      } else {
+        return '1';
+      }
     }
   };
+
   // Change language if the selectoption changed
   $scope.onchangeLanguage = function(key) {
+    console.log(key.token);
     $translate.use(key.token);
     jsonService.loadJson(key.token);
+    localStorage.setItem('language', JSON.stringify(key.token));
   };
 })
 

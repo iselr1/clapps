@@ -11,10 +11,10 @@ Funktion: Alle Controller für die Views "Welcome", "TNM-Staging", "Operation"
 angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
 /* -- Controller für Welcome View -- */
-.controller('WelcomeCtrl', function($scope, $location, $state, $translate) {
+.controller('WelcomeCtrl', function($scope, $location, $state, $translate, jsonService) {
 
-  if(localStorage.getItem('appointmentStatus') === 'done'){
-      $state.go('home');
+  if (localStorage.getItem('appointmentStatus') === 'done') {
+    $state.go('home');
   }
 
   // Weiterleitung nach TNM Staging
@@ -36,18 +36,31 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
   // Die ausgewählte Sprache setzen
   $scope.languageSelected = currentLanguage();
 
-  // Momentane Sprache holen
+  // Get current language
   function currentLanguage() {
-    if (($translate.proposedLanguage() || $translate.use()) == "fr") {
-      return '2';
+    if (localStorage.getItem('language') != null) {
+      if (localStorage.getItem('language').slice(1, 3) == "fr") {
+        return '2';
+      } else {
+        return '1';
+      }
     } else {
       return '1';
+      if (($translate.proposedLanguage() || $translate.use()) == "fr") {
+        return '2';
+      } else {
+        return '1';
+      }
     }
   };
 
   // Sprache ändern, wenn anderes ausgewählt im Select
+  // Change language if the selectoption changed
   $scope.onchangeLanguage = function(key) {
+    console.log(key.token);
     $translate.use(key.token);
+    jsonService.loadJson(key.token);
+    localStorage.setItem('language', JSON.stringify(key.token));
   };
 
 })

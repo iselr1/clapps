@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
     }
   })
 
-.controller('LoginCtrl', function($scope, $translate, ownMidataService, $timeout, $state, jsonService, $ionicLoading) {
+.controller('LoginCtrl', function($scope, $translate, ownMidataService, $timeout, $state, $ionicLoading) {
   // Values for login
   $scope.login = {};
   $scope.login.email = '';
@@ -74,12 +74,6 @@ angular.module('starter.controllers', [])
     console.info("Logout");
     ownMidataService.logout();
   }
-
-  //Change the language
-  $scope.switchLanguage = function(key) {
-    $translate.use(key);
-    jsonService.loadJson(key);
-  };
 
 })
 
