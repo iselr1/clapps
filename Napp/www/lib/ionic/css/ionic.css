@@ -10648,7 +10648,15 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
   flex: 0 0 25%;
   max-width: 25%;
 }
-
+.col-30 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
 .col-33, .col-34 {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 33.3333%;
@@ -10687,6 +10695,15 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
   -ms-flex: 0 0 60%;
   flex: 0 0 60%;
   max-width: 60%;
+}
+.col-70 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 70%;
+  -ms-flex: 0 0 70%;
+  flex: 0 0 70%;
+  max-width: 70%;
 }
 
 .col-66, .col-67 {

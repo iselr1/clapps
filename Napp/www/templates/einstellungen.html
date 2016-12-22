@@ -9,41 +9,40 @@ Function: Possiblity to alter diffrent settings like, the reminder sound and the
 -->
 <ion-view view-title="{{'SETTINGS' | translate}}">
   <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
-    <ion-content scroll="false">
+  <ion-content scroll="false">
     <div class="card">
-    <!-- Alter the sound of the reminder -->
-    <label class="item item-input item-select">
+      <!-- Alter the sound of the reminder -->
+      <label class="item item-input item-select">
         <div class="input-label">
-            <h2 translate="REMINDER_SOUND"></h2>
+          <h2 translate="REMINDER_SOUND"></h2>
         </div>
-        <select ng-model="soundSelected"
-    ng-options="sound.id as sound.name for sound in soundList" ng-change="onchangeSound(soundList[soundSelected-1])">
-    </select>
-    </label>
+        <select ng-model="soundSelected" ng-options="sound.id as sound.name for sound in soundList" ng-change="onchangeSound(soundList[soundSelected-1])"></select>
+      </label>
 
-    <!-- Alter the language of the app -->
-    <label class="item item-input item-select">
+      <!-- Alter the language of the app -->
+      <label class="item item-text-wrap item-select">
         <div class="input-label">
-            <h2 translate="LANGUAGE"></h2>
+          <h2 translate="LANGUAGE"></h2>
         </div>
-        <select ng-model="languageSelected"
-    ng-options="language.id as language.name for language in languageList" ng-change="onchangeLanguage(languageList[languageSelected-1])">
-    </select>
-    </label>
+        <select ng-model="languageSelected" ng-options="language.id as language.name for language in languageList" ng-change="onchangeLanguage(languageList[languageSelected-1])"></select>
+      </label>
       <label class="item">
 
-            <span translate="RESETAPP"></span><button translate = "RESET" class="button  button-assertive" style="float:right;" ng-click="resetApp()"></button>
+        <span translate="RESETAPP"></span>
+        <button translate="RESET" class="button  button-assertive" style="float:right;" ng-click="resetApp()"></button>
 
       </label>
       <label class="item ">
-  <button class="button button-small button-positive" ng-click="scheduleInstantNotification()">Notification Test</button>
-</label>
-</div>
+        <button class="button button-small button-positive" ng-click="scheduleInstantNotification()">Notification Test</button>
+      </label>
+      <label class="item ">
+        <button class="button button-small button-positive" ng-click="scheduleNotificationFiveSecondsFromNow()">Notification Test 5sec</button>
+      </label>
+    </div>
   </ion-content>
 </ion-view>

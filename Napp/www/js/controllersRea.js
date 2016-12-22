@@ -264,6 +264,7 @@ currentLanguage, to detect the current language;
 //--------------------------------------------------------//
 
 .controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService, $ionicPopup, $state) {
+  var sound = "file://sounds/DespicableMeNotification.mp3";
 
   $scope.scheduleInstantNotification = function() {
     $cordovaLocalNotification.schedule({
@@ -275,6 +276,20 @@ currentLanguage, to detect the current language;
     });
   };
 
+  $scope.scheduleNotificationFiveSecondsFromNow = function() {
+    var now = new Date().getTime();
+    var _5SecondsFromNow = new Date(now + 5000);
+
+    $cordovaLocalNotification.schedule({
+      id: 2,
+      date: _5SecondsFromNow,
+      text: 'Notification After 5 Seconds Has Been Triggered',
+      title: 'After 5 Seconds',
+      sound: sound
+    }).then(function() {
+      alert("Notification After 5 seconds set");
+    });
+  };
 
   $scope.resetApp = function() {
     var jsonData = jsonService.getJson();
@@ -297,18 +312,23 @@ currentLanguage, to detect the current language;
   //Choice for Remindersounds
   $scope.soundList = [{
     id: 1,
-    name: 'Ton 1'
+    name: 'Ton 1',
+    sound: 'file://sounds/DespicableMeNotification.mp3'
   }, {
     id: 2,
-    name: 'Ton 2'
+    name: 'Ton 2',
+    sound: 'file://sounds/HTCOneLimeNotification.mp3'
   }, {
     id: 3,
-    name: 'Ton 3'
+    name: 'Ton 3',
+    sound: 'file://sounds/iphoneOriginal.mp3'
   }];
   $scope.soundSelected = 1;
 
-  $scope.onchangeSound = function(id) {
-    console.log("id:" + id.id);
+  // Change the sound if the selectoption changed
+  $scope.onchangeSound = function(soundList) {
+    sound = soundList.sound;
+    console.log(sound);
   };
   //Choice for language
   $scope.languageList = [{
