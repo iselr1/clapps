@@ -17,24 +17,61 @@ angular.module('starter.controllersRea', [])
 You'll find the following functions in it:
 addPulse, to make a new pulse entry;
 addWeight, to make a new weight entry;
-onchangeSound, to alter the reminder sound;
-onchangeLanguage, to alter the app language;
-currentLanguage, to detect the current language;
+show***Popup, to show a popup if the entred value for weight or pulse was not valid;
+drawChart, to draw the lineChart with the pulse and weight values;
 */
 
 .controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup, jsonService) {
+  /* Load the json file with the translations and store it to the variable jsonData */
+  var jsonData = jsonService.getJson();
+
+  /********************* Validation area ******************/
+  /*Variables for the Validation of the inputs field with the pulse and weight data to store to midata*/
   // Min value for pulse
-  var minPuls = 30;
+  var minPulse = 30;
   // Max value for pulse
-  var maxPuls = 150;
+  var maxPulse = 150;
   // Min value for weight
   var minWeight = 30;
   // Max value for weight
   var maxWeight = 250;
-  // To get acces to the translation tags
-  var jsonData = jsonService.getJson();
+  /* Popups for the diffrent cases of validation */
+  // Popup if there was no value entered
+  $scope.showNoValPopup = function(vitalsign) {
+      var alertPopup = $ionicPopup.alert({
+        title: jsonData.NOVALUE,
+        template: jsonData.PLEASEGIVE + vitalsign + jsonData.ACCORDINGFIELD
+      });
+    }
+    // Popup if the value was not numeric
+  $scope.showNotNumeric = function(vitalsign) {
+      var alertPopup = $ionicPopup.alert({
+        title: jsonData.INVALIDVALUE,
+        template: jsonData.PLEASEGIVE + vitalsign + jsonData.ASANUMBER
+      });
+    }
+    // Popup if the pulse value was out of the min-max range
+  $scope.showNotPossiblePuls = function() {
+      var alertPopup = $ionicPopup.alert({
+        title: jsonData.INVALIDVALUE,
+        template: jsonData.PULSMINMAX
+      });
+    }
+    // Popup if the weight value was out of the min-max range
+  $scope.showNotPossibleWeight = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: jsonData.INVALIDVALUE,
+      template: jsonData.WEIGHTMINMAX
+    });
+  }
 
+
+  /*********************Function to save and get Data from Midata*********************/
+  // Initialize the value of the ng-model
   $scope.Weight = {};
+
+  /* Function addWeight: only working if the value is not empty or lower than minWeight or higher than maxWeight
+  if the value gets trough validation we call the save function of ownMidataService and after this asynchronus call was excecuted we call the getObservation function to load the last 5 values from midata and call $scope.drawChart to reload the linechart*/
   $scope.addWeight = function() {
     var val = $scope.Weight.value;
 
@@ -57,7 +94,12 @@ currentLanguage, to detect the current language;
       });
     }
   }
+
+  /*********************Function to save and get Data from Midata*********************/
+  // Initialize the value of the ng-model
   $scope.Pulse = {};
+  /* Function addPulse: only working if the value is not empty or lower than minPulse or higher than maxPulse
+  if the value gets trough validation we call the save function of ownMidataService and after this asynchronus call was excecuted we call the getObservation function to load the last 5 values from midata and call $scope.drawChart to reload the linechart*/
   $scope.addPulse = function() {
     var val = $scope.Pulse.value;
 
@@ -65,7 +107,7 @@ currentLanguage, to detect the current language;
       $scope.showNoValPopup(jsonData.PULSE);
     } else if (isNaN(val)) {
       $scope.showNotNumeric(jsonData.PULSE);
-    } else if ((val < minPuls) || (val > maxPuls)) {
+    } else if ((val < minPulse) || (val > maxPulse)) {
       $scope.showNotPossiblePuls();
     } else {
       var type = 'pulse';
@@ -81,32 +123,14 @@ currentLanguage, to detect the current language;
     }
   }
 
-  $scope.showNoValPopup = function(vitalsign) {
-    var alertPopup = $ionicPopup.alert({
-      title: jsonData.NOVALUE,
-      template: jsonData.PLEASEGIVE + vitalsign + jsonData.ACCORDINGFIELD
-    });
-  }
-
-  $scope.showNotNumeric = function(vitalsign) {
-    var alertPopup = $ionicPopup.alert({
-      title: jsonData.INVALIDVALUE,
-      template: jsonData.PLEASEGIVE + vitalsign + jsonData.ASANUMBER
-    });
-  }
-  $scope.showNotPossiblePuls = function() {
-    var alertPopup = $ionicPopup.alert({
-      title: jsonData.INVALIDVALUE,
-      template: jsonData.PULSMINMAX
-    });
-  }
-  $scope.showNotPossibleWeight = function() {
-      var alertPopup = $ionicPopup.alert({
-        title: jsonData.INVALIDVALUE,
-        template: jsonData.WEIGHTMINMAX
-      });
-    }
-    // general options for the chartist
+  /* Variables with an array containing the settings for drawing the lineChart of the chartist library */
+  // --> axisX: array containing the options to define the horizontal labels
+  // --> divisor: the time labels of the xAxis are calulated by divising the timespan of the first and last value in the chart by the number of the divisor
+  // --> labelInterpolationFnc: function to set the labels to the time value with the entered format
+  // --> axisY: array containing the options to define the vertical labels
+  // --> onlyInteger: if true, the numbers are integers, therefore no decimal numbers
+  // --> offset: define the offset from the left border of the page
+  // for further documentation visit: https://gionkunz.github.io/chartist-js/api-documentation.html
   var options = {
     axisX: {
       type: Chartist.FixedScaleAxis,
@@ -120,6 +144,7 @@ currentLanguage, to detect the current language;
       offset: 20
     }
   };
+  // In addition to the regular options we specify responsive option overrides that will override the default configutation based on the matching media queries.
   var responsiveOptions = {
     fullWidth: true,
     chartPadding: {
@@ -131,9 +156,16 @@ currentLanguage, to detect the current language;
     low: 0
   };
 
-  // getter for the Pulse and Weight value
+  /*********************Function to draw the lineCharts*********************/
+  // In this function we check if the results array from midata contains more observation values than 5. If thats the case we take only the newest 5 entry and store the value in an array of data objects containing the date and value of the obersvation entry
+  // --> result: array containing all observation objects from midata
+  // --> obsType: w if they are weight observations; p if they are pulse observations
+  // data.x: to store the date of the obersvation
+  // data.y: to store the value of the observation
+  // --> result.sort: To sort the Array with the midata data according to their entry date otherwise no line will be drawn between the points
+  // --> configLine: variable with an objects array containing the data objects
+  // --> chart: according to the obsType the pulse of weight linechart gets drawn
   $scope.drawChart = function(result, obsType) {
-    // To sort the Array with the midata data according to their entry date otherwise no line will be drawn between the points
     result.sort(function(a, b) {
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
@@ -179,76 +211,20 @@ currentLanguage, to detect the current language;
       //other type
     }
   };
-  //TO SHOW ALLWAYS THE CHARTS
+
+  /*************to initzialize the linecharts in the first place, before new values are saved*****************/
   ownMidataService.getObservation('p', {}, $scope.drawChart);
   ownMidataService.getObservation('w', {}, $scope.drawChart);
-  /*
-  //To test the function without login first
-  var hanaolalsad = ownMidataService.loggedIn();
-  if (!hanaolalsad) {
-    ownMidataService.login('sina@midata.coop', 'Sina123456', 'member');
-  }
-  var timer = $timeout(function refresh() {
-    if (ownMidataService.loggedIn()) {
-      ownMidataService.getObservation('p', {}, $scope.drawChart);
-      ownMidataService.getObservation('w', {}, $scope.drawChart);
-    } else {
-      timer = $timeout(refresh, 1000);
-    }
-  }, 1000);
-*/
-  /*
-    var chartPulse = new Chartist.Line('.ct-chartLinePulse', {
-      series: [{
-        name: 'series-1',
-        data: [{
-          x: new Date("12-21-2016"),
-          y: 11
-        }, {
-          x: new Date("12-20-2016"),
-          y: 40
-        }, {
-          x: new Date("12-21-2016"),
-          y: 45
-        }, {
-          x: new Date("12-22-2016"),
-          y: 40
-        }, {
-          x: new Date("12-23-2016"),
-          y: 20
-        }, {
-          x: new Date("12-24-2016"),
-          y: 32
-        }, {
-          x: new Date("12-25-2016"),
-          y: 18
-        }]
-      }]
-    }, {
-      axisX: {
-        type: Chartist.FixedScaleAxis,
-        divisor: 5,
-        labelInterpolationFnc: function(value) {
-          return moment(value).format('D MMM YY');
-        }
-      }
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 20
-      },
-      lineSmooth: Chartist.Interpolation.cardinal({
-        fillHoles: true,
-      }),
-      low: 0
-    });
-    console.log(chartPulse);*/
+
 })
 
-.controller('UeberCtrl', function($scope, $state) {
+//--------------------------------------------------------//
+//---------------CONTROLLER Über-----------------------//
+//--------------------------------------------------------//
 
+.controller('UeberCtrl', function($scope, $state) {
+  /**** contains only ng-click functions to navigate to the indicated views *****/
   $scope.goSettings = function() {
-    console.log(localStorage.getItem('appointmentStatus'));
     $state.go('einstellungen');
   };
   $scope.goDataprotection = function() {
@@ -262,54 +238,23 @@ currentLanguage, to detect the current language;
 //--------------------------------------------------------//
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
+/* Controller Einstellungen
+You'll find the following functions in it:
+onchangeSound, to alter the reminder sound;
+onchangeLanguage, to alter the app language;
+currentLanguage, to detect the current language;
+scheduleInstantNotification, to schedule an notification;
+scheduleNotificationFiveSecondsFromNow, to schedule a notification at a specific dateTime;
+resetApp, to clear the localStorage and reset everything to the intial status;
+*/
+.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
+  // variable containing the inital notification sound path
+  var notificationSound = "file://sounds/DespicableMeNotification.mp3";
 
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state) {
-  var sound = "file://sounds/DespicableMeNotification.mp3";
-
-  $scope.scheduleInstantNotification = function() {
-    $cordovaLocalNotification.schedule({
-      id: 1,
-      text: 'Instant Notification',
-      title: 'Instant'
-    }).then(function() {
-      alert("Instant Notification set");
-    });
-  };
-
-  $scope.scheduleNotificationFiveSecondsFromNow = function() {
-    var now = new Date().getTime();
-    var _5SecondsFromNow = new Date(now + 5000);
-
-    $cordovaLocalNotification.schedule({
-      id: 2,
-      date: _5SecondsFromNow,
-      text: 'Notification After 5 Seconds Has Been Triggered',
-      title: 'After 5 Seconds',
-      sound: sound
-    }).then(function() {
-      alert("Notification After 5 seconds set");
-    });
-  };
-
-  $scope.resetApp = function() {
-    var jsonData = jsonService.getJson();
-    var confirmPopup = $ionicPopup.confirm({
-
-      title: jsonData.RESETAPP,
-      template: jsonData.RESETAPPTEXT,
-      cancelText: jsonData.CANCEL,
-      cancelType: 'button-assertive'
-    });
-    confirmPopup.then(function(res) {
-      if (res) {
-        localStorage.clear();
-        $state.go('welcome');
-      }
-    });
-
-  }
-
-  //Choice for Remindersounds
+  /*********************Array with the diffrent notification sounds for the select list*********************/
+  // -->id: id of the sound
+  // --> name: label of the sound displayed in the selectoption
+  // --> soundj: path to the notification sound
   $scope.soundList = [{
     id: 1,
     name: 'Ton 1',
@@ -323,17 +268,24 @@ currentLanguage, to detect the current language;
     name: 'Ton 3',
     sound: 'file://sounds/iphoneOriginal.mp3'
   }];
+  // Initialize the select with an id of the select list
   $scope.soundSelected = 1;
 
-  // Change the sound if the selectoption changed
+  /*********************function called if another sound in the select list was selected*********************/
+  // overrites the variable notificationSound with the selected
+  // --> mediaStatusCallback: callback function showing ionicLoading spinner if the new media call has the status 1
+  // --> getMediaURL: to set the path of the sound to the according one in the android build if the platform is android
   $scope.onchangeSound = function(soundList) {
-    sound = soundList.sound;
+    notificationSound = soundList.sound;
+    // Initialize var src with the path of the selected sound
     var src = soundList.sound;
-    // Play the audio file at url
 
+    // set the path for the notificationSound, in this case the part with file:// is skipped
     var mp3URL = getMediaURL(src.slice(7));
     console.log(mp3URL);
+    // media object to play the sound of the according url
     var media = new Media(mp3URL, null, null, mediaStatusCallback);
+    // play the media object
     media.play();
 
     var mediaStatusCallback = function(status) {
@@ -352,7 +304,66 @@ currentLanguage, to detect the current language;
       return s;
     }
   };
-  //Choice for language
+
+  /*********************Function called to schedule an instant notification*********************/
+  // --> id: id of the notification
+  // --> text: notification text
+  // --> title: notification title
+  $scope.scheduleInstantNotification = function() {
+    $cordovaLocalNotification.schedule({
+      id: 1,
+      text: 'Instant Notification',
+      title: 'Instant'
+    }).then(function() {
+      alert("Instant Notification set");
+    });
+  };
+
+  /*********************Function called to schedule an notification at a defined date*********************/
+  // --> id: id of the notification
+  // --> date: the date object for calling the notification
+  // --> text: notification text
+  // --> title: notification title
+  // --> sound: the sound to play when the notification pops - value of the notificationSound
+  $scope.scheduleNotificationFiveSecondsFromNow = function() {
+    // schedule notification 5 seconds from now
+    var now = new Date().getTime();
+    var _5SecondsFromNow = new Date(now + 5000);
+
+    $cordovaLocalNotification.schedule({
+      id: 2,
+      date: _5SecondsFromNow,
+      text: 'Notification After 5 Seconds Has Been Triggered',
+      title: 'After 5 Seconds',
+      sound: notificationSound
+    }).then(function() {
+      alert("Notification After 5 seconds set");
+    });
+  };
+
+  /*********************Function called to reset the app*********************/
+  // the localStorage gets cleared, we get redirected to the welcome page and the schema has to be generated newly
+  $scope.resetApp = function() {
+    var jsonData = jsonService.getJson();
+    var confirmPopup = $ionicPopup.confirm({
+
+      title: jsonData.RESETAPP,
+      template: jsonData.RESETAPPTEXT,
+      cancelText: jsonData.CANCEL,
+      cancelType: 'button-assertive'
+    });
+    confirmPopup.then(function(res) {
+      if (res) {
+        localStorage.clear();
+        $state.go('welcome');
+      }
+    });
+  }
+
+  /*********************Array with the diffrent languagesfor the select list*********************/
+  // -->id: id of the language
+  // --> name: for the label of the language displayed in the selectoption
+  // --> token: abbrebviation of the language for getting the json language file
   $scope.languageList = [{
     id: '1',
     name: 'Deutsch',
@@ -364,7 +375,9 @@ currentLanguage, to detect the current language;
   }];
   // Set the selectoption to the current language
   $scope.languageSelected = currentLanguage();
-  // Get current language
+  /*********************function to get the currentLanguage*********************/
+  // Either the current language is diffrent from the system language and therefore restored from the localStorage or we detect the system language
+  // return: the id of the currentLanguage to set the languageSelected to this id
   function currentLanguage() {
     if (localStorage.getItem('language') != null) {
       if (localStorage.getItem('language').slice(1, 3) == "fr") {
@@ -382,7 +395,8 @@ currentLanguage, to detect the current language;
     }
   };
 
-  // Change language if the selectoption changed
+  /*********************function called if another language in the select list was selected*********************/
+  /* defines that the translate plugin has to use the choosen language and Therefore calls the jsonService to load the json file with the according language abbrebviation. lastly stores the abbrebviation in the localStorage that the same language is loaded when opening the app the next time */
   $scope.onchangeLanguage = function(key) {
     console.log(key.token);
     $translate.use(key.token);

@@ -71,99 +71,95 @@
   "ADDDOCTOR": "Ajouter un médecin",
   "IMPRESSUMTEXT": "L'application était fait en terme d'un projét du modul Application clinique, du filière universitaire informatique médicale de la haute école spécialisée bernoise de:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> L'idée du projet était de Monsieur Prof. Dr. med. Carsten Viehl, il est médecin-chef du domaine chirurgie du centre hospitalier Bienne.<br><br> Est-ce que vous avez des questions/suggestion de l'application, écrivez à:<br>sina@bfh.ch",
   "DONE APPOINTMENTS": "Rendez-vous terminé",
-  "FUTURE APPOINTMENTS":"Rendez-vous futurs",
+  "FUTURE APPOINTMENTS": "Rendez-vous futurs",
   "LINKINFO": "Plus d'informations sur le lien suivant",
-  "DETAILS":"Détails",
-  "DATEOFAPPOINTMENT":"Quel jour?",
-  "APPOINTMENTDESCRIPTION":"Noter des résultats:",
-  "COMMENTS":"Résultats",
-  "SWITCHAPPOINTSTATUS":"Rendez-vous terminé?",
-  "ROLEOFDOCTOR":"Rôle de le médecin:",
-  "SAVE":"Enregistrer",
-  "DATEOP":"Date de l'Operation",
-  "DELETEDOC":"Supprimer le contact",
-  "DELETDOCTEXT":"Êtes-vous sûr de vouloir supprimer cette contact?",
-  "INFORMATION":[{
-    "TITLE":"Alimentation saine",
-    "CONTENT":"Une alimentation équilibrée, riche en fruits et en légumes et pauvre en aliments d’origine animale, peut diminuer le risque de différents cancers. On estime qu’un mode de vie sain permet de réduire le risque de cancer de 30 à 40 %. Ne pas fumer, se nourrir de façon équilibrée, boire peu ou pas d’alcool, pratiquer une activité physique suffisante et se protéger soigneusement du soleil : autant d’éléments qui font partie d’une bonne hygiène de vie.",
-    "LINK":"https://www.liguecancer.ch/prevenir-le-cancer/mode-de-vie-sain/alimentation-saine/"
-    },{
-    "TITLE":"Bouger davantage",
-    "CONTENT":"Une demi-heure d’activité physique quotidienne augmente la joie de vivre, renforce la confiance en soi, aère l’esprit, chasse la fatigue et permet surtout de se distraire.",
-    "LINK":"https://www.liguecancer.ch/conseil-et-soutien/materiel-dinformation/brochures/pour-les-adultes/bouger-davantage/"
-    },
-    {
-    "TITLE":"La réadaptation oncologique",
-    "CONTENT":"De plus en plus de personnes survivent à leur cancer. Mais la maladie et ses traitements entraînent souvent des atteintes d’ordre physique, psychique ou social. Les programmes de réadaptation oncologique améliorent la qualité de vie des personnes touchées et facilitent le retour à la vie de tous les jours et la reprise de l’activité professionnelle.",
-    "LINK":"https://www.liguecancer.ch/a-propos-du-cancer/la-readaptation-oncologique//"
-    },
-    {
-    "TITLE":"Groupes d’entraide",
-    "CONTENT":"Souhaitez-vous rencontrer des personnes qui se trouvent ou se sont retrouvées dans la même situation que vous pour discuter ? Vous trouverez ci-après des adresses d’organisations d’entraide. La ligue contre le cancer de votre canton peut également vous renseigner sur les groupes d’entraide en place près de chez vous.",
-    "LINK":"https://www.liguecancer.ch/conseil-et-soutien/groupes-dentraide/"
-    },
-    {
-    "TITLE":"Forum Cancer",
-    "CONTENT":"Faites-vous ou avez-vous fait face à un cancer et souhaitez-vous partager votre expérience avec d’autres ? Souhaitez-vous soutenir des personnes touchées et les faire profiter de ce que vous avez appris ? Désirez-vous bénéficier des conseils de personnes qui traversent les mêmes épreuves ? Aimeriez-vous discuter avec d’autres proches à la suite du cancer d’un membre de votre famille ?",
-    "LINK":"https://www.liguecancer.ch/conseil-et-soutien/questions-sur-le-cancer/forum-cancer/"
-      },
-     {
-    "TITLE":"Stages 2017 pour les personnes touchées par le cancer",
-    "CONTENT":"Après un traitement éprouvant, vous vous sentez probablement fatigué, voire épuisé, et vous oscillez entre espoir et angoisse, confiance et défiance. Durant cette phase de réadaptation et de reprise de la vie de tous les jours, la Ligue contre le cancer est également là pour vous conseiller et vous épauler.",
-    "LINK":"https://www.liguecancer.ch/conseil-et-soutien/cours-et-stages/stages-2017-pour-les-personnes-touchees-par-le-cancer/"
-    }],
+  "DETAILS": "Détails",
+  "DATEOFAPPOINTMENT": "Quel jour?",
+  "APPOINTMENTDESCRIPTION": "Noter des résultats:",
+  "COMMENTS": "Résultats",
+  "SWITCHAPPOINTSTATUS": "Rendez-vous terminé?",
+  "ROLEOFDOCTOR": "Rôle de le médecin:",
+  "SAVE": "Enregistrer",
+  "DATEOP": "Date de l'Operation",
+  "DELETEDOC": "Supprimer le contact",
+  "DELETDOCTEXT": "Êtes-vous sûr de vouloir supprimer cette contact?",
+  "INFORMATION": [{
+    "TITLE": "Alimentation saine",
+    "CONTENT": "Une alimentation équilibrée, riche en fruits et en légumes et pauvre en aliments d’origine animale, peut diminuer le risque de différents cancers. On estime qu’un mode de vie sain permet de réduire le risque de cancer de 30 à 40 %. Ne pas fumer, se nourrir de façon équilibrée, boire peu ou pas d’alcool, pratiquer une activité physique suffisante et se protéger soigneusement du soleil : autant d’éléments qui font partie d’une bonne hygiène de vie.",
+    "LINK": "https://www.liguecancer.ch/prevenir-le-cancer/mode-de-vie-sain/alimentation-saine/"
+  }, {
+    "TITLE": "Bouger davantage",
+    "CONTENT": "Une demi-heure d’activité physique quotidienne augmente la joie de vivre, renforce la confiance en soi, aère l’esprit, chasse la fatigue et permet surtout de se distraire.",
+    "LINK": "https://www.liguecancer.ch/conseil-et-soutien/materiel-dinformation/brochures/pour-les-adultes/bouger-davantage/"
+  }, {
+    "TITLE": "La réadaptation oncologique",
+    "CONTENT": "De plus en plus de personnes survivent à leur cancer. Mais la maladie et ses traitements entraînent souvent des atteintes d’ordre physique, psychique ou social. Les programmes de réadaptation oncologique améliorent la qualité de vie des personnes touchées et facilitent le retour à la vie de tous les jours et la reprise de l’activité professionnelle.",
+    "LINK": "https://www.liguecancer.ch/a-propos-du-cancer/la-readaptation-oncologique//"
+  }, {
+    "TITLE": "Groupes d’entraide",
+    "CONTENT": "Souhaitez-vous rencontrer des personnes qui se trouvent ou se sont retrouvées dans la même situation que vous pour discuter ? Vous trouverez ci-après des adresses d’organisations d’entraide. La ligue contre le cancer de votre canton peut également vous renseigner sur les groupes d’entraide en place près de chez vous.",
+    "LINK": "https://www.liguecancer.ch/conseil-et-soutien/groupes-dentraide/"
+  }, {
+    "TITLE": "Forum Cancer",
+    "CONTENT": "Faites-vous ou avez-vous fait face à un cancer et souhaitez-vous partager votre expérience avec d’autres ? Souhaitez-vous soutenir des personnes touchées et les faire profiter de ce que vous avez appris ? Désirez-vous bénéficier des conseils de personnes qui traversent les mêmes épreuves ? Aimeriez-vous discuter avec d’autres proches à la suite du cancer d’un membre de votre famille ?",
+    "LINK": "https://www.liguecancer.ch/conseil-et-soutien/questions-sur-le-cancer/forum-cancer/"
+  }, {
+    "TITLE": "Stages 2017 pour les personnes touchées par le cancer",
+    "CONTENT": "Après un traitement éprouvant, vous vous sentez probablement fatigué, voire épuisé, et vous oscillez entre espoir et angoisse, confiance et défiance. Durant cette phase de réadaptation et de reprise de la vie de tous les jours, la Ligue contre le cancer est également là pour vous conseiller et vous épauler.",
+    "LINK": "https://www.liguecancer.ch/conseil-et-soutien/cours-et-stages/stages-2017-pour-les-personnes-touchees-par-le-cancer/"
+  }],
 
-      "MONTHS": {
-        "0": {
-          "LABEL": "Jan",
-          "FULL": " Janvier"
-        },
-        "1": {
-          "LABEL": "Fev",
-          "FULL": " Fevrier"
-        },
-        "2": {
-          "LABEL": "Mar",
-          "FULL": "Mars"
-        },
-        "3": {
-          "LABEL": "Avr",
-          "FULL": " Avril"
-        },
-        "4": {
-          "LABEL": "Mai",
-          "FULL": " Mai"
-        },
-        "5": {
-          "LABEL": "Juin",
-          "FULL": " Juin"
-        },
-        "6": {
-          "LABEL": "Juil",
-          "FULL": " Juillet"
-        },
-        "7": {
-          "LABEL": "Août",
-          "FULL": " Aoe"
-        },
-        "8": {
-          "LABEL": "Sep",
-          "FULL": " Septembre"
-        },
-        "9": {
-          "LABEL": "Oct",
-          "FULL": " Octobre"
-        },
-        "10": {
-          "LABEL": "Nov",
-          "FULL": " Novembre"
-        },
-        "11": {
-          "LABEL": "Dec",
-          "FULL": " Décembre"
-        }
-      },
-  "CEA":"CEA",
+  "MONTHS": {
+    "0": {
+      "LABEL": "Jan",
+      "FULL": " Janvier"
+    },
+    "1": {
+      "LABEL": "Fev",
+      "FULL": " Fevrier"
+    },
+    "2": {
+      "LABEL": "Mar",
+      "FULL": "Mars"
+    },
+    "3": {
+      "LABEL": "Avr",
+      "FULL": " Avril"
+    },
+    "4": {
+      "LABEL": "Mai",
+      "FULL": " Mai"
+    },
+    "5": {
+      "LABEL": "Juin",
+      "FULL": " Juin"
+    },
+    "6": {
+      "LABEL": "Juil",
+      "FULL": " Juillet"
+    },
+    "7": {
+      "LABEL": "Août",
+      "FULL": " Aoe"
+    },
+    "8": {
+      "LABEL": "Sep",
+      "FULL": " Septembre"
+    },
+    "9": {
+      "LABEL": "Oct",
+      "FULL": " Octobre"
+    },
+    "10": {
+      "LABEL": "Nov",
+      "FULL": " Novembre"
+    },
+    "11": {
+      "LABEL": "Dec",
+      "FULL": " Décembre"
+    }
+  },
+  "CEA": "CEA",
   "CEACLINIC": "Examen clinique et CEA",
   "COLOSCOPY": "Coloscopie",
   "ENDOSCOPY": "Rectosigmoïdoscopie flexible",
@@ -174,9 +170,9 @@
   "DONOTUSETHISAPP": "Cette Application n'est pas applicable pour des personnes avec votre histoire médicale, s'il vous plaît respecter les instruction de vôtre médcin concernant votre suivi médical.",
   "FILLCORRECTCANCER": "S'il vous plaît choissisez vôtre type de carcinome",
   "FILLCORRECTTNM": "S'il vous plaît remplissez la classification TNM selon les directives de vôtre médcin.",
-  "RESET":"Effacer",
-  "RESETAPP":"Effacer toutes les données",
-  "RESETAPPTEXT":"Êtes-vous sûr de vouloir supprimer tous les données?",
-  "TIMEPERIOD":"Période de temps de la date",
-  "TIMEPERIODTEXT":"Vous devez prendre un rendez-vous a partir du mois: "
+  "RESET": "Effacer",
+  "RESETAPP": "Effacer toutes les données",
+  "RESETAPPTEXT": "Êtes-vous sûr de vouloir supprimer tous les données?",
+  "TIMEPERIOD": "Période de temps de la date",
+  "TIMEPERIODTEXT": "Vous devez prendre un rendez-vous a partir du mois: "
 }

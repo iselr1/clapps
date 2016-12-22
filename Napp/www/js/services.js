@@ -1,34 +1,35 @@
+/*
+
+Documentname      services.js
+Created:          09.11.2016
+Created by:       iselr1
+
+Function: contains functions and variables which are used and altered in several controllers
+*/
 angular.module('starter.services', [])
+  //--------------------------------------------------------//
+  //---------------Factory jsonService-----------------------//
+  //--------------------------------------------------------//
+  /* factory jsonService
+  You'll find the following functions in it:
+  loadJson, to load a json file;
+  getJson, to get the data of the json file;
+  */
+  .factory('jsonService', function($rootScope, $http, $translate) {
+    var jsonService = {};
+    var prefix = 'js/locale-';
+    var suffix = '.json';
+    var key = '';
+    jsonService.data = {};
 
-.factory('jsonService', function($rootScope, $http, $translate) {
-  var jsonService = {};
-  var prefix = 'js/locale-';
-  var suffix = '.json';
-  var key = '';
-  jsonService.data = {};
-
-  // initialize the json file with the currentLanguage
-  if (localStorage.getItem('language') != null) {
-    key = localStorage.getItem('language').slice(1, 3);
-    console.log(key);
-  } else {
-    key = ($translate.proposedLanguage() || $translate.use());
-  }
-  console.log($http.get(prefix + key + suffix));
-  $http.get(prefix + key + suffix)
-    .success(function(data) {
-      $translate.use(key);
-      //Array leeren
-      jsonService.data.json = {};
-      //Array mit neuen Werten befüllen
-      jsonService.data.json = data;
-
+    // initialize the json file with the currentLanguage
+    if (localStorage.getItem('language') != null) {
+      key = localStorage.getItem('language').slice(1, 3);
       console.log(key);
-      console.log('Json data is initialized');
-    });
-
-  //Gets the new json file if the language is changed
-  jsonService.loadJson = function(key) {
+    } else {
+      key = ($translate.proposedLanguage() || $translate.use());
+    }
+    console.log($http.get(prefix + key + suffix));
     $http.get(prefix + key + suffix)
       .success(function(data) {
         $translate.use(key);
@@ -36,15 +37,50 @@ angular.module('starter.services', [])
         jsonService.data.json = {};
         //Array mit neuen Werten befüllen
         jsonService.data.json = data;
-        console.log('Json data is loaded');
-      });
-  };
-  jsonService.getJson = function() {
-    return jsonService.data.json;
-  };
 
-  return jsonService;
-})
+        console.log(key);
+        console.log('Json data is initialized');
+      });
+
+    //Gets the new json file if the language is changed
+    jsonService.loadJson = function(key) {
+      $http.get(prefix + key + suffix)
+        .success(function(data) {
+          $translate.use(key);
+          //Array leeren
+          jsonService.data.json = {};
+          //Array mit neuen Werten befüllen
+          jsonService.data.json = data;
+          console.log('Json data is loaded');
+        });
+    };
+    jsonService.getJson = function() {
+      return jsonService.data.json;
+    };
+
+    return jsonService;
+  })
+
+
+//--------------------------------------------------------//
+//---------------Factory schemaService-----------------------//
+//--------------------------------------------------------//
+
+/* factory schemaService
+You'll find the following functions in it:
+getYears, to get the years of the calculated appointments of the schema
+getDomStructure, to get the schema in the dom structure used in the appointments controller
+getAllAftercareItems, to get all items for the schema;
+setCancertype, to set the type of the cancer;
+setStagingT, to set the t stage;
+setStagingN, to set the N stage;
+setStagingM, to set the M stage;
+setColoscopyComplete, boolean to set if the coloscopy was complete or not;
+setOpDate, to set the date of the cancer operation;
+setAfterCareItemsColoscopy, to set the items for the coloscopy appointments;
+setAfterCareItems, to set all other items;
+genSchema, to generate the schema according to the cancertype, staging, coloscopyComplete(or not) and the op date;
+*/
 
 .factory('schemaService', function(jsonService) {
   var schemaService = {};
@@ -128,9 +164,9 @@ angular.module('starter.services', [])
     var itemArray = allAftercareItems;
     var years = schemaService.getYears();
     var statusObject = {};
-    // Status der Termine ob Abgeschlossen oder Zukunft
+    // Status of the appointments if done or not
     statusObject.state = "FUTURE APPOINTMENTS";
-    // Array mit den Jahren wird dem status Objekt hinzugefügt
+    // the years array gets added to the status object
     var yearsArray = [];
     statusObject['years'] = yearsArray;
 
