@@ -263,7 +263,7 @@ currentLanguage, to detect the current language;
 //---------------CONTROLLER Einstellungen-----------------------//
 //--------------------------------------------------------//
 
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $translate, jsonService, $ionicPopup, $state) {
+.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state) {
   var sound = "file://sounds/DespicableMeNotification.mp3";
 
   $scope.scheduleInstantNotification = function() {
@@ -328,7 +328,29 @@ currentLanguage, to detect the current language;
   // Change the sound if the selectoption changed
   $scope.onchangeSound = function(soundList) {
     sound = soundList.sound;
-    console.log(sound);
+    var src = soundList.sound;
+    // Play the audio file at url
+
+    var mp3URL = getMediaURL(src.slice(7));
+    console.log(mp3URL);
+    var media = new Media(mp3URL, null, null, mediaStatusCallback);
+    media.play();
+
+    var mediaStatusCallback = function(status) {
+      if (status == 1) {
+        $ionicLoading.show({
+          template: 'Loading...'
+        });
+      } else {
+        $ionicLoading.hide();
+      }
+    }
+
+    function getMediaURL(s) {
+      var isAndroid = ionic.Platform.isAndroid();
+      if (isAndroid) return "/android_asset/www/" + s;
+      return s;
+    }
   };
   //Choice for language
   $scope.languageList = [{
