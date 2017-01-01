@@ -62,12 +62,39 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
           <button class="button button-clear button-dark" ng-click="openDatePicker()">{{saveAppointment.date | translate}}</button>
             <div class="hidden"><input type="text" ng-model="saveAppointment.date" placeholder="dd.mm.yyyy"></div>
       </label>
+
+          <label class="item item-input item-stacked-label" style="background-color:#FFF;">
+            <span class="input-label" translate="ZEITEINGABE"></span>
+              <input type="number">
+          </label>
+          <label class="item item-input">
+      <span class="input-label">Date</span>
+      <input type="date">
+    </label>
+
       <!----------------Text-Area / Results-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">
         <span class="input-label" translate="APPOINTMENTDESCRIPTION"></span>
         <textarea ng-model="saveAppointment.results" placeholder={{data.COMMENTS}}></textarea>
       </label>
-    <!----------------Toggle-Button-------------------->
+      <!----------------SELECT FOR DOCTORS-------------------->
+      <label for="repeatSelect" class="item item-input item-select">
+        <div class="input-label">
+          <span translate="DOCTOR"></span>
+        </div>
+        <select name="repeatSelect" id="repeatSelect" ng-change="changeCall(data)" ng-model="data.model">
+          <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+        </select>
+      </label>
+      <!----------------CALLLFUNCTION FOR DOCTORS-------------------->
+      <label class="item item-input item-stacked-label" style="background-color:#FFF;">
+        <span class="input-label" translate="CALLFUNCTION"></span>{{docName}}<br />
+        <a div href="tel:{{docPhone}}"><button class="button button-balanced" style="float:right; margin-right:15px;">
+          <i class="icon ion-ios-telephone"></i>
+        </button></a>
+      </label>
+
+      <!----------------Toggle-Button-------------------->
       <div class="item item-toggle">
         <span translate="SWITCHAPPOINTSTATUS"></span>
         <label class="toggle toggle-balanced">

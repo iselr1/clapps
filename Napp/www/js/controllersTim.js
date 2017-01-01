@@ -65,7 +65,34 @@ angular.module('starter.controllersTim', [])
       $scope.status=status;
       $scope.parent=parent;
       $scope.index=tempIndex;
+      
+
+      //CHeck if local Storage is EMPTY
+      //IF not empty --> Load LocalStorage into the DOM one contact by one
+      if(localStorage.getItem('contacts')!= null){
+        var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
+        var data = {};
+        data.model = null;
+        var options = [];
+        data['availableOptions'] = options;
+        for (i = 0; i < parsedLocalStorage.length; i++) {
+            var contact = parsedLocalStorage[i];
+            var tempDoc = {};
+              tempDoc.id = i;
+              tempDoc.name = contact.func;
+              tempDoc.realName = contact.name;
+              tempDoc.phone = contact.phone;
+              options.push(tempDoc);
+            }
+            console.log(options);
+      }
+      $scope.data = data;
   }
+  $scope.changeCall = function(data){
+    $scope.docName = data.availableOptions[data.model].realName;
+    $scope.docPhone = data.availableOptions[data.model].phone;
+  }
+
   // When Save appointment button is pressed
   // The Actual Switch from the list into the other list.
   $scope.saveAppointment = function(status, parent, index){
@@ -154,6 +181,7 @@ angular.module('starter.controllersTim', [])
     localStorage.setItem('done', JSON.stringify(doneAppointments));
     }
 
+  // DatePicker
     var ipObj1 = {
       callback: function(val) { //Mandatory
         console.log('Return value from the datepicker popup is : ' + val, new Date(val));
