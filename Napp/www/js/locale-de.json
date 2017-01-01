@@ -175,5 +175,8 @@
   "RESETAPP": "Alle Daten löschen",
   "RESETAPPTEXT": "Sind Sie sicher, dass sie alle Daten löschen möchten?",
   "TIMEPERIOD": "Zeitperiode des Termines",
-  "TIMEPERIODTEXT": "Ab folgendem Monat, sollten Sie einen Termin vereinbaren: "
+  "TIMEPERIODTEXT": "Ab folgendem Monat, sollten Sie einen Termin vereinbaren: ",
+  "EXACTTIME":"Zu welcher Zeit findet der Termin statt:",
+  "DOCTOR":"Bei welchem Arzt findet der Termin statt:",
+  "CALLFUNCTION":"Möchten Sie folgenden eingetragenen Kontakt anrufen: "
 }

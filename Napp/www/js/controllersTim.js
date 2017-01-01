@@ -7,6 +7,7 @@ angular.module('starter.controllersTim', [])
   // Set Language List
   $scope.data = jsonService.getJson();
   var jsonData = jsonService.getJson();
+
   $scope.familyDoc = jsonData.FAMILIYDOC;
   $scope.oncDoc = jsonData.ONCOLOGY;
   $scope.gastDoc = jsonData.GASTROENTEROLOGIST;
@@ -35,6 +36,9 @@ angular.module('starter.controllersTim', [])
   // Show the Details of the Appointment
   $scope.showAppointmentDetails = function(status, parent, desc, month){
      $ionicScrollDelegate.getScrollPosition().top;
+
+
+
     // First of all Check if its a done Appointment or a future Appointment
     if(status == 1)
       {
@@ -54,7 +58,10 @@ angular.module('starter.controllersTim', [])
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
       $scope.saveAppointment.results = terminatedItem.results;
       $scope.saveAppointment.date = terminatedItem.date;
-      console.log(terminatedItem);
+      $scope.saveAppointment.time = terminatedItem.time;
+      $scope.data = terminatedItem.data;
+      document.getElementById('repeatSelect').value = '0';
+      var docs = document.getElementById('repeatSelect');
       $scope.saveAppointment.year = terminatedItem.oldDate.substring(0, 4);
       // Add and remove some css hidden class to fade in and out
       details.removeClass('hidden');
@@ -65,9 +72,8 @@ angular.module('starter.controllersTim', [])
       $scope.status=status;
       $scope.parent=parent;
       $scope.index=tempIndex;
-      
 
-      //CHeck if local Storage is EMPTY
+      //CHeck if local Storage is EMPTYdsc
       //IF not empty --> Load LocalStorage into the DOM one contact by one
       if(localStorage.getItem('contacts')!= null){
         var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
@@ -79,7 +85,7 @@ angular.module('starter.controllersTim', [])
             var contact = parsedLocalStorage[i];
             var tempDoc = {};
               tempDoc.id = i;
-              tempDoc.name = contact.func;
+              tempDoc.name = jsonData[contact.func]+": " +contact.name;
               tempDoc.realName = contact.name;
               tempDoc.phone = contact.phone;
               options.push(tempDoc);
@@ -87,9 +93,10 @@ angular.module('starter.controllersTim', [])
             console.log(options);
       }
       $scope.data = data;
+
   }
   $scope.changeCall = function(data){
-    $scope.docName = data.availableOptions[data.model].realName;
+    $scope.docFunc = data.availableOptions[data.model].name;
     $scope.docPhone = data.availableOptions[data.model].phone;
   }
 
@@ -113,6 +120,8 @@ angular.module('starter.controllersTim', [])
     // Save the Data into the DOM Tree and JSON Object
     var tempAppoint = fromAppointments.years[parent].appointments[index];
     tempAppoint.results = $scope.saveAppointment.results;
+    tempAppoint.time = $scope.saveAppointment.time;
+    tempAppoint.data = $scope.data;
     // Check if Date is undefined
       if($scope.saveAppointment.date !== undefined ){
         tempAppoint.date = $scope.saveAppointment.date;

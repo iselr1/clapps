@@ -174,5 +174,8 @@
   "RESETAPP": "Effacer toutes les données",
   "RESETAPPTEXT": "Êtes-vous sûr de vouloir supprimer tous les données?",
   "TIMEPERIOD": "Période de temps de la date",
-  "TIMEPERIODTEXT": "Vous devez prendre un rendez-vous a partir du mois: "
+  "TIMEPERIODTEXT": "Vous devez prendre un rendez-vous a partir du mois: ",
+  "EXACTTIME":"A quelle heure placer votre rendez-vous: ",
+  "DOCTOR":"Quel médecin est responsable: ",
+  "CALLFUNCTION":"Vous voulez contacter suivant médecin? "
 }
