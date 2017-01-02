@@ -1,8 +1,17 @@
+/*
+
+Documentname      style.css
+Created:          09.11.2016
+Created by:       tschm2
+Version Nr.:      1.0
+
+--> The purpose of this file is to add custom css to the ionic css.
+
+*/
 body {
   /*basic styling */
   height: 100%;
 }
-
 
 /**Link Texte auf den Navigationsseiten*/
 

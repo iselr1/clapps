@@ -1,7 +1,51 @@
+/*
+
+Documentname      controllersMauro.js
+Created:          09.11.2016
+Created by:       dornt1
+Version Nr.:       1.0
+
+Function: All controllers for the views "appointemnts" "Export",
+*/
+
 angular.module('starter.controllersTim', [])
 
+//--------------------------------------------------------//
+//---------------CONTROLLER Körper-----------------------//
+//--------------------------------------------------------//
 
 .controller('TermineCtrl', function($scope,$ionicScrollDelegate, $state,$filter,ionicDatePicker, jsonService, schemaService) {
+//--------------------------------------------------------//
+//----------DESCRIPTION OF THE FUNCTIONS----------------- //
+//--------------------------------------------------------//
+  /* Controller Termine
+  You'll find the following functions in it:
+  showAppointmentDetails: It's used to show the details of an appointment.
+  This is a generic function which uses the data of an specific appointment. The detail view is not existant.
+  It will be generated with by the click on the details Button on the view.
+
+  changeCall: In the Detail View there is a Select Doctor HTML element.
+  This function is used if the select is getting changed.
+  It changes the data from the current Doctor with the selected ones.
+
+  saveAppointment: A simple function to save the current Appointment.
+  All the entered data in the detail view, is getting saved in the appointment.
+
+  switchAppointmentStatus: In the application there are two lists.
+  DoneAppointments and FutureAppointments. Therefore a Switch function is needed.
+  fromAppointments, toAppointments, parent, index, those are the parameters which are needed to be able to do the switch.
+
+  cancelAppointment: If one just looked at the details of an appointment and there is no need to save it, it needs
+  the cancel appointment Function. To close the detail view of an Appointment
+
+  saveData: To save the Data from the running Application to the LocalStorage
+  future, done, those two words are the keywords for the two lists.
+
+  closeContent:
+  The DetailView is a faded in Container.
+  This one needs to be faded out and therefore the closeContent function is used.
+  */
+
 
   // Get some Values from jsonService
   // Set Language List
@@ -36,9 +80,6 @@ angular.module('starter.controllersTim', [])
   // Show the Details of the Appointment
   $scope.showAppointmentDetails = function(status, parent, desc, month){
      $ionicScrollDelegate.getScrollPosition().top;
-
-
-
     // First of all Check if its a done Appointment or a future Appointment
     if(status == 1)
       {
@@ -68,19 +109,22 @@ angular.module('starter.controllersTim', [])
       details.removeClass('hidden');
       allAppointments.addClass("hidden");
 
+      //Check if a Doctor was selected in the AppointmentView
+      //Error-Handling
       if(typeof terminatedItem.data !== "undefined"){
       $scope.docFunc = terminatedItem.data.availableOptions[terminatedItem.data.model].name;
       $scope.docPhone = terminatedItem.data.availableOptions[terminatedItem.data.model].phone;
       }
 
+      // Set the Detailview to the saved Data from the List
       $scope.descDetail = desc;
       $scope.descMonth = month;
       $scope.status=status;
       $scope.parent=parent;
       $scope.index=tempIndex;
 
-      //CHeck if local Storage is EMPTYdsc
-      //IF not empty --> Load LocalStorage into the DOM one contact by one
+      //Check if local Storage is Empty
+      //IF not empty --> Load the contacts from the LocalStorage into the Select
       if(localStorage.getItem('contacts')!= null){
         var parsedLocalStorage = JSON.parse(localStorage.getItem('contacts'));
         var data = {};
@@ -90,9 +134,11 @@ angular.module('starter.controllersTim', [])
         for (i = 0; i < parsedLocalStorage.length; i++) {
             var contact = parsedLocalStorage[i];
             var tempDoc = {};
+            // Those attributes are needed for future processing in the DOM
+            // name = Function of the Doctor + his name
+            //
               tempDoc.id = i;
               tempDoc.name = jsonData[contact.func]+": " +contact.name;
-              tempDoc.realName = contact.name;
               tempDoc.phone = contact.phone;
               options.push(tempDoc);
             }
@@ -101,6 +147,7 @@ angular.module('starter.controllersTim', [])
       $scope.data = data;
 
   }
+  // This function is the Function to change the current doctor with the selcted ones.
   $scope.changeCall = function(data){
     $scope.docFunc = data.availableOptions[data.model].name;
     $scope.docPhone = data.availableOptions[data.model].phone;
@@ -196,7 +243,7 @@ angular.module('starter.controllersTim', [])
     localStorage.setItem('done', JSON.stringify(doneAppointments));
     }
 
-  // DatePicker
+  //DatePicker
     var ipObj1 = {
       callback: function(val) { //Mandatory
         console.log('Return value from the datepicker popup is : ' + val, new Date(val));
@@ -206,12 +253,16 @@ angular.module('starter.controllersTim', [])
         $scope.saveAppointment.date = dateAsString;
       }
     };
-
+  // openDatePicker
     $scope.openDatePicker = function() {
       ionicDatePicker.openDatePicker(ipObj1);
     };
 })
 
-.controller('ExportCtrl', function($scope, $state) {
+//--------------------------------------------------------//
+//---------------CONTROLLER Export------------------------//
+//--------------------------------------------------------//
 
+.controller('ExportCtrl', function($scope, $state) {
+// Because of Time issues, the Export-Function is not in the scope.
 })

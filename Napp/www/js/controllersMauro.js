@@ -1,12 +1,11 @@
 /*
 
-Dokumentenname      controllersMauro.js
-Erstellt am:        16.11.2016
-Erstellt durch:     tschm2
-Verson Nr.:         1.0
+Documentname      controllersMauro.js
+Created:          09.11.2016
+Created by:       tschm2
+Version Nr.:       1.0
 
-Funktion: All Controllers for the different views "Infos", "Kontakte"
-
+Function: All controllers for the views "Kontakte" "Infos",
 */
 angular.module('starter.controllersMauro', [])
 
@@ -87,10 +86,6 @@ angular.module('starter.controllersMauro', [])
         });
       };
 
-
-
-
-
     // Removing or Adding CSS Class to display the Contact Form
     $scope.openForm = function(){
       form.removeClass('hidden');
@@ -135,14 +130,10 @@ angular.module('starter.controllersMauro', [])
       link:infos[i].LINK});
     }
 
-
       // Showing only One Element!
       $scope.showContent = function($index){
-      angular.element(document.getElementsByClassName('shown')).addClass('hidden');
-      angular.element(document.querySelector('#infoContent'+$index)).removeClass('hidden');
-      angular.element(document.querySelector('#infoContent'+$index)).addClass('shown');
+        angular.element(document.getElementsByClassName('shown')).addClass('hidden');
+        angular.element(document.querySelector('#infoContent'+$index)).removeClass('hidden');
+        angular.element(document.querySelector('#infoContent'+$index)).addClass('shown');
       }
-
-
-
   })

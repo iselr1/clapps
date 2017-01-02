@@ -42,10 +42,10 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
   <!------------------------------------
   ------CONTENT APPOINTMENTS END--------
   ------------------------------------->
-  <!------------------------------------
-  ------------DETAILS START-------------
-  ------------------------------------->
 
+  <!------------------------------------
+  ------------DETAILVIEW START-------------
+  ------------------------------------->
   <div id="details" class="list hidden">
     <!----------------TITLE-------------------->
       <label class="item" style="text-align:center;">
@@ -72,8 +72,7 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
         <span class="item-text-wrap" translate="APPOINTMENTDESCRIPTION"></span>
         <textarea ng-model="saveAppointment.results" placeholder={{data.COMMENTS}}></textarea>
       </label>
-      <!----------------CALLLFUNCTION FOR DOCTORS-------------------->
-
+      <!----------------CALLLFUNCTION TO CALL THE DOCTOR-------------------->
         <div class="item" style="background-color:#FFF;">
         <span class="item-text-wrap" translate="CALLFUNCTION"></span><br />
         <div class="row">
@@ -87,21 +86,14 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
           </button></a>
         </div>
       </div>
+      <!----------------SELECT FOR DOCTORS-------------------->
       <div for="repeatSelect" class="item item-text-wrap">
-
         <span translate="DOCTOR"></span>
-
-
         <select class="docSelect" name="repeatSelect" id="repeatSelect" ng-change="changeCall(data)" ng-model="data.model">
           <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
         </select>
-
       </div>
 </div>
-      <!----------------SELECT FOR DOCTORS-------------------->
-
-
-
       <!----------------Toggle-Button-------------------->
       <div class="item item-toggle">
         <span translate="SWITCHAPPOINTSTATUS"></span>
@@ -117,6 +109,5 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
       <!----------------CANCEL Button-------------------->
       <button translate="CANCEL"  class="button button-assertive" id="minus" ng-click="cancelAppointment()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;"></button>
   </div>
-
 </ion-content>
 </ion-view>
