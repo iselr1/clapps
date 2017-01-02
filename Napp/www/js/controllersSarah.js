@@ -105,8 +105,9 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
         title: popTitle,
         template: popTemplate,
       });
-      // If the value for m is 1 we can't generate an appropriate aftercare plan, and the user gets informed with a popup
-    } else if ($scope.value.mstage == 1) {
+    }
+    // If the value for m is 1 we can't generate an appropriate aftercare plan, and the user gets informed with a popup
+    if ($scope.value.mstage == 1) {
       var popTitle = $translate.instant('IMPORTANT');
       var popTemplate = $translate.instant('DONOTUSETHISAPP');
 
@@ -115,11 +116,22 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
         template: popTemplate,
       });
       alertPopup.then(function() {
-          ionic.Platform.exitApp();
-          window.close();
-        })
-        // If the values vor tnm are all zero the user is assigned via a popup to fill the staging correctly
-    } else if (($scope.value.tstage == 0) && ($scope.value.nstage == 0) && ($scope.value.mstage == 0)) {
+        ionic.Platform.exitApp();
+        window.close();
+      })
+
+    } // If the values vor tnm are all zero the user is assigned via a popup to fill the staging correctly
+    else if (($scope.value.tstage == 0) && ($scope.value.nstage == 0) && ($scope.value.mstage == 0)) {
+      var popTitle = $translate.instant('IMPORTANT');
+      var popTemplate = $translate.instant('FILLCORRECTTNM');
+
+      var alertPopup = $ionicPopup.alert({
+        title: popTitle,
+        template: popTemplate,
+      });
+    }
+    // if the value for t is zero, but n not - the user is assigned via a popup to fill the staging correctly
+    else if (($scope.value.tstage == 0) && ($scope.value.nstage > 0)) {
       var popTitle = $translate.instant('IMPORTANT');
       var popTemplate = $translate.instant('FILLCORRECTTNM');
 
