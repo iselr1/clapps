@@ -56,6 +56,7 @@ angular.module('starter.controllersTim', [])
       // and load the information into the detail View!
       var tempIndex = this.$index;
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
+      console.log(terminatedItem);
       $scope.saveAppointment.results = terminatedItem.results;
       $scope.saveAppointment.date = terminatedItem.date;
       $scope.saveAppointment.time = terminatedItem.time;
@@ -66,6 +67,11 @@ angular.module('starter.controllersTim', [])
       // Add and remove some css hidden class to fade in and out
       details.removeClass('hidden');
       allAppointments.addClass("hidden");
+
+      if(typeof terminatedItem.data !== "undefined"){
+      $scope.docFunc = terminatedItem.data.availableOptions[terminatedItem.data.model].name;
+      $scope.docPhone = terminatedItem.data.availableOptions[terminatedItem.data.model].phone;
+      }
 
       $scope.descDetail = desc;
       $scope.descMonth = month;

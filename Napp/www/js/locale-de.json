@@ -177,6 +177,6 @@
   "TIMEPERIOD": "Zeitperiode des Termines",
   "TIMEPERIODTEXT": "Ab folgendem Monat, sollten Sie einen Termin vereinbaren: ",
   "EXACTTIME":"Zu welcher Zeit findet der Termin statt:",
-  "DOCTOR":"Bei welchem Arzt findet der Termin statt:",
-  "CALLFUNCTION":"Möchten Sie folgenden eingetragenen Kontakt anrufen: "
+  "DOCTOR":"Zuständiger Arzt anpassen: ",
+  "CALLFUNCTION":"Möchten Sie folgenden für den Termin zuständigen Arzt anrufen: "
 }
