@@ -94,22 +94,5 @@ textarea {
   background-color: #d3fffa;
 }
 .docSelect{
-
-    webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-      border: none;
-    background: #fff;
-    color: #333;
-    text-indent: 1px;
-    text-overflow: '';
-    white-space: nowrap;
-    font-size: 14px;
-    cursor: pointer;
-    direction: rtl;
-    outline-offset: 0;
-    outline-style: none;
-    outline-width: 0;
-    -webkit-font-smoothing: inherit;
-    overflow: visible !important;
+  border:none;
 }

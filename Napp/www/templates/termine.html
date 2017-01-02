@@ -73,29 +73,33 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
         <textarea ng-model="saveAppointment.results" placeholder={{data.COMMENTS}}></textarea>
       </label>
       <!----------------CALLLFUNCTION FOR DOCTORS-------------------->
-      <div class="item" style="background-color:#FFF;">
+
+        <div class="item" style="background-color:#FFF;">
         <span class="item-text-wrap" translate="CALLFUNCTION"></span><br />
-     <b>{{docFunc}}</b><br />
-
-     <a div href="tel:{{docPhone}}">
-          <button class="button button-balanced" style="float:right;">
+        <div class="row">
+           <div class="col">
+        <b class="item-text-wrap">{{docFunc}}</b><br />
+          </div>
+          <div class="col col-25"
+        <a div href="tel:{{docPhone}}">
+            <button class="button button-balanced" style="float:right;">
           <i class="icon ion-ios-telephone"></i>
-        </button></a>
+          </button></a>
+        </div>
       </div>
-
-      <!----------------SELECT FOR DOCTORS-------------------->
       <div for="repeatSelect" class="item item-text-wrap">
 
         <span translate="DOCTOR"></span>
 
-      <div class="row">
-         <div class="col">
+
         <select class="docSelect" name="repeatSelect" id="repeatSelect" ng-change="changeCall(data)" ng-model="data.model">
           <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
         </select>
+
       </div>
-    </div>
-      </div>
+</div>
+      <!----------------SELECT FOR DOCTORS-------------------->
+
 
 
       <!----------------Toggle-Button-------------------->
