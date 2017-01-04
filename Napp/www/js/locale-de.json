@@ -73,10 +73,10 @@
   "IMPRESSUMTEXT": "Die App wurde im Rahmen des Moduls Clinical Apps, des Studiengangs Medizininformatik, an der Berner Fachhochschule entwickelt durch:<br><br>Mauro Tschanz<br>Sarah Mele<br>Tim Dorner<br>Rea Iseli<br><br> Die Projektidee kam von Herrn  Prof. Dr. med. Carsten Viehl er ist Chefarzt des Bereichs Chirurgie am Spitalzentrum Biel.<br><br> Haben Sie Fragen/Anregungen zur App, schreiben Sie dies bitte an:<br>sina@bfh.ch",
   "DONE APPOINTMENTS": "Abgeschlossene Termine",
   "FUTURE APPOINTMENTS": "Zukünftige Termine",
-  "LINKINFO": "Weitere Informationen können sie hier abrufen.",
+  "LINKINFO": "Weitere Informationen finden Sie hier",
   "DETAILS": "Details",
   "DATEOFAPPOINTMENT": "An welchem Tag?",
-  "APPOINTMENTDESCRIPTION": "Ergebnisse können hier erfasst werden:",
+  "APPOINTMENTDESCRIPTION": "Notizen und Ergebnisse:",
   "COMMENTS": "Ergebnisse",
   "SWITCHAPPOINTSTATUS": "Ist der Termin abgeschlossen?",
   "ROLEOFDOCTOR": "Rolle des Behandelden",
@@ -105,7 +105,7 @@
     "CONTENT": "Haben auch Sie Erfahrungen mit Krebs und möchten diese mit anderen Betroffenen austauschen? Möchten Sie andere unterstützen und von Ihren Erfahrungen profitieren lassen? Suchen Sie Rat von Menschen, die das Gleiche erleben wie Sie? Ist jemand in Ihrer Familie an Krebs erkrankt und Sie suchen den Austausch mit andern Nahestehenden?",
     "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/meine-frage-zu-krebs/krebsforum/"
   }, {
-    "TITLE": "Seminare 2017 für krebsbetroffene Menschen",
+    "TITLE": "Seminare für krebsbetroffene Menschen",
     "CONTENT": "Haben Sie eine intensive medizinisch-therapeutische Behandlung hinter sich? Dann fühlen Sie sich möglicherweise erschöpft und müde und schwanken zwischen Hoffnung und Zuversicht sowie Angst und Misstrauen.",
     "LINK": "https://www.krebsliga.ch/beratung-unterstuetzung/kurse-und-seminare/seminare-2017-fuer-krebsbetroffene-menschen/"
   }],
@@ -168,7 +168,7 @@
   "CTABDOMENPELVIC": "CT Thorax-Abdomen-Becken",
   "CTABDOMEN": "CT Thorax-Abdomen",
   "IMPORTANT": "WICHTIG",
-  "DONOTUSETHISAPP": "Die App ist nicht für Personen mit Ihrem medizinischen Hintergrund geeignet, bitte befolgen Sie die Anweisungen Ihres Arztes für die Nachsorge.",
+  "DONOTUSETHISAPP": "Diese Applikation ist für ihre Krankheitssituation nicht geeignet.",
   "FILLCORRECTCANCER": "Bitte wählen Sie ihre Krebsart",
   "FILLCORRECTTNM": "Bitte füllen Sie das TNM Stadium gemäss den Angaben von Ihrem Arzt aus.",
   "RESET": "Löschen",

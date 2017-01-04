@@ -75,7 +75,7 @@
   "LINKINFO": "Plus d'informations sur le lien suivant",
   "DETAILS": "Détails",
   "DATEOFAPPOINTMENT": "Quel jour?",
-  "APPOINTMENTDESCRIPTION": "Noter des résultats:",
+  "APPOINTMENTDESCRIPTION": "Notes et résultats:",
   "COMMENTS": "Résultats",
   "SWITCHAPPOINTSTATUS": "Rendez-vous terminé?",
   "ROLEOFDOCTOR": "Rôle de le médecin:",
@@ -104,7 +104,7 @@
     "CONTENT": "Faites-vous ou avez-vous fait face à un cancer et souhaitez-vous partager votre expérience avec d’autres ? Souhaitez-vous soutenir des personnes touchées et les faire profiter de ce que vous avez appris ? Désirez-vous bénéficier des conseils de personnes qui traversent les mêmes épreuves ? Aimeriez-vous discuter avec d’autres proches à la suite du cancer d’un membre de votre famille ?",
     "LINK": "https://www.liguecancer.ch/conseil-et-soutien/questions-sur-le-cancer/forum-cancer/"
   }, {
-    "TITLE": "Stages 2017 pour les personnes touchées par le cancer",
+    "TITLE": "Stages pour les personnes touchées par le cancer",
     "CONTENT": "Après un traitement éprouvant, vous vous sentez probablement fatigué, voire épuisé, et vous oscillez entre espoir et angoisse, confiance et défiance. Durant cette phase de réadaptation et de reprise de la vie de tous les jours, la Ligue contre le cancer est également là pour vous conseiller et vous épauler.",
     "LINK": "https://www.liguecancer.ch/conseil-et-soutien/cours-et-stages/stages-2017-pour-les-personnes-touchees-par-le-cancer/"
   }],
@@ -167,7 +167,7 @@
   "CTABDOMENPELVIC": "CT thoraco-abdominal et pelvien",
   "CTABDOMEN": "CT thoraco-abdominal",
   "IMPORTANT": "IMPORTANT",
-  "DONOTUSETHISAPP": "Cette Application n'est pas applicable pour des personnes avec votre histoire médicale, s'il vous plaît respecter les instruction de vôtre médcin concernant votre suivi médical.",
+  "DONOTUSETHISAPP": "Cette application n'est pas apte pour votre cause de maladie",
   "FILLCORRECTCANCER": "S'il vous plaît choissisez vôtre type de carcinome",
   "FILLCORRECTTNM": "S'il vous plaît remplissez la classification TNM selon les directives de vôtre médcin.",
   "RESET": "Effacer",

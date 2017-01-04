@@ -1,4 +1,4 @@
-﻿<!--
+<!--
 
 Dokumentenname      Terminview termine.html
 Erstellt am:        09.11.2016
@@ -9,8 +9,7 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
 -->
 <ion-view view-title="{{'APPOINTMENTS' | translate}}">
   <ion-nav-buttons side="left">
-    <button class="button" ng-click="goHome()" translate="HOME">
-    </button>
+    <button class="button" ng-click="goHome()" translate="HOME"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
@@ -21,51 +20,59 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
     ------CONTENT APPOINTMENTS START------
     ------------------------------------->
     <div id="allAppointments">
-      <div class="list card appointments"  ng-repeat="history in myAppointments">
-        <div class="history item " ng-click="closeContent({{$index}})" translate="{{history.state}}">
-        </div>
-        <div  class="content{{$index}}" ng-class='{hidden:$first}'>
+      <div class="list card appointments" ng-repeat="history in myAppointments">
+        <div class="history item " ng-click="closeContent({{$index}})" translate="{{history.state}}"></div>
+        <div class="content{{$index}}" ng-class='{hidden:$first}'>
           <div class="{{year.status}}" ng-repeat="year in history.years">
             <div class="year">{{year.fullYear}}</div>
 
             <div class="item-text-wrap row" ng-repeat="appointment in year.appointments">
-              <div class="appointment row" >
-                <div translate = {{appointment.date}} class="month col col-25"></div>
-                <div translate = {{appointment.description}} class="col"></div>
-                <div class="col col-25 detailButton" ng-click="showAppointmentDetails({{$parent.$parent.$index}},{{$parent.$index}},'{{appointment.description}}', '{{appointment.fullMonth}}')"><span translate="DETAILS" ></span></div>
+              <div class="appointment row">
+                <div translate={{appointment.date}} class="month col col-25"></div>
+                <div translate={{appointment.description}} class="col"></div>
+                <div class="col col-25 detailButton" ng-click="showAppointmentDetails({{$parent.$parent.$index}},{{$parent.$index}},'{{appointment.description}}', '{{appointment.fullMonth}}')">
+                  <span translate="DETAILS"></span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  <!------------------------------------
+    <!------------------------------------
   ------CONTENT APPOINTMENTS END--------
   ------------------------------------->
 
-  <!------------------------------------
+    <!------------------------------------
   ------------DETAILVIEW START-------------
   ------------------------------------->
-  <div id="details" class="list hidden">
-    <!----------------TITLE-------------------->
+    <div id="details" class="list hidden">
+      <!----------------TITLE-------------------->
       <label class="item" style="text-align:center;">
         <span>{{descDetail | translate}}</span>
       </label>
       <!----------------TimePeriod of the Appointment-------------------->
       <div class="item item-text-wrap" style="background-color:#FFF;">
-        <span translate="TIMEPERIOD"></span> <br /><br />
-        <span><span translate="TIMEPERIODTEXT"></span><b> <span translate={{descMonth}}></span> {{saveAppointment.year}}</b></span>
+        <span translate="TIMEPERIOD"></span>
+        <br/><br/>
+        <span>
+          <span translate="TIMEPERIODTEXT"></span>
+          <b>
+            <span translate={{descMonth}}></span>
+            {{saveAppointment.year}}</b>
+        </span>
       </div>
       <!----------------Date of the Appointment-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">
-        <span class="item-text-wrap" translate="DATEOFAPPOINTMENT"></span> <br />
-          <button class="button button-clear button-dark" ng-click="openDatePicker()">{{saveAppointment.date | translate}}</button>
-            <div class="hidden"><input type="text" ng-model="saveAppointment.date" placeholder="dd.mm.yyyy"></div>
+        <span class="item-text-wrap" translate="DATEOFAPPOINTMENT"></span>
+        <br/>
+        <button class="button button-clear button-dark" ng-click="openDatePicker()">{{saveAppointment.date | translate}}</button>
+        <div class="hidden"><input type="text" ng-model="saveAppointment.date" placeholder="dd.mm.yyyy"></div>
       </label>
       <!----------------Exact Time of the Appointment-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">
-          <span class="item-text-wrap" translate="EXACTTIME"></span>
-          <input placeholder="14.30" ng-model = "saveAppointment.time" type="number">
+        <span class="item-text-wrap" translate="EXACTTIME"></span>
+        <input placeholder="14.30" ng-model="saveAppointment.time" type="number">
       </label>
       <!----------------Text-Area / Results-------------------->
       <label class="item item-input item-stacked-label" style="background-color:#FFF;">
@@ -73,41 +80,37 @@ Funktion: Stellt die Terminiübersicht für die Nachsorgeuntersuchung in einer T
         <textarea ng-model="saveAppointment.results" placeholder={{data.COMMENTS}}></textarea>
       </label>
       <!----------------CALLLFUNCTION TO CALL THE DOCTOR-------------------->
-        <div class="item" style="background-color:#FFF;">
-        <span class="item-text-wrap" translate="CALLFUNCTION"></span><br />
+      <div class="item" style="background-color:#FFF;">
+        <span class="item-text-wrap" translate="CALLFUNCTION"></span><br/>
         <div class="row">
-           <div class="col">
-        <b class="item-text-wrap">{{docFunc}}</b><br />
+          <div class="col">
+            <b class="item-text-wrap">{{docFunc}}</b><br/>
           </div>
-          <div class="col col-25"
-        <a div href="tel:{{docPhone}}">
-            <button class="button button-balanced" style="float:right;">
-          <i class="icon ion-ios-telephone"></i>
-          </button></a>
-        </div>
-      </div>
-      <!----------------SELECT FOR DOCTORS-------------------->
-      <div for="repeatSelect" class="item item-text-wrap">
-        <span translate="DOCTOR"></span>
-        <select class="docSelect" name="repeatSelect" id="repeatSelect" ng-change="changeCall(data)" ng-model="data.model">
-          <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
-        </select>
-      </div>
-</div>
-      <!----------------Toggle-Button-------------------->
-      <div class="item item-toggle">
-        <span translate="SWITCHAPPOINTSTATUS"></span>
-        <label class="toggle toggle-balanced">
-          <input ng-model="saveAppointment.toggle" type="checkbox">
-          <div class="track">
-             <div class="handle"></div>
-           </div>
-        </label>
-      </div>
-      <!----------------SAVE Button-------------------->
-      <button class="button button-balanced" id="plus" translate="SAVE" ng-click="saveAppointment(status,parent,index)" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;"></button>
-      <!----------------CANCEL Button-------------------->
-      <button translate="CANCEL"  class="button button-assertive" id="minus" ng-click="cancelAppointment()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;"></button>
+        <div class="col col-25"><a href="tel:{{docPhone}}"><button class="button button-balanced" style="float:right;"> <i class="icon ion-ios-telephone"></i></button></a>
   </div>
+</div>
+<!----------------SELECT FOR DOCTORS-------------------->
+<div for="repeatSelect" class="item item-text-wrap">
+  <span translate="DOCTOR"></span>
+  <select class="docSelect" name="repeatSelect" id="repeatSelect" ng-change="changeCall(data)" ng-model="data.model">
+    <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+  </select>
+</div>
+</div>
+<!----------------Toggle-Button-------------------->
+<div class="item item-toggle">
+<span translate="SWITCHAPPOINTSTATUS"></span>
+<label class="toggle toggle-balanced">
+  <input ng-model="saveAppointment.toggle" type="checkbox">
+  <div class="track">
+    <div class="handle"></div>
+  </div>
+</label>
+</div>
+<!----------------SAVE Button-------------------->
+<button class="button button-balanced" id="plus" translate="SAVE" ng-click="saveAppointment(status,parent,index)" style="float:right; margin-right:10px; margin-bottom:5px; margin-top:5px;"></button>
+<!----------------CANCEL Button-------------------->
+<button translate="CANCEL" class="button button-assertive" id="minus" ng-click="cancelAppointment()" style="float:left; margin-left:10px; margin-bottom:5px; margin-top:5px;"></button>
+</div>
 </ion-content>
 </ion-view>
