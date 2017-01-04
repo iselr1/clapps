@@ -6,60 +6,64 @@ Verson Nr.:         1.0
 
 Funktion: Screen zum TNM Staging und Krebsart-Wahl
 -->
-<ion-view view-title="{{'TNM' | translate}}">
+<ion-view view-title="{{'TNM' | translate}}" cache-view="false">
   <ion-nav-buttons side="right">
     <button class="button" ng-click="doLogout()" translate="LOGOUT"></button>
   </ion-nav-buttons>
   <ion-content scroll="false">
     <div class="card">
-    <label class="item item-input item-select">
-      <div class="input-label">
-        <h2 translate="CANCER"></h2>
-      </div>
-      <select ng-model="cancertype" ng-change="showSelectValue(cancertype)">
-        <option value="colon" selected>{{'KOKA' | translate}}</option>
-        <option value="rektum">
-          {{'REKA' | translate}}</option>
-      </select>
-    </label>
-</div>
-  <div class="card">
-    <div class="row item-input" >
-      <div class="col">
-        <label class="item item-input" translate="TNMSTAG" style="border:0;"></label>
-      </div>
-
-<center>
-      <div class="col" style="float:right;">
-
-        <proton:multi-list-picker ng-model="value" style="width:100%">
-          <proton:multi-list-picker-list alias="tstage">
-            <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="3">T3</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="4">T4</proton:multi-list-picker-list-item>
-          </proton:multi-list-picker-list>
-          <proton:multi-list-picker-list alias="nstage">
-            <proton:multi-list-picker-list-item value="0">N0</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="1">N1</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="2">N2</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="3">N3</proton:multi-list-picker-list-item>
-          </proton:multi-list-picker-list>
-          <proton:multi-list-picker-list alias="mstage">
-            <proton:multi-list-picker-list-item value="0">M0</proton:multi-list-picker-list-item>
-            <proton:multi-list-picker-list-item value="1">M1</proton:multi-list-picker-list-item>
-          </proton:multi-list-picker-list>
-        </proton:multi-list-picker>
-      </div>
-    </center>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          <h2 translate="CANCER"></h2>
+        </div>
+        <select ng-model="cancertype" ng-change="showSelectValue(cancertype)">
+          <option value="colon" selected>{{'KOKA' | translate}}</option>
+          <option value="rektum">
+            {{'REKA' | translate}}</option>
+        </select>
+      </label>
     </div>
+    <div class="card">
+      <div class="row item-input">
+        <div class="col">
+          <label class="item item-input" translate="TNMSTAG" style="border:0;"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <center>
+            <div class="col" style="float:right;">
 
-    <div class="row">
-      <div class="col">
-        <center><button class="button button-calm" ng-click="goOP()" translate="NEXT"/></center>
+              <proton:multi-list-picker ng-model="value" style="width:100%">
+                <proton:multi-list-picker-list alias="tstage" cycle="true">
+                  <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="1">T1</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="2">T2</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="3">T3</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="4">T4</proton:multi-list-picker-list-item>
+                </proton:multi-list-picker-list>
+                <proton:multi-list-picker-list alias="nstage" cycle="true">
+                  <proton:multi-list-picker-list-item value="0">N0</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="1">N1</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="2">N2</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="3">N3</proton:multi-list-picker-list-item>
+                </proton:multi-list-picker-list>
+                <proton:multi-list-picker-list alias="mstage" cycle="true">
+                  <proton:multi-list-picker-list-item value="0">M0</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="1">M1</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="0">M0</proton:multi-list-picker-list-item>
+                  <proton:multi-list-picker-list-item value="1">M1</proton:multi-list-picker-list-item>
+                </proton:multi-list-picker-list>
+              </proton:multi-list-picker>
+            </div>
+          </center>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <center><button class="button button-calm" ng-click="goOP()" translate="NEXT"/></center>
+        </div>
       </div>
     </div>
-</div>
   </ion-content>
 </ion-view>
