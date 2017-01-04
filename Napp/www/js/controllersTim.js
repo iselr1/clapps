@@ -97,7 +97,7 @@ angular.module('starter.controllersTim', [])
       // and load the information into the detail View!
       var tempIndex = this.$index;
       var terminatedItem = fromAppointments.years[parent].appointments[tempIndex];
-      console.log(terminatedItem);
+
       $scope.saveAppointment.results = terminatedItem.results;
       $scope.saveAppointment.date = terminatedItem.date;
       $scope.saveAppointment.time = terminatedItem.time;
@@ -111,9 +111,16 @@ angular.module('starter.controllersTim', [])
 
       //Check if a Doctor was selected in the AppointmentView
       //Error-Handling
-      if(typeof terminatedItem.data !== "undefined"){
-      $scope.docFunc = terminatedItem.data.availableOptions[terminatedItem.data.model].name;
-      $scope.docPhone = terminatedItem.data.availableOptions[terminatedItem.data.model].phone;
+
+      if(typeof terminatedItem.data !== 'undefined'){
+        if(terminatedItem.data.model){
+        $scope.docFunc = terminatedItem.data.availableOptions[terminatedItem.data.model].name;
+        $scope.docPhone = terminatedItem.data.availableOptions[terminatedItem.data.model].phone;
+        }
+      }
+      else{
+        $scope.docFunc  = "";
+        $scope.docPhone = "";
       }
 
       // Set the Detailview to the saved Data from the List
