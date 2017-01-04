@@ -149,11 +149,12 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 })
 
 /* -- Controller für Operationen View -- */
-.controller('OPCtrl', function($scope, $location, $state, ionicDatePicker, $filter, schemaService, jsonService) {
+.controller('OPCtrl', function($scope, $location, $state, $translate, $ionicPopup, ionicDatePicker, $filter, schemaService, jsonService) {
 
   var jsonData = jsonService.getJson();
   var yes = jsonData.YES;
   var no = jsonData.NO;
+  var opdateset = false;
 
   // Functions for the coloskopie toggle
   $scope.complete = false;
@@ -190,6 +191,22 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     schemaService.setColoscopyComplete($scope.complete);
     console.log($scope.complete);
     schemaService.genSchema();
-    $state.go('home');
+    //$state.go('home');
+
+    if($scope.buttonOPText == "dd.mm.yyyy"){
+      // If the op date was not choosen the user gets informed with a popup
+      var popTitle = $translate.instant('IMPORTANT');
+      var popTemplate = $translate.instant('FILLOPDATE');
+
+      var alertPopup = $ionicPopup.alert({
+        title: popTitle,
+        template: popTemplate,
+      });
+    }
+    else{
+      $state.go('home');
+    }
+
+
   };
 });
