@@ -59,12 +59,64 @@ drawChart, to draw the lineChart with the pulse and weight values;
     }
     // Popup if the weight value was out of the min-max range
   $scope.showNotPossibleWeight = function() {
-    var alertPopup = $ionicPopup.alert({
-      title: jsonData.INVALIDVALUE,
-      template: jsonData.WEIGHTMINMAX
-    });
-  }
+      var alertPopup = $ionicPopup.alert({
+        title: jsonData.INVALIDVALUE,
+        template: jsonData.WEIGHTMINMAX
+      });
+    }
+    /*
+    // Triggered on a button click, or some other target
+  $scope.showPopupEnterWeight = function() {
+    $scope.Weight = {};
 
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      template: '<input type="number" ng-model="Weight.value">',
+      title: 'Geben Sie ihr Gewicht in kg ein',
+      scope: $scope,
+      buttons: [{
+        text: 'Abbrechen'
+      }, {
+        text: '<b>Save</b>',
+        type: 'button-positive',
+        onTap: function(e) {
+          if (!$scope.Weight.value) {
+            //don't allow the user to close unless he enters wifi password
+            e.preventDefault();
+          } else {
+            return $scope.Weight.value;
+          }
+        }
+      }]
+    });
+
+    myPopup.then(function(res) {
+      console.log(res);
+      var val = $scope.Weight.value;
+      if (res == "") {
+        $scope.showNoValPopup(jsonData.WEIGHT);
+      } else if (isNaN(val)) {
+        $scope.showNotNumeric(jsonData.WEIGHT);
+      } else if ((val < minWeight) || (val > maxWeight)) {
+        $scope.showNotPossibleWeight();
+      } else {
+        var type = 'weight';
+
+        ownMidataService.save(val, type).then(function(e) {
+          console.log('Resource Created: ' + e + val);
+          //HARD CODED WEIGHT
+          ownMidataService.getObservation('w', {}, $scope.drawChart);
+          // Set value of the input field to empty
+          $scope.Weight.value = '';
+          console.log($scope.Weight.value);
+        });
+      }
+    });
+
+    $timeout(function() {
+      myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 3000);
+  };*/
 
   /*********************Function to save and get Data from Midata*********************/
   // Initialize the value of the ng-model
@@ -134,25 +186,37 @@ drawChart, to draw the lineChart with the pulse and weight values;
   var options = {
     axisX: {
       type: Chartist.FixedScaleAxis,
-      divisor: 5,
+      divisor: 12,
       labelInterpolationFnc: function(value) {
-        return moment(value).format('D MMM YY ');
+        return moment(value).format('MMM YY ');
       }
     },
     axisY: {
       onlyInteger: true,
       offset: 20
-    }
+    },
+    series: {
+      'series-1': {
+        lineSmooth: Chartist.Interpolation.simple({
+          fillHoles: true,
+          showPoint: true
+        })
+      },
+      'series-2': {
+        showPoint: false
+      }
+    },
   };
   // In addition to the regular options we specify responsive option overrides that will override the default configutation based on the matching media queries.
   var responsiveOptions = {
     fullWidth: true,
+    // Within the series options you can use the series names
+    // to specify configuration that will only be used for the
+    // specific series.
+
     chartPadding: {
       right: 20
     },
-    lineSmooth: Chartist.Interpolation.cardinal({
-      fillHoles: true,
-    }),
     low: 0
   };
 
@@ -171,34 +235,86 @@ drawChart, to draw the lineChart with the pulse and weight values;
       // to get a value that is either negative, positive, or zero.
       return new Date(a.time) - new Date(b.time);
     });
-    console.log(result);
 
-    // to show the last 5 values in a chart
-    var objects = [];
-    if (result.length > 5) {
-      for (var i = (result.length - 5); i < result.length; i++) {
-        var data = {};
-        var d = new Date(result[i].time);
-        console.log(d);
-        data.x = d;
-        data.y = result[i].value;
-        objects.push(data);
+    var dataMonthlyArray = {};
+    var months = [
+      "20161",
+      "20162",
+      "20163",
+      "20164",
+      "20165",
+      "20166",
+      "20167",
+      "20168",
+      "20169",
+      "201610",
+      "201611",
+      "201612",
+      "20171"
+    ];
+    for (var i = 0; i < months.length; i++) {
+      dataMonthlyArray[months[i]] = {};
+      dataMonthlyArray[months[i]]["date"] = months[i].substring(4) + ".01" + "." + months[i].substring(0, 4);
+      dataMonthlyArray[months[i]]["value"] = 0;
+      dataMonthlyArray[months[i]]["counter"] = 0;
+    }
+    var objectTargetLine = [];
+    var objectsValues = [];
+    for (var y = 0; y < result.length; y++) {
+      console.log(dataMonthlyArray);
+      var d = new Date(result[y].time);
+      var pos = (d.getFullYear() + "" + (d.getMonth() + 1));
+      var value = dataMonthlyArray[pos]["value"];
+      console.log(value);
+      var counter = dataMonthlyArray[pos]["counter"];
+      console.log(result[y].value);
+      dataMonthlyArray[pos]["value"] = value + result[y].value;
+      console.log(dataMonthlyArray[pos]["value"]);
+      dataMonthlyArray[pos]["counter"] = counter + 1;
 
-      }
-    } else {
-      for (var i = 0; i < result.length; i++) {
-        var data = {};
-        data.x = result[i].time;
-        data.y = result[i].value;
-        objects.push(data);
-        console.log(objects);
+      //set data for the targetline
+      if (y == 0) {
+        var dataStart = {};
+        var dateDataStart = new Date(result[y].time);
+        dataStart.x = dateDataStart;
+        dataStart.y = result[y].value;
+        objectTargetLine.push(dataStart);
+        var dataEnd = {};
+        var dateDataEnd = new Date(result[result.length - 1].time)
+        dataEnd.x = dateDataEnd;
+        dataEnd.y = result[y].value;
+        objectTargetLine.push(dataEnd);
+        console.log(objectTargetLine);
       }
     }
+    console.log(objectTargetLine);
+    console.log(dataMonthlyArray);
+
+    for (var object in dataMonthlyArray) {
+      var data = {};
+      var d = new Date(dataMonthlyArray[object]["date"]);
+      data.x = d;
+      if (dataMonthlyArray[object]["counter"] != 0) {
+        data.y = (dataMonthlyArray[object]["value"] / dataMonthlyArray[object]["counter"]);
+      } else {
+        data.y = 0;
+      }
+      objectsValues.push(data);
+    }
+    objectsValues.sort(function(a, b) {
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(a.x) - new Date(b.x);
+    });
+
 
     var configLine = {
       series: [{
         name: 'series-1',
-        data: objects
+        data: objectsValues
+      }, {
+        name: 'series-2',
+        data: objectTargetLine
       }]
     };
     if (obsType == 'p') {
@@ -213,8 +329,21 @@ drawChart, to draw the lineChart with the pulse and weight values;
   };
 
   /*************to initzialize the linecharts in the first place, before new values are saved*****************/
-  ownMidataService.getObservation('p', {}, $scope.drawChart);
-  ownMidataService.getObservation('w', {}, $scope.drawChart);
+  //ownMidataService.getObservation('p', {}, $scope.drawChart);
+  //ownMidataService.getObservation('w', {}, $scope.drawChart);
+  //To test the function without login first
+  var hanaolalsad = ownMidataService.loggedIn();
+  if (!hanaolalsad) {
+    ownMidataService.login('lena@midata.coop', 'Lena123456', 'member');
+  }
+  var timer = $timeout(function refresh() {
+    if (ownMidataService.loggedIn()) {
+      ownMidataService.getObservation('p', {}, $scope.drawChart);
+      ownMidataService.getObservation('w', {}, $scope.drawChart);
+    } else {
+      timer = $timeout(refresh, 1000);
+    }
+  }, 1000);
 
 })
 
