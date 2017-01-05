@@ -197,7 +197,7 @@ drawChart, to draw the lineChart with the pulse and weight values;
     },
     series: {
       'series-1': {
-        lineSmooth: Chartist.Interpolation.simple({
+        lineSmooth: Chartist.Interpolation.step({
           fillHoles: true,
           showPoint: true
         })
@@ -236,66 +236,70 @@ drawChart, to draw the lineChart with the pulse and weight values;
       return new Date(a.time) - new Date(b.time);
     });
 
-    var dataMonthlyArray = {};
-    var months = [
-      "20161",
-      "20162",
-      "20163",
-      "20164",
-      "20165",
-      "20166",
-      "20167",
-      "20168",
-      "20169",
-      "201610",
-      "201611",
-      "201612",
-      "20171"
-    ];
-    for (var i = 0; i < months.length; i++) {
-      dataMonthlyArray[months[i]] = {};
-      dataMonthlyArray[months[i]]["date"] = months[i].substring(4) + ".01" + "." + months[i].substring(0, 4);
-      dataMonthlyArray[months[i]]["value"] = 0;
-      dataMonthlyArray[months[i]]["counter"] = 0;
+    var dataMonthlyObjects = {};
+    var usedDate = new Date();
+
+    var monthString = function getMonthString(date) {
+      console.log('*** getMonthString for date', date, 'formated', date.getFullYear() + "" + (date.getMonth() + 1));
+      return date.getFullYear() + "" + (date.getMonth() + 1);
     }
+
+    for (var c = 0; c < 13; c++) {
+      var date = monthString(usedDate);
+      console.log('*** c', c);
+      dataMonthlyObjects[date] = {};
+      dataMonthlyObjects[date]["date"] = date.substring(4) + ".01" + "." + date.substring(0, 4);
+      dataMonthlyObjects[date]["value"] = 0;
+      dataMonthlyObjects[date]["counter"] = 0;
+
+      // aktuelles Datum -1 Monat rechnen
+      //currentDate.
+      usedDate.setMonth(usedDate.getMonth() - 1);
+    }
+
     var objectTargetLine = [];
     var objectsValues = [];
     for (var y = 0; y < result.length; y++) {
-      console.log(dataMonthlyArray);
+      console.log(dataMonthlyObjects);
       var d = new Date(result[y].time);
       var pos = (d.getFullYear() + "" + (d.getMonth() + 1));
-      var value = dataMonthlyArray[pos]["value"];
-      console.log(value);
-      var counter = dataMonthlyArray[pos]["counter"];
-      console.log(result[y].value);
-      dataMonthlyArray[pos]["value"] = value + result[y].value;
-      console.log(dataMonthlyArray[pos]["value"]);
-      dataMonthlyArray[pos]["counter"] = counter + 1;
-
+      if (pos in dataMonthlyObjects) {
+        var value = dataMonthlyObjects[pos]["value"];
+        console.log(value);
+        var counter = dataMonthlyObjects[pos]["counter"];
+        console.log(result[y].value);
+        dataMonthlyObjects[pos]["value"] = value + result[y].value;
+        console.log(dataMonthlyObjects[pos]["value"]);
+        dataMonthlyObjects[pos]["counter"] = counter + 1;
+      } else {
+        //do nothing
+      }
       //set data for the targetline
       if (y == 0) {
         var dataStart = {};
-        var dateDataStart = new Date(result[y].time);
+        var dateChartStart = new Date();
+        var dateDataStart = new Date(dateChartStart.setFullYear(dateChartStart.getFullYear() - 1));
         dataStart.x = dateDataStart;
         dataStart.y = result[y].value;
         objectTargetLine.push(dataStart);
         var dataEnd = {};
-        var dateDataEnd = new Date(result[result.length - 1].time)
+        var dateDataEnd = new Date();
         dataEnd.x = dateDataEnd;
         dataEnd.y = result[y].value;
         objectTargetLine.push(dataEnd);
         console.log(objectTargetLine);
       }
     }
-    console.log(objectTargetLine);
-    console.log(dataMonthlyArray);
 
-    for (var object in dataMonthlyArray) {
+    console.log(objectTargetLine);
+    console.log(dataMonthlyObjects);
+
+    for (var object in dataMonthlyObjects) {
       var data = {};
-      var d = new Date(dataMonthlyArray[object]["date"]);
+      var d = new Date(dataMonthlyObjects[object]["date"]);
       data.x = d;
-      if (dataMonthlyArray[object]["counter"] != 0) {
-        data.y = (dataMonthlyArray[object]["value"] / dataMonthlyArray[object]["counter"]);
+      if (dataMonthlyObjects[object]["counter"] != 0) {
+        data.y = (dataMonthlyObjects[object]["value"] / dataMonthlyObjects[object]["counter"]);
       } else {
         data.y = 0;
       }
