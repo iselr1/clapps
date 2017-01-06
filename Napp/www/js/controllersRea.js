@@ -21,10 +21,11 @@ show***Popup, to show a popup if the entred value for weight or pulse was not va
 drawChart, to draw the lineChart with the pulse and weight values;
 */
 
-.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup, jsonService) {
+.controller('KoerperCtrl', function($scope, $state, ownMidataService, $timeout, $ionicPopup, jsonService, chartService) {
   /* Load the json file with the translations and store it to the variable jsonData */
   var jsonData = jsonService.getJson();
-
+  // To set the title for the Y Axis
+  var pluginsAxisYTitle = '';
   /********************* Validation area ******************/
   /*Variables for the Validation of the inputs field with the pulse and weight data to store to midata*/
   // Min value for pulse
@@ -59,64 +60,11 @@ drawChart, to draw the lineChart with the pulse and weight values;
     }
     // Popup if the weight value was out of the min-max range
   $scope.showNotPossibleWeight = function() {
-      var alertPopup = $ionicPopup.alert({
-        title: jsonData.INVALIDVALUE,
-        template: jsonData.WEIGHTMINMAX
-      });
-    }
-    /*
-    // Triggered on a button click, or some other target
-  $scope.showPopupEnterWeight = function() {
-    $scope.Weight = {};
-
-    // An elaborate, custom popup
-    var myPopup = $ionicPopup.show({
-      template: '<input type="number" ng-model="Weight.value">',
-      title: 'Geben Sie ihr Gewicht in kg ein',
-      scope: $scope,
-      buttons: [{
-        text: 'Abbrechen'
-      }, {
-        text: '<b>Save</b>',
-        type: 'button-positive',
-        onTap: function(e) {
-          if (!$scope.Weight.value) {
-            //don't allow the user to close unless he enters wifi password
-            e.preventDefault();
-          } else {
-            return $scope.Weight.value;
-          }
-        }
-      }]
+    var alertPopup = $ionicPopup.alert({
+      title: jsonData.INVALIDVALUE,
+      template: jsonData.WEIGHTMINMAX
     });
-
-    myPopup.then(function(res) {
-      console.log(res);
-      var val = $scope.Weight.value;
-      if (res == "") {
-        $scope.showNoValPopup(jsonData.WEIGHT);
-      } else if (isNaN(val)) {
-        $scope.showNotNumeric(jsonData.WEIGHT);
-      } else if ((val < minWeight) || (val > maxWeight)) {
-        $scope.showNotPossibleWeight();
-      } else {
-        var type = 'weight';
-
-        ownMidataService.save(val, type).then(function(e) {
-          console.log('Resource Created: ' + e + val);
-          //HARD CODED WEIGHT
-          ownMidataService.getObservation('w', {}, $scope.drawChart);
-          // Set value of the input field to empty
-          $scope.Weight.value = '';
-          console.log($scope.Weight.value);
-        });
-      }
-    });
-
-    $timeout(function() {
-      myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 3000);
-  };*/
+  }
 
   /*********************Function to save and get Data from Midata*********************/
   // Initialize the value of the ng-model
@@ -170,55 +118,13 @@ drawChart, to draw the lineChart with the pulse and weight values;
         ownMidataService.getObservation('p', {}, $scope.drawChart);
         // Set value of the input field to empty
         $scope.Pulse.value = '';
-
+        // To set the title for the Y Axis
+        pluginsAxisYTitle = jsonData.YOUR_PULSE;
       });
     }
   }
 
-  /* Variables with an array containing the settings for drawing the lineChart of the chartist library */
-  // --> axisX: array containing the options to define the horizontal labels
-  // --> divisor: the time labels of the xAxis are calulated by divising the timespan of the first and last value in the chart by the number of the divisor
-  // --> labelInterpolationFnc: function to set the labels to the time value with the entered format
-  // --> axisY: array containing the options to define the vertical labels
-  // --> onlyInteger: if true, the numbers are integers, therefore no decimal numbers
-  // --> offset: define the offset from the left border of the page
-  // for further documentation visit: https://gionkunz.github.io/chartist-js/api-documentation.html
-  var options = {
-    axisX: {
-      type: Chartist.FixedScaleAxis,
-      divisor: 12,
-      labelInterpolationFnc: function(value) {
-        return moment(value).format('MMM YY ');
-      }
-    },
-    axisY: {
-      onlyInteger: true,
-      offset: 20
-    },
-    series: {
-      'series-1': {
-        lineSmooth: Chartist.Interpolation.simple({
-          fillHoles: true,
-          showPoint: true
-        })
-      },
-      'series-2': {
-        showPoint: false
-      }
-    },
-  };
-  // In addition to the regular options we specify responsive option overrides that will override the default configutation based on the matching media queries.
-  var responsiveOptions = {
-    fullWidth: true,
-    // Within the series options you can use the series names
-    // to specify configuration that will only be used for the
-    // specific series.
 
-    chartPadding: {
-      right: 20
-    },
-    low: 0
-  };
 
   /*********************Function to draw the lineCharts*********************/
   // In this function we check if the results array from midata contains more observation values than 5. If thats the case we take only the newest 5 entry and store the value in an array of data objects containing the date and value of the obersvation entry
@@ -321,11 +227,14 @@ drawChart, to draw the lineChart with the pulse and weight values;
         data: objectTargetLine
       }]
     };
+
+    chartService.setPluginAxisYTitle(obsType);
+
     if (obsType == 'p') {
-      var chart = new Chartist.Line('.ct-chartLinePulse', configLine, options, responsiveOptions);
+      var chart = new Chartist.Line('.ct-chartLinePulse', configLine, chartService.getOptions(), chartService.getResponsiveOptions());
       console.log(chart);
     } else if (obsType == 'w') {
-      var chart = new Chartist.Line('.ct-chartLineWeight', configLine, options, responsiveOptions);
+      var chart = new Chartist.Line('.ct-chartLineWeight', configLine, chartService.getOptions(), chartService.getResponsiveOptions());
       console.log(chart);
     } else {
       //other type
@@ -381,6 +290,9 @@ scheduleNotificationFiveSecondsFromNow, to schedule a notification at a specific
 resetApp, to clear the localStorage and reset everything to the intial status;
 */
 .controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
+  /* Load the json file with the translations and store it to the variable jsonData */
+  var jsonData = jsonService.getJson();
+
   // variable containing the inital notification sound path
   var notificationSound = "file://sounds/DespicableMeNotification.mp3";
 
@@ -445,8 +357,9 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   $scope.scheduleInstantNotification = function() {
     $cordovaLocalNotification.schedule({
       id: 1,
-      text: 'Instant Notification',
-      title: 'Instant'
+      text: jsonData.NOTIFICATIONTEXT,
+      title: jsonData.NOTIFICATIONTITLE,
+      sound: notificationSound
     }).then(function() {
       alert("Instant Notification set");
     });
@@ -466,8 +379,8 @@ resetApp, to clear the localStorage and reset everything to the intial status;
     $cordovaLocalNotification.schedule({
       id: 2,
       date: _5SecondsFromNow,
-      text: 'Notification After 5 Seconds Has Been Triggered',
-      title: 'After 5 Seconds',
+      text: jsonData.NOTIFICATIONTEXT,
+      title: jsonData.NOTIFICATIONTITLE,
       sound: notificationSound
     }).then(function() {
       alert("Notification After 5 seconds set");
@@ -477,7 +390,6 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   /*********************Function called to reset the app*********************/
   // the localStorage gets cleared, we get redirected to the welcome page and the schema has to be generated newly
   $scope.resetApp = function() {
-    var jsonData = jsonService.getJson();
     var confirmPopup = $ionicPopup.confirm({
 
       title: jsonData.RESETAPP,
@@ -535,6 +447,7 @@ resetApp, to clear the localStorage and reset everything to the intial status;
     $translate.use(key.token);
     jsonService.loadJson(key.token);
     localStorage.setItem('language', JSON.stringify(key.token));
+    jsonData = jsonService.getjson();
   };
 })
 

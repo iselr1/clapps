@@ -32,8 +32,14 @@ angular.module('starter.controllers', [])
 .controller('LoginCtrl', function($scope, $translate, ownMidataService, $timeout, $state, $ionicLoading) {
   // Values for login
   $scope.login = {};
-  $scope.login.email = '';
   $scope.login.password = '';
+
+  if (localStorage.getItem('username') != null) {
+    $scope.login.email = JSON.parse(localStorage.getItem('username'));
+  } else {
+    $scope.login.email = '';
+  }
+
 
   var loggedIn;
   // Login
@@ -64,6 +70,7 @@ angular.module('starter.controllers', [])
     if (loggedIn) {
       //$state.go('home');
       $state.go('welcome');
+      localStorage.setItem('username', JSON.stringify($scope.login.email));
     } else {
       ownMidataService.logout();
     }

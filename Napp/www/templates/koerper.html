@@ -18,7 +18,7 @@ Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
     <div class="row">
       <div class="col col-55">
         <label class="item item-input" style="border:none">
-          <span class="input-label" translate="YOUR_WEIGHT_KG"></span>
+          <span class="input-label" translate="NEW_wEIGHT"></span>
         </div>
         <div class="col col-15">
           <input type="number" ng-model="Weight.value" placeholder="60" style="border:1px solid; max-width:100%; margin-top:10px"></input>
@@ -29,11 +29,15 @@ Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
         <button class="button button-small button-block button-balanced" ng-click="addWeight()" translate="{{'SAVE' | translate}}"></button>
       </div>
     </div>
-    <div class="ct-chartLineWeight ct-perfect-fifth"></div>
+    <div class="row">
+      <div class="col">
+        <div class="ct-chartLineWeight ct-perfect-fifth"></div>
+      </div>
+    </div>
     <div class="row">
       <div class="col col-55">
         <label class="item item-input" style="border:none">
-          <span class="input-label" translate="YOUR_PULSE"></span>
+          <span class="input-label" translate="NEW_PULSE"></span>
         </div>
         <div class="col col-15">
           <input type="number" ng-model="Pulse.value" placeholder="60" style="border:1px solid; max-width:100%; margin-top:10px"></input>
@@ -44,8 +48,10 @@ Funktion: Erfassung von Gewicht und Puls mit graphischer Darstellung.
       </div>
     </div>
     <div class="row">
+      <div class="col">
       <div class="ct-chartLinePulse ct-perfect-fifth"></div>
     </div>
+  </div>
 
   </ion-content>
 </ion-view>
