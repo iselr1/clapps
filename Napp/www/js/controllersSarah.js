@@ -95,7 +95,8 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
       console.log($scope.value.mstage);
       schemaService.setStagingM($scope.value.mstage);
     })
-
+    var booleanCancerSet = false;
+    var booleanStageSet = false;
     if (cancer == '') {
       // If the cancertype was not choosen the user gets informed with a popup
       var popTitle = $translate.instant('IMPORTANT');
@@ -105,6 +106,10 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
         title: popTitle,
         template: popTemplate,
       });
+    }
+    // The user choosed the cancer type so we set the booleanStageSet to true
+    else {
+      booleanCancerSet = true;
     }
     // If the value for m is 1 we can't generate an appropriate aftercare plan, and the user gets informed with a popup
     if ($scope.value.mstage == 1) {
@@ -140,11 +145,14 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
         template: popTemplate,
       });
     }
-    // The user the tnm correctly so we can go to the next page
+    // The user the tnm correctly so we set the booleanStageSet to true
     else {
+      booleanStageSet = true;
+    }
+    // controll if the tnm and cancer were set to true
+    if (booleanStageSet && booleanCancerSet) {
       $state.go('op');
     }
-
   }
 })
 
@@ -193,7 +201,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     schemaService.genSchema();
     //$state.go('home');
 
-    if($scope.buttonOPText == "dd.mm.yyyy"){
+    if ($scope.buttonOPText == "dd.mm.yyyy") {
       // If the op date was not choosen the user gets informed with a popup
       var popTitle = $translate.instant('IMPORTANT');
       var popTemplate = $translate.instant('FILLOPDATE');
@@ -202,8 +210,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
         title: popTitle,
         template: popTemplate,
       });
-    }
-    else{
+    } else {
       $state.go('home');
     }
 

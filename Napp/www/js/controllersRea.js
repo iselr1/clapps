@@ -197,7 +197,7 @@ drawChart, to draw the lineChart with the pulse and weight values;
     },
     series: {
       'series-1': {
-        lineSmooth: Chartist.Interpolation.step({
+        lineSmooth: Chartist.Interpolation.simple({
           fillHoles: true,
           showPoint: true
         })
