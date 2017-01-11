@@ -45,6 +45,19 @@ angular.module('starter.controllersMauro', [])
           $scope.myContacts.push(contact);
         }
     }
+    else{
+      var contact =
+        {
+            "func": "FAMILIYDOC",
+            "name": "Heinz Knöpfli",
+            "street":"Eichenweg 15",
+            "location":"3000 Bern",
+            "phone":"+41313002839",
+            "mail":"heinz.knöpfli@bluemail.ch"
+        };
+        $scope.myContacts.push(contact);
+        localStorage.setItem('contacts', JSON.stringify($scope.myContacts));
+    }
 
     // Adding the Data from the Contact Formular addContact to the Dom
     // Save the Contact in the LocalStorage
