@@ -289,7 +289,7 @@ scheduleInstantNotification, to schedule an notification;
 scheduleNotificationFiveSecondsFromNow, to schedule a notification at a specific dateTime;
 resetApp, to clear the localStorage and reset everything to the intial status;
 */
-.controller('EinstellungenCtrl', function($scope, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
+.controller('EinstellungenCtrl', function($scope,$ionicHistory ,$cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
   /* Load the json file with the translations and store it to the variable jsonData */
   var jsonData = jsonService.getJson();
 
@@ -391,7 +391,6 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   // the localStorage gets cleared, we get redirected to the welcome page and the schema has to be generated newly
   $scope.resetApp = function() {
     var confirmPopup = $ionicPopup.confirm({
-
       title: jsonData.RESETAPP,
       template: jsonData.RESETAPPTEXT,
       cancelText: jsonData.CANCEL,
@@ -447,7 +446,8 @@ resetApp, to clear the localStorage and reset everything to the intial status;
     $translate.use(key.token);
     jsonService.loadJson(key.token);
     localStorage.setItem('language', JSON.stringify(key.token));
-    jsonData = jsonService.getjson();
+    $ionicHistory.clearCache();
+    jsonData = jsonService.getJson();
   };
 })
 

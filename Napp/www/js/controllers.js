@@ -88,7 +88,6 @@ angular.module('starter.controllers', [])
 
   $scope.goTermine = function() {
     $state.go('termine');
-
   };
 
   $scope.goKoerper = function() {
