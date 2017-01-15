@@ -38,15 +38,17 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
   // Get current language
   function currentLanguage() {
+    console.log("currentLanguage");
     if (localStorage.getItem('language') != null) {
+      console.log("storage");
       if (localStorage.getItem('language').slice(1, 3) == "fr") {
         return '2';
       } else {
         return '1';
       }
     } else {
-      return '1';
       if (($translate.proposedLanguage() || $translate.use()) == "fr") {
+        console.log("system");
         return '2';
       } else {
         return '1';

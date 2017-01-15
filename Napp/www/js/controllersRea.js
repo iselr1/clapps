@@ -289,12 +289,12 @@ scheduleInstantNotification, to schedule an notification;
 scheduleNotificationFiveSecondsFromNow, to schedule a notification at a specific dateTime;
 resetApp, to clear the localStorage and reset everything to the intial status;
 */
-.controller('EinstellungenCtrl', function($scope,$ionicHistory ,$cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
+.controller('EinstellungenCtrl', function($scope, $ionicHistory, $cordovaLocalNotification, $cordovaMedia, $translate, jsonService, $ionicPopup, $state, $ionicLoading) {
   /* Load the json file with the translations and store it to the variable jsonData */
   var jsonData = jsonService.getJson();
 
   // variable containing the inital notification sound path
-  var notificationSound = "file://sounds/DespicableMeNotification.mp3";
+  var notificationSound = "file://sounds/HTCOneLimeNotification.mp3";
 
   /*********************Array with the diffrent notification sounds for the select list*********************/
   // -->id: id of the sound
@@ -303,7 +303,7 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   $scope.soundList = [{
     id: 1,
     name: 'Ton 1',
-    sound: 'file://sounds/DespicableMeNotification.mp3'
+    sound: 'file://sounds/Bamboo.mp3'
   }, {
     id: 2,
     name: 'Ton 2',
@@ -422,16 +422,19 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   /*********************function to get the currentLanguage*********************/
   // Either the current language is diffrent from the system language and therefore restored from the localStorage or we detect the system language
   // return: the id of the currentLanguage to set the languageSelected to this id
+  // Get current language
   function currentLanguage() {
+    console.log("currentLanguage");
     if (localStorage.getItem('language') != null) {
+      console.log("storage");
       if (localStorage.getItem('language').slice(1, 3) == "fr") {
         return '2';
       } else {
         return '1';
       }
     } else {
-      return '1';
       if (($translate.proposedLanguage() || $translate.use()) == "fr") {
+        console.log("system");
         return '2';
       } else {
         return '1';
@@ -444,10 +447,11 @@ resetApp, to clear the localStorage and reset everything to the intial status;
   $scope.onchangeLanguage = function(key) {
     console.log(key.token);
     $translate.use(key.token);
-    jsonService.loadJson(key.token);
-    localStorage.setItem('language', JSON.stringify(key.token));
-    $ionicHistory.clearCache();
-    jsonData = jsonService.getJson();
+    jsonService.loadJson(key.token).then(function() {
+      jsonData = jsonService.getJson();
+      localStorage.setItem('language', JSON.stringify(key.token));
+      $ionicHistory.clearCache();
+    });
   };
 })
 
