@@ -14,7 +14,7 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
     <div class="card">
     <div class="row">
       <div class="col">
-
+        <!--Wurde die Koloskopie vollständig gemacht?-->
         <div class="toggle-wrapper">
         <span class="toggle-question" translate="KOLOSK"></span>
       </div>
@@ -24,34 +24,27 @@ Funktion: Screen zum Operationsdatum und Kolonskopie
                     ng-checked="complete" ng-change="setComplete(complete)" ng-click="update()">
           <div class="toggle-text" translate="{{setComplete.text}}"></div>
         </ion-toggle>
-        <!--
-          <label class="item item-input" translate="KOLOSK">
-          </label>
-          <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="colosc" name="colosc" value="yes"> <label for="y" translate="YES"></label>
-          <br><br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="colosc" name="colosc" value="no"> <label for="n" translate="NO"></label>
-          <br><br>
-          -->
       </div>
     </div>
   </div>
   <div class="card">
     <div class="row">
+      <!--Operationsdatum-->
+      <span class="toggle-question" translate="KOLOSK"></span>
       <div class="col" translate="DATEOP"></div>
     </div>
     <div class="row">
       <div class="col">
       <label class="item item-input">
-
+        <!--Integration Plugin Datepicker-->
        <button class="button button-clear button-dark" ng-click="openDatePicker()">{{buttonOPText}}</button>
-       <!--<input type="date" id="opdate" placeholder="dd.mm.yyyy" ng-click="openDatePicker()">-->
     </label>
   </div>
   </div>
 
     <div class="row">
         <div class="col">
+          <!--Button Next-->
           <center><button class="button button-calm" ng-click="goHome()" translate="NEXT"/></center>
         </div>
     </div>

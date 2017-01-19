@@ -12,6 +12,7 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
   </ion-nav-buttons>
   <ion-content scroll="false">
     <div class="card">
+      <!--Krebsart-->
       <label class="item item-input item-select">
         <div class="input-label">
           <h2 translate="CANCER"></h2>
@@ -33,7 +34,7 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
         <div class="col">
           <center>
             <div class="col" style="float:right;">
-
+              <!--Integration Plugin Multi List Picker-->
               <proton:multi-list-picker ng-model="value" style="width:100%">
                 <proton:multi-list-picker-list alias="tstage" cycle="true">
                   <proton:multi-list-picker-list-item value="0">T0</proton:multi-list-picker-list-item>
@@ -61,6 +62,7 @@ Funktion: Screen zum TNM Staging und Krebsart-Wahl
       </div>
       <div class="row">
         <div class="col">
+          <!--Button next-->
           <center><button class="button button-calm" ng-click="goOP()" translate="NEXT"/></center>
         </div>
       </div>

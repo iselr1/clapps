@@ -1,0 +1,43 @@
+// Master color
+// Other colors here: http://ionicframework.com/docs/components/#colors
+$popup-color: $positive;
+
+.ionic_datepicker_popup{
+    // Style the buttons at the bottom
+    .popup-buttons{
+        button{
+            background-color: $popup-color !important;
+        }
+    }
+    // Style the body
+    .popup-body{
+        // Style the outline for today
+        .today{
+            border-color: $popup-color;
+        }
+
+        .selected_date{
+            background-color: $popup-color;
+        }
+
+        // Style the header
+        .selected_date_full{
+            background-color: $popup-color !important;
+        }
+
+        // Style the arrow
+        .button-clear{
+            color: $popup-color !important;
+        }
+
+        // Style the month select
+        .month_select, .year_select{
+            border-color: $popup-color !important;
+
+            // Style the arrow
+            &::after{
+                color: $popup-color !important;
+            }
+        }
+    }
+}
