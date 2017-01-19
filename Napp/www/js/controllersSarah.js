@@ -13,6 +13,7 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 /* -- Controller für Welcome View -- */
 .controller('WelcomeCtrl', function($scope, $location, $state, $translate, jsonService) {
 
+  // Überspringen, wenn Initialwerte bereits abgelegt
   if (localStorage.getItem('appointmentStatus') === 'done') {
     $state.go('home');
   }
@@ -72,13 +73,13 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
 
   var cancer = '';
 
+  // Zeigt den ausgewählten Wert der Krebsart an
   $scope.showSelectValue = function(cancertype) {
       cancer = cancertype;
       console.log(cancer);
     }
     // Initialize an array for the stages
   $scope.value = {};
-
 
   // Weiterleitung nach Operationen
   $scope.goOP = function() {
@@ -178,9 +179,10 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
   }
 
 
-
+  // Text auf OP Feld defaultmässig dd.mm.yyyy
   $scope.buttonOPText = 'dd.mm.yyyy';
 
+  // Rückgabedatum des Datepicker
   var ipObj1 = {
     callback: function(val) { //Mandatory
       console.log('Return value from the datepicker popup is : ' + val, new Date(val));
@@ -188,10 +190,10 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
       var dateAsString = $filter('date')(val, "dd.MM.yyyy");
       console.log('Return value from the datepicker popup is formatted : ' + dateAsString);
       $scope.buttonOPText = dateAsString;
-      //  document.getElementById('opdate').value = dateAsString;
     }
   };
 
+  //  Integration Plugin
   $scope.openDatePicker = function() {
     ionicDatePicker.openDatePicker(ipObj1);
   };
@@ -201,7 +203,6 @@ angular.module('starter.controllersSarah', ['proton.multi-list-picker'])
     schemaService.setColoscopyComplete($scope.complete);
     console.log($scope.complete);
     schemaService.genSchema();
-    //$state.go('home');
 
     if ($scope.buttonOPText == "dd.mm.yyyy") {
       // If the op date was not choosen the user gets informed with a popup
