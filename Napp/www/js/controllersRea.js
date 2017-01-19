@@ -242,21 +242,9 @@ drawChart, to draw the lineChart with the pulse and weight values;
   };
 
   /*************to initzialize the linecharts in the first place, before new values are saved*****************/
-  //ownMidataService.getObservation('p', {}, $scope.drawChart);
-  //ownMidataService.getObservation('w', {}, $scope.drawChart);
-  //To test the function without login first
-  var hanaolalsad = ownMidataService.loggedIn();
-  if (!hanaolalsad) {
-    ownMidataService.login('lena@midata.coop', 'Lena123456', 'member');
-  }
-  var timer = $timeout(function refresh() {
-    if (ownMidataService.loggedIn()) {
-      ownMidataService.getObservation('p', {}, $scope.drawChart);
-      ownMidataService.getObservation('w', {}, $scope.drawChart);
-    } else {
-      timer = $timeout(refresh, 1000);
-    }
-  }, 1000);
+  ownMidataService.getObservation('p', {}, $scope.drawChart);
+  ownMidataService.getObservation('w', {}, $scope.drawChart);
+
 
 })
 
